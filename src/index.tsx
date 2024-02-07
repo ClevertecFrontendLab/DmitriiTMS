@@ -1,13 +1,16 @@
 import React from 'react';
 import { createRoot } from 'react-dom/client';
 import { Provider } from 'react-redux';
-import { HashRouter, Route, Routes } from 'react-router-dom';
+import { BrowserRouter, Route, Routes } from 'react-router-dom';
 
 import { store } from '@redux/configure-store';
-import { MainPage } from './pages';
+import { MainPage, CalendarPage, NotFoundPage } from './pages';
 
+import 'antd/dist/antd.css'
 import 'normalize.css';
 import './index.css';
+import { Layout } from '@components/Layout/Layout';
+
 
 const domNode = document.getElementById('root') as HTMLDivElement;
 const root = createRoot(domNode);
@@ -15,11 +18,15 @@ const root = createRoot(domNode);
 root.render(
     <React.StrictMode>
         <Provider store={store}>
-            <HashRouter>
+            <BrowserRouter>
                 <Routes>
-                    <Route path='/' element={<MainPage />} />
+                    <Route element={<Layout/>}>
+                        <Route path='/' element={<MainPage />} />
+                        <Route path='/calendar' element={<CalendarPage />} />
+                        <Route path='*' element={<NotFoundPage />} />
+                    </Route>
                 </Routes>
-            </HashRouter>
+            </BrowserRouter>
         </Provider>
     </React.StrictMode>,
 );
