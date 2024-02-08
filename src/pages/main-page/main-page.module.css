@@ -1,0 +1,26 @@
+.mainWrapper {
+    background: url('../../assets/bg/main-bg.jpeg');
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center;
+    height: 100%;
+    padding: 24px;
+}
+
+.mainList {
+    padding: 24px !important;
+    max-width: 752px;
+    background: #fff;
+    margin-bottom: 24px;
+}
+
+.mainText {
+    margin-top: 24px;
+    font-weight: 500;
+    font-size: 20px;
+    line-height: 130%;
+    color: #262626;
+    max-width: 752px;
+    padding: 24px;
+    background: #fff;
+}

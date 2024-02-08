@@ -11,8 +11,9 @@ import {
 
 
 import { Layout, Menu, Button } from 'antd';
-
 const { Sider } = Layout;
+
+import styles from './MenuComponent.module.css';
 
 
 export const MenuComponent: React.FC = () => {
@@ -45,18 +46,14 @@ export const MenuComponent: React.FC = () => {
                         },
                     ]}
                 />
+                <Button
+                    type="text"
+                    icon={collapsed ? <MenuUnfoldOutlined /> : <MenuFoldOutlined />}
+                    onClick={() => setCollapsed(!collapsed)}
+                    className={styles.sidebarBtn}
+                />
             </Sider>
-            <Button
-                type="text"
-                icon={collapsed ? <MenuUnfoldOutlined /> : <MenuFoldOutlined />}
-                onClick={() => setCollapsed(!collapsed)}
-                style={{
-                    fontSize: '16px',
-                    width: 64,
-                    height: 64,
-                    background: '#fff'
-                }}
-            />
+
         </>
 
     );

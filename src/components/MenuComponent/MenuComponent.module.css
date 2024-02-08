@@ -1,0 +1,10 @@
+.sidebarBtn {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    background-color: #FFF;
+}
+
+.sidebarBtn:hover {
+    background-color: #FFF;
+}

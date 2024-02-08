@@ -1,0 +1,21 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;700&display=swap');
+
+* {
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Inter', sans-serif;
+}
+
+.ant-list-split .ant-list-header,
+.ant-list-items .ant-list-item {
+    border: none;
+    padding: 0;
+    font-size: 16px;
+    line-height: 130%;
+    font-weight: 400;
+    color: #061178;
+}

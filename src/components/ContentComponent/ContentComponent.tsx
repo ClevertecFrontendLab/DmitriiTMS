@@ -13,11 +13,16 @@ import styles from './ContentComponent.module.css';
 
 export const ContentComponent: React.FC = () => {
 
+    const headerTitle = {
+        main: 'Главная',
+        calendar: 'Календарь'
+    }
+
     return (
         <Layout className={styles.wrapper}>
             <MenuComponent />
             <Layout>
-                <HeaderComponent />
+                <HeaderComponent subtitle={headerTitle} />
 
                 <Content>
                     <Outlet />
