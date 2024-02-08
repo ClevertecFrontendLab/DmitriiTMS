@@ -9,7 +9,7 @@ import { MainPage, CalendarPage, NotFoundPage } from './pages';
 import 'antd/dist/antd.css'
 import 'normalize.css';
 import './index.css';
-import { Layout } from '@components/Layout/Layout';
+import { ContentComponent } from '@components/ContentComponent/ContentComponent';
 
 
 const domNode = document.getElementById('root') as HTMLDivElement;
@@ -20,7 +20,7 @@ root.render(
         <Provider store={store}>
             <BrowserRouter>
                 <Routes>
-                    <Route element={<Layout/>}>
+                    <Route element={<ContentComponent/>}>
                         <Route path='/' element={<MainPage />} />
                         <Route path='/calendar' element={<CalendarPage />} />
                         <Route path='*' element={<NotFoundPage />} />

@@ -1,7 +1,7 @@
 import React from 'react';
 
 
-import './main-page.css';
+// import styles from './main-page.module.css';
 
 
 
