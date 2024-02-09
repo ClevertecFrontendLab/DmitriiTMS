@@ -1,6 +1,8 @@
 import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
 
+import styles from './MenuComponent.module.css';
+
 import {
     MenuFoldOutlined,
     MenuUnfoldOutlined,
@@ -9,19 +11,12 @@ import {
     VideoCameraOutlined,
 } from '@ant-design/icons';
 
-
 import { Layout, Menu, Button } from 'antd';
 const { Sider } = Layout;
 
-import styles from './MenuComponent.module.css';
-
-
 export const MenuComponent: React.FC = () => {
-
     const [collapsed, setCollapsed] = useState(false);
-
     return (
-        <>
             <Sider trigger={null} collapsible collapsed={collapsed}>
                 <div className="demo-logo-vertical" />
                 <Menu
@@ -53,8 +48,5 @@ export const MenuComponent: React.FC = () => {
                     className={styles.sidebarBtn}
                 />
             </Sider>
-
-        </>
-
     );
 };

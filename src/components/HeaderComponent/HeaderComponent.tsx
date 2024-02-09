@@ -1,12 +1,12 @@
 import React from 'react';
 import { useLocation } from 'react-router-dom';
 
+import styles from './HeaderComponent.module.css';
+
 import { Layout, Typography, Button } from 'antd';
+import { SettingOutlined } from '@ant-design/icons';
 const { Header } = Layout;
 const { Text, Title } = Typography;
-import { SettingOutlined } from '@ant-design/icons';
-
-import styles from './HeaderComponent.module.css';
 
 interface HeaderProps {
     subtitle: {
@@ -16,9 +16,7 @@ interface HeaderProps {
 }
 
 export const HeaderComponent: React.FC<HeaderProps> = ({ subtitle }) => {
-
     const location = useLocation();
-
     const routeTitle = () => {
         if (location.pathname === '/') {
             return subtitle.main;
@@ -26,7 +24,6 @@ export const HeaderComponent: React.FC<HeaderProps> = ({ subtitle }) => {
             return subtitle.calendar;
         }
     };
-
     return (
         <Header className={styles.header}>
             <Text className={styles.headerBreadcramp}>{routeTitle()}</Text>
