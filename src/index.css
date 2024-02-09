@@ -19,3 +19,7 @@ body {
     font-weight: 400;
     color: #061178;
 }
+
+.ant-menu-item {
+    margin-bottom: 18px !important;
+}

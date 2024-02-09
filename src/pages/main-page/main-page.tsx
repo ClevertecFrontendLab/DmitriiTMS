@@ -40,10 +40,10 @@ export const MainPage: React.FC = () => {
                     </div>
 
                     <div className={styles.cartDownloadContent}>
-                        <Button className={styles.cartDownloadLinkText} type="link" icon={<AndroidFilled style={{ color: '#262626' }} />}>
+                        <Button className={styles.cartDownloadLinkText} type="link" href='#' icon={<AndroidFilled style={{ color: '#262626' }} />}>
                             Android OS
                         </Button>
-                        <Button className={styles.cartDownloadLinkText} type="link" icon={<AppleFilled style={{ color: '#262626' }} />}>
+                        <Button className={styles.cartDownloadLinkText} type="link" href='#' icon={<AppleFilled style={{ color: '#262626' }} />}>
                             Apple iOS
                         </Button>
                     </div>
