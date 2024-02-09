@@ -34,22 +34,38 @@
     background-position: center;
     width: 28px;
     height: 24px;
-    margin-left:  26px;
+    margin-left: 26px;
     transition: all .2s;
 }
 
+
+.trap {
+    position: absolute;
+    top: 50%;
+    transform: translate(0, -50%) rotate(90deg);
+    right: -58px;
+    background: transparent;
+    padding: 10px 4px;
+    height: 0;
+    width: 80px;
+    border-bottom: 21px solid #fff;
+    border-left: 16px solid transparent;
+    border-right: 16px solid transparent;
+} 
+
 .sidebarBtn {
     position: absolute;
-    top: 50%;                         
-    transform: translate(0, -50%);
-    right: -24px;
-    background: #fff;
-    padding: 10px 4px;
+    top: 15px;
+    right: 9px;
+    transform: rotate(-90deg);
+    background: transparent;
+    border: none;
+    outline: none;
 }
 
-
-.sidebarBtn:hover {
-    background: #fff;
+.menuWrapperItemExitBlock {
+    border-top: 1px solid #f0f0f0;
+    padding-top: 10px;
 }
 
 .menuWrapperItemExit {
@@ -74,5 +90,5 @@
 .open {
     transition: all 1s;
     opacity: 1;
-    
+
 }

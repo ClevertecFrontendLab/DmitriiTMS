@@ -54,14 +54,18 @@ export const MenuComponent: React.FC = () => {
                             },
                         ]}
                     />
-                    <Button
-                        type="text"
-                        icon={collapsed ? <MenuUnfoldOutlined /> : <MenuFoldOutlined />}
-                        onClick={() => setCollapsed(!collapsed)}
-                        className={styles.sidebarBtn}
-                    />
+
+
+                    <div className={styles.trap}>
+                        <Button
+                            type="text"
+                            icon={collapsed ? <MenuUnfoldOutlined /> : <MenuFoldOutlined />}
+                            onClick={() => setCollapsed(!collapsed)}
+                            className={styles.sidebarBtn}
+                        />
+                    </div>
                 </div>
-                <div className={styles.menuWrapperItem}>
+                <div className={styles.menuWrapperItemExitBlock}>
                     <Link className={styles.menuWrapperItemExit} to="/">
                         <img className={collapsed ? styles.exitImg : ''} src={exit} alt="exit" />
                         <span className={!collapsed ? styles.open : styles.hide}>Выход</span>
