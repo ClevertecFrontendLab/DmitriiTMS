@@ -29,7 +29,7 @@ export const MenuComponent: React.FC = () => {
                     </Link>
                     <Menu
                         mode="inline"
-                        inlineIndent={4}
+                        inlineIndent={10}
                         selectable={false}
                         items={[
                             {
@@ -55,12 +55,11 @@ export const MenuComponent: React.FC = () => {
                         ]}
                     />
 
-
-                    <div className={styles.trap}>
+                    <div className={styles.btnTrap}  onClick={() => setCollapsed(!collapsed)}>
                         <Button
-                            type="text"
-                            icon={collapsed ? <MenuUnfoldOutlined /> : <MenuFoldOutlined />}
-                            onClick={() => setCollapsed(!collapsed)}
+                            type='link'
+                            icon={collapsed ? <MenuUnfoldOutlined style={{ color: '#8C8C8C' }} />
+                                : <MenuFoldOutlined style={{ color: '#8C8C8C' }} />}
                             className={styles.sidebarBtn}
                         />
                     </div>
