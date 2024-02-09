@@ -3,8 +3,7 @@
     background-repeat: no-repeat;
     background-size: cover;
     background-position: center;
-    height: 100%;
-    padding: 24px;
+    padding: 24px 24px 41px 24px;
 }
 
 .mainList {
@@ -15,7 +14,7 @@
 }
 
 .mainText {
-    margin-top: 24px;
+    margin-top: 19px;
     font-weight: 500;
     font-size: 20px;
     line-height: 130%;
@@ -25,5 +24,50 @@
     background: #fff;
 }
 
+.csrdBlockDowload {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-end;
+}
 
+.cartDownload {
+    background-color: #fff;
+}
 
+.cartDownloadTitleBlock {
+    border-bottom: 1px solid #F0F0F0;
+    padding: 12px 24px;
+}
+
+.mainLinkReviews,
+.cartDownloadLink {
+    font-weight: 500;
+    font-size: 16px;
+    line-height: 130%;
+    color: #2F54EB;
+}
+
+.mainLinkReviews {
+    margin-left: 14px;
+}
+
+.cartDownloadLink {
+    display: block;
+}
+
+.cartDownloadText {
+    font-weight: 500;
+    font-size: 14px;
+    line-height: 130%;
+}
+
+.cartDownloadContent {
+    padding: 12px 0;
+}
+
+.cartDownloadLinkText span {
+    font-weight: 400;
+    font-size: 14px;
+    line-height: 130%;
+    color: #262626;
+}

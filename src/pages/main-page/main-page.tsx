@@ -1,7 +1,8 @@
 import { MainCartList } from '@components/MainCartList/MainCartList';
 
-import { List, Typography } from 'antd';
-const { Paragraph } = Typography;
+import { List, Typography, Button } from 'antd';
+const { Paragraph, Link, Text } = Typography;
+import { AndroidFilled, AppleFilled } from '@ant-design/icons';
 
 import styles from './main-page.module.css';
 
@@ -25,7 +26,31 @@ export const MainPage: React.FC = () => {
                 Не откладывай на завтра — начни
                 тренироваться уже сегодня!
             </Paragraph>
+
             <MainCartList />
+
+            <div className={styles.csrdBlockDowload}>
+
+                <Link href="#" className={styles.mainLinkReviews}>Смотреть отзывы</Link>
+
+                <div className={styles.cartDownload}>
+                    <div className={styles.cartDownloadTitleBlock}>
+                        <Link href="#" className={styles.cartDownloadLink}>Скачать на телефон</Link>
+                        <Text type="secondary" className={styles.cartDownloadText}>Доступно в PRO-тарифе</Text>
+                    </div>
+
+                    <div className={styles.cartDownloadContent}>
+                        <Button className={styles.cartDownloadLinkText} type="link" icon={<AndroidFilled style={{ color: '#262626' }} />}>
+                            Android OS
+                        </Button>
+                        <Button className={styles.cartDownloadLinkText} type="link" icon={<AppleFilled style={{ color: '#262626' }} />}>
+                            Apple iOS
+                        </Button>
+                    </div>
+
+                </div>
+
+            </div>
         </div>
     )
 };

@@ -3,7 +3,6 @@ import { Outlet } from 'react-router-dom';
 
 import { HeaderComponent } from '@components/HeaderComponent/HeaderComponent';
 import { MenuComponent } from '@components/MenuComponent/MenuComponent';
-import { FooterComponent } from '@components/FooterComponent/FooterComponent';
 
 import { Layout } from 'antd';
 const { Content } = Layout;
@@ -27,8 +26,6 @@ export const ContentComponent: React.FC = () => {
                 <Content>
                     <Outlet />
                 </Content>
-
-                <FooterComponent />
             </Layout>
         </Layout>
     );
