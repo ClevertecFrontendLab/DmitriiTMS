@@ -15,19 +15,22 @@ export const MainPage: React.FC = () => {
     ];
     return (
         <div className={styles.mainWrapper}>
-            <List
-                className={styles.mainList}
-                header={<div>С CleverFit ты сможешь:</div>}
-                dataSource={data}
-                renderItem={(item) => <List.Item>{item}</List.Item>}
-            />
-            <Paragraph className={styles.mainText}>CleverFit — это
-                не просто приложение, а твой личный помощник в мире фитнеса.
-                Не откладывай на завтра — начни
-                тренироваться уже сегодня!
-            </Paragraph>
 
-            <MainCartList />
+                <List
+                    className={styles.mainList}
+                    header={<div>С CleverFit ты сможешь:</div>}
+                    dataSource={data}
+                    renderItem={(item) => <List.Item>{item}</List.Item>}
+                />
+                <Paragraph className={styles.mainText}>CleverFit — это
+                    не просто приложение, а твой личный помощник в мире фитнеса.
+                    Не откладывай на завтра — начни
+                    тренироваться уже сегодня!
+                </Paragraph>
+
+                <MainCartList />
+
+
 
             <div className={styles.cardBlockDowload}>
 

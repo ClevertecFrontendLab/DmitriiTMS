@@ -1,5 +1,7 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
 import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
+import { useWindowSize } from "@uidotdev/usehooks";
 
 import {
     MenuFoldOutlined,
@@ -19,6 +21,8 @@ import styles from './MenuComponent.module.css';
 
 export const MenuComponent: React.FC = () => {
     const [collapsed, setCollapsed] = useState(false);
+
+    const { width }: any = useWindowSize();
 
     return (
         <Sider trigger={null} collapsible collapsed={collapsed}
@@ -58,7 +62,7 @@ export const MenuComponent: React.FC = () => {
 
                     <div className={styles.btnTrap}
                         onClick={() => setCollapsed(!collapsed)}
-                        data-test-id='sider-switch sider-switch-mobile'
+                        data-test-id={width < 400 ? 'sider-switch-mobile' : 'sider-switch'}
                     >
                         <Button
                             type='link'

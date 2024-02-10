@@ -1,11 +1,10 @@
 .menu {
-    min-height: 100%;
     background: #fff;
 }
 
 .menuWrapper {
-    position: relative;
     height: 100%;
+    position: relative;
     display: flex;
     flex-direction: column;
     justify-content: space-between;
@@ -95,6 +94,7 @@
     opacity: 1;
 }
 
+
 @media(max-width: 600px) {
     .menu {
         position: fixed;
@@ -102,7 +102,6 @@
         left: 0;
         z-index: 2;
         height: 100%;
-        max-height: 640px;
         -webkit-box-shadow: 2px 1px 8px 0px rgba(34, 60, 80, 0.2);
         -moz-box-shadow: 2px 1px 8px 0px rgba(34, 60, 80, 0.2);
         box-shadow: 2px 1px 8px 0px rgba(34, 60, 80, 0.2);
