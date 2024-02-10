@@ -28,8 +28,15 @@ export const HeaderComponent: React.FC<HeaderProps> = ({ subtitle }) => {
         <Header className={styles.header}>
             <Text className={styles.headerBreadcramp}>{routeTitle()}</Text>
             <div className={styles.headerContentTitleBlock}>
-                <Title className={styles.headerTitle}>Приветствуем тебя в CleverFit — приложении, которое поможет тебе добиться своей мечты!</Title>
-                <Button type="text" icon={<SettingOutlined />}>Настройки</Button>
+                <Title className={styles.headerTitle}>Приветствуем тебя в CleverFit — приложении, которое поможет тебе добиться своей мечты!</Title>
+                <div className={styles.settingBtnBlock}>
+                    <Button className={styles.settingBtn} type="text" icon={<SettingOutlined className={styles.settingsImg} />}>Настройки</Button>
+                    <div className={styles.settingImgWrapper}>
+                        <SettingOutlined className={styles.settingsImgBtn} />
+                    </div>
+
+                </div>
+
             </div>
         </Header>
     )

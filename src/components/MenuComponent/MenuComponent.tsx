@@ -21,7 +21,8 @@ export const MenuComponent: React.FC = () => {
     const [collapsed, setCollapsed] = useState(false);
 
     return (
-        <Sider trigger={null} collapsible collapsed={collapsed} className={styles.menu}>
+        <Sider trigger={null} collapsible collapsed={collapsed}
+            className={!collapsed ? styles.menu : `${styles.menu} ${styles.menuHide}`}>
             <div className={styles.menuWrapper}>
                 <div className={styles.menuWrapperItem}>
                     <Link to="/" className={styles.menuLogo}>
@@ -55,7 +56,10 @@ export const MenuComponent: React.FC = () => {
                         ]}
                     />
 
-                    <div className={styles.btnTrap}  onClick={() => setCollapsed(!collapsed)}>
+                    <div className={styles.btnTrap}
+                        onClick={() => setCollapsed(!collapsed)}
+                        data-test-id='sider-switch sider-switch-mobile'
+                    >
                         <Button
                             type='link'
                             icon={collapsed ? <MenuUnfoldOutlined style={{ color: '#8C8C8C' }} />
@@ -66,7 +70,7 @@ export const MenuComponent: React.FC = () => {
                 </div>
                 <div className={styles.menuWrapperItemExitBlock}>
                     <Link className={styles.menuWrapperItemExit} to="/">
-                        <img className={collapsed ? styles.exitImg : ''} src={exit} alt="exit" />
+                        <img className={collapsed ? styles.exitImg : styles.exitImgHide} src={exit} alt="exit" />
                         <span className={!collapsed ? styles.open : styles.hide}>Выход</span>
                     </Link>
                 </div>

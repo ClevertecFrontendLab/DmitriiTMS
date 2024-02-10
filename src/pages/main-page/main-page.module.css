@@ -4,7 +4,7 @@
     background-repeat: no-repeat;
     background-size: cover;
     background-position: center;
-    padding: 24px 24px 41px 24px;
+    padding: 24px 24px 42px 24px;
 }
 
 .mainList {
@@ -25,10 +25,11 @@
     background: #fff;
 }
 
-.csrdBlockDowload {
+.cardBlockDowload {
     display: flex;
     justify-content: space-between;
     align-items: flex-end;
+    gap: 24px;
 }
 
 .cartDownload {
@@ -42,7 +43,7 @@
 
 .mainLinkReviews,
 .cartDownloadLink {
-    font-weight: 500;
+    font-weight: 400;
     font-size: 16px;
     line-height: 130%;
     color: #2F54EB;
@@ -54,6 +55,7 @@
 
 .cartDownloadLink {
     display: block;
+    color: #262626 !important;
 }
 
 .cartDownloadText {
@@ -72,3 +74,27 @@
     line-height: 130%;
     color: #262626;
 }
+
+@media(max-width: 674px){
+    .cardBlockDowload {
+        flex-wrap: wrap;
+        justify-content: center;
+    }
+
+    .mainLinkReviews {
+        order: 2;
+    }
+
+    .cartDownload {
+        order: 1;
+    }
+}
+
+@media(max-width: 400px) {
+    .mainWrapper {
+        padding: 16px 16px 42px 16px;
+    }
+}
+
+
+
