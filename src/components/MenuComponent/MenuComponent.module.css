@@ -101,6 +101,7 @@
         top: 0;
         left: 0;
         z-index: 2;
+        max-height: 640px;
         height: 100%;
         -webkit-box-shadow: 2px 1px 8px 0px rgba(34, 60, 80, 0.2);
         -moz-box-shadow: 2px 1px 8px 0px rgba(34, 60, 80, 0.2);
