@@ -28,8 +28,6 @@
     display: none;
 }
 
-
-/* Уважаемый проверяющий. Я не нашёл другого способа кроме !important. Можете посоветовать какой-нибудь другой способ? */
 @media(max-width: 1001px){
     .headerTitle {
         font-size: 24px !important;
@@ -37,6 +35,13 @@
 
     .settingsImg {
         display: none !important;
+    }
+}
+
+@media(max-width: 835px){
+    .headerTitle {
+        max-width: 588px;
+        font-weight: 500 !important;
     }
 }
 

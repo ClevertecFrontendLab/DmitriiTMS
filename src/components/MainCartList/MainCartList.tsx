@@ -1,7 +1,7 @@
 import { MainCartItem } from '@components/MainCartItem/MainCartItem';
 
 import heart from '../../assets/icons/heart.svg';
-import calendar from '../../assets/icons/calendar.svg';
+import calendar from '../../assets/icons/calendar-main.png';
 import profile from '../../assets/icons/profile.svg';
 
 import styles from './MainCartList.module.css';

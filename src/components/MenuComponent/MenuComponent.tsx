@@ -7,17 +7,19 @@ import {
     MenuFoldOutlined,
     MenuUnfoldOutlined,
     HeartFilled,
-    CalendarOutlined,
     TrophyFilled,
-    ProfileOutlined
+    ProfileOutlined,
 } from '@ant-design/icons';
 
-import { Layout, Menu, Button } from 'antd';
+import { Layout, Menu, Button, Image } from 'antd';
 const { Sider } = Layout;
 
 import exit from '../../assets/icons/exit.svg';
+import calen from '../../assets/icons/calendar-menu.png'
 
 import styles from './MenuComponent.module.css';
+
+
 
 export const MenuComponent: React.FC = () => {
     const [collapsed, setCollapsed] = useState(false);
@@ -39,8 +41,8 @@ export const MenuComponent: React.FC = () => {
                         items={[
                             {
                                 key: '1',
-                                icon: <CalendarOutlined style={{ color: "#061178" }} />,
-                                label: <Link to='/calendar'>Календарь</Link>,
+                                icon: <Link to='/calendar'><Image preview={false}  width={16} src={calen} alt='calendar'/></Link>,
+                                label: <Link to='/calendar' className={!collapsed ? styles.opent : styles.hidet}>Календарь</Link>,
                             },
                             {
                                 key: '2',
