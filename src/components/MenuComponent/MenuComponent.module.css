@@ -1,0 +1,190 @@
+.menu {
+    background: #fff;
+}
+
+.menuWrapper {
+    height: 100%;
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+.menuLogo {
+    display: block;
+    text-align: center;
+    margin-top: 46px;
+    margin-right: 24px;
+    margin-bottom: 64px;
+}
+
+.logo {
+    background: url('../../assets/icons/logo.svg');
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: cover;
+    width: 134px;
+    height: 34px;
+    margin-left: 26px;
+    transition: all .2s;
+}
+
+.logoSmall {
+    background: url('../../assets/icons/logo-small.svg');
+    background-repeat: no-repeat;
+    background-position: center;
+    width: 28px;
+    height: 24px;
+    margin-left: 26px;
+    transition: all .2s;
+}
+
+
+.btnTrap {
+    position: absolute;
+    top: 50%;
+    transform: translate(0, -50%) rotate(90deg);
+    right: -58px;
+    background: transparent;
+    padding: 10px 4px;
+    height: 0;
+    width: 80px;
+    border-bottom: 21px solid #fff;
+    border-left: 16px solid transparent;
+    border-right: 16px solid transparent;
+    cursor: pointer;
+}
+
+.sidebarBtn {
+    position: absolute;
+    top: 15px;
+    right: 9px;
+    transform: rotate(-90deg);
+    border: none;
+    outline: none;
+}
+
+.menuWrapperItemExitBlock {
+    border-top: 1px solid #f0f0f0;
+    padding-top: 10px;
+}
+
+.menuWrapperItemExit {
+    display: flex;
+    align-items: center;
+    gap: 30px;
+    font-size: 14px;
+    font-weight: 400;
+    line-height: 130%;
+    color: #262626;
+    margin-bottom: 12px;
+    padding-left: 4px;
+}
+
+.exitImg {
+    margin-left: 30px;
+}
+
+.hide {
+    transition: opacity .5s;
+    opacity: 0;
+}
+
+.open {
+    transition: opacity .5s;
+    opacity: 1;
+}
+
+.hidet {
+    position: relative;
+    top: 2px;
+    transition: color .5s;
+    color: #fff !important;
+}
+
+.opent {
+    position: relative;
+    top: 2px;
+    transition: color .4s ease-in-out;
+    color: #262626;
+}
+
+
+@media(max-width: 600px) {
+    .menu {
+        position: fixed;
+        top: 0;
+        left: 0;
+        z-index: 2;
+        max-height: 640px;
+        height: 100%;
+        -webkit-box-shadow: 2px 1px 8px 0px rgba(34, 60, 80, 0.2);
+        -moz-box-shadow: 2px 1px 8px 0px rgba(34, 60, 80, 0.2);
+        box-shadow: 2px 1px 8px 0px rgba(34, 60, 80, 0.2);
+    }
+
+    .menuHide {
+        transform: translateX(-80px);
+    }
+
+    .btnTrap {
+        z-index: 3;
+        top: 42px;
+        right: -43px;
+        width: 60px;
+        padding: 0;
+        border-bottom: 38px solid #fff;
+        border-left: 13px solid transparent;
+        border-right: 14px solid transparent;
+        filter: drop-shadow(0 -9px 6px rgba(34, 60, 80, 0.2));
+    }
+
+    .sidebarBtn {
+        top: 2px;
+        right: 1px;
+    }
+
+    .exitImg,
+    .exitImgHide {
+        display: none;
+    }
+
+    .open {
+        margin-left: 16px;
+    }
+
+    .logoSmall {
+        display: none;
+    }
+}
+
+@media(max-width: 400px) {
+    .menu {
+        width: 124px !important;
+        min-width: 124px !important;
+    }
+
+    .menuHide {
+        transform: translateX(-124px);
+    }
+
+    .menuLogo {
+        margin-top: 16px;
+        margin-bottom: 32px;
+    }
+
+    .logo {
+        width: 72px;
+        height: 18px;
+    }
+
+    .menuWrapperItemExit {
+        justify-content: center;
+        padding-left: 0;
+    }
+
+    .open {
+        margin-left: 0;
+    }
+
+}

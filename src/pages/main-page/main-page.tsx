@@ -1,34 +1,59 @@
-import React, { useState } from 'react';
+import { MainCartList } from '@components/MainCartList/MainCartList';
 
-import reactLogo from '/react.svg';
-import viteLogo from '/vite.svg';
-import tsLogo from '/ts.svg';
-import './main-page.css';
+import { List, Typography, Button } from 'antd';
+const { Paragraph, Link, Text } = Typography;
+import { AndroidFilled, AppleFilled } from '@ant-design/icons';
+
+import styles from './main-page.module.css';
 
 export const MainPage: React.FC = () => {
-    const [count, setCount] = useState(0);
-
+    const data = [
+        '— планировать свои тренировки на календаре, выбирая тип и уровень нагрузки;',
+        '— отслеживать свои достижения в разделе статистики, сравнивая свои результаты с нормами и рекордами;',
+        ' — создавать свой профиль, где ты можешь загружать свои фото, видео и отзывы о тренировках;',
+        '— выполнять расписанные тренировки для разных частей тела, следуя подробным инструкциям и советам профессиональных тренеров',
+    ];
     return (
-        <>
-            <div>
-                <a href='https://vitejs.dev' target='_blank'>
-                    <img src={viteLogo} className='logo' alt='Vite logo' />
-                </a>
-                <a href='https://react.dev' target='_blank'>
-                    <img src={reactLogo} className='logo react' alt='React logo' />
-                </a>
-                <a href='https://www.typescriptlang.org/' target='_blank'>
-                    <img src={tsLogo} className='logo' alt='TS logo' />
-                </a>
+        <div className={styles.mainWrapper}>
+
+                <List
+                    className={styles.mainList}
+                    header={<div>С CleverFit ты сможешь:</div>}
+                    dataSource={data}
+                    renderItem={(item) => <List.Item>{item}</List.Item>}
+                />
+                <Paragraph className={styles.mainText}>CleverFit — это
+                    не просто приложение, а твой личный помощник в мире фитнеса.
+                    Не откладывай на завтра — начни
+                    тренироваться уже сегодня!
+                </Paragraph>
+
+                <MainCartList />
+
+
+
+            <div className={styles.cardBlockDowload}>
+
+                <Link href="#" className={styles.mainLinkReviews}>Смотреть отзывы</Link>
+
+                <div className={styles.cartDownload}>
+                    <div className={styles.cartDownloadTitleBlock}>
+                        <Link href="#" className={styles.cartDownloadLink}>Скачать на телефон</Link>
+                        <Text type="secondary" className={styles.cartDownloadText}>Доступно в PRO-тарифе</Text>
+                    </div>
+
+                    <div className={styles.cartDownloadContent}>
+                        <Button className={styles.cartDownloadLinkText} type="link" href='#' icon={<AndroidFilled style={{ color: '#262626' }} />}>
+                            Android OS
+                        </Button>
+                        <Button className={styles.cartDownloadLinkText} type="link" href='#' icon={<AppleFilled style={{ color: '#262626' }} />}>
+                            Apple iOS
+                        </Button>
+                    </div>
+
+                </div>
+
             </div>
-            <h1>Vite + React + TS</h1>
-            <div className='card'>
-                <button onClick={() => setCount((count) => count + 1)}>count is {count}</button>
-                <p>
-                    Edit <code>src/pages/main-page.tsx</code> and save to test HMR
-                </p>
-            </div>
-            <p className='read-the-docs'>Click on the Vite and React logos to learn more</p>
-        </>
-    );
+        </div>
+    )
 };

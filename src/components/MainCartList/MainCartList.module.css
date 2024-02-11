@@ -1,0 +1,25 @@
+.list {
+    max-width: 752px;
+    display: flex;
+    justify-content: space-between;
+    gap: 16px;
+    margin-top: 24px;
+    margin-bottom: 120px;
+}
+
+@media(max-width: 835px) {
+    .list {
+        margin-bottom: 260px;
+    }
+}
+
+
+@media(max-width: 674px){
+    .list {
+        flex-wrap: wrap;
+        margin-bottom: 24px;
+    }
+}
+
+
+
