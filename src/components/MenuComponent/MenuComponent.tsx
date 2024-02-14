@@ -1,4 +1,3 @@
-/* eslint-disable @typescript-eslint/no-explicit-any */
 import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
 import { useWindowSize } from "@uidotdev/usehooks";
@@ -15,7 +14,7 @@ import { Layout, Menu, Button, Image } from 'antd';
 const { Sider } = Layout;
 
 import exit from '../../assets/icons/exit.svg';
-import calen from '../../assets/icons/calendar-menu.png'
+import calen from '../../assets/icons/calendar.svg'
 
 import styles from './MenuComponent.module.css';
 
@@ -24,7 +23,7 @@ import styles from './MenuComponent.module.css';
 export const MenuComponent: React.FC = () => {
     const [collapsed, setCollapsed] = useState(false);
 
-    const { width }: any = useWindowSize();
+    const { width } = useWindowSize();
 
     return (
         <Sider trigger={null} collapsible collapsed={collapsed}
@@ -64,7 +63,7 @@ export const MenuComponent: React.FC = () => {
 
                     <div className={styles.btnTrap}
                         onClick={() => setCollapsed(!collapsed)}
-                        data-test-id={width < 400 ? 'sider-switch-mobile' : 'sider-switch'}
+                        data-test-id={width && width < 400 ? 'sider-switch-mobile' : 'sider-switch'}
                     >
                         <Button
                             type='link'
