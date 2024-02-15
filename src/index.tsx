@@ -4,7 +4,6 @@ import { Provider } from 'react-redux';
 
 import { store, history } from '@redux/configure-store';
 
-
 import 'antd/dist/antd.css'
 import 'normalize.css';
 import './index.css';

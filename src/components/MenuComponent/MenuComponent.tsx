@@ -30,7 +30,7 @@ export const MenuComponent: React.FC = () => {
             className={!collapsed ? styles.menu : `${styles.menu} ${styles.menuHide}`}>
             <div className={styles.menuWrapper}>
                 <div className={styles.menuWrapperItem}>
-                    <Link to="/" className={styles.menuLogo}>
+                    <Link to="/main" className={styles.menuLogo}>
                         <div className={!collapsed ? styles.logo : styles.logoSmall} />
                     </Link>
                     <Menu

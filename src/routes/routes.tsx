@@ -1,6 +1,4 @@
-
 import { Routes, Route } from "react-router-dom";
-
 
 import { LayoutAuthPage } from "@pages/layouts/layout-auth-page";
 import { LoginPage } from "@pages/login-page";
@@ -8,7 +6,6 @@ import { RegisterPage } from "@pages/register-page";
 import { MainPage } from "@pages/main-page";
 import { CalendarPage } from "@pages/calendar-page";
 import { NotFoundPage } from "@pages/notFound-page";
-
 
 import { LayoutMainPage } from "@pages/layouts/layout-main-page/layout-main-page";
 

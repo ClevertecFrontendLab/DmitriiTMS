@@ -24,6 +24,12 @@ body {
     margin-bottom: 18px !important;
 }
 
+.ant-checkbox-checked .ant-checkbox-inner {
+    background-color: #2F54EB;
+    border-color: #2F54EB;
+  }
+
+
 @media(max-width: 600px) {
     .ant-menu-item-icon {
         display: none !important;
