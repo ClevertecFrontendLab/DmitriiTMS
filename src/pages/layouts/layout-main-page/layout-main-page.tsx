@@ -7,10 +7,10 @@ import { MenuComponent } from '@components/MenuComponent/MenuComponent';
 import { Layout } from 'antd';
 const { Content } = Layout;
 
-import styles from './ContentComponent.module.css';
+import styles from './layout-main-page.module.css';
 
 
-export const ContentComponent: React.FC = () => {
+export const LayoutMainPage: React.FC = () => {
 
     const headerTitle = {
         main: 'Главная',

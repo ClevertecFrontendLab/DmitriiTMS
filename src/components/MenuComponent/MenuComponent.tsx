@@ -40,8 +40,8 @@ export const MenuComponent: React.FC = () => {
                         items={[
                             {
                                 key: '1',
-                                icon: <Link to='/calendar'><Image preview={false}  width={16} src={calen} alt='calendar'/></Link>,
-                                label: <Link to='/calendar' className={!collapsed ? styles.opent : styles.hidet}>Календарь</Link>,
+                                icon: <Link to='/main/calendar'><Image preview={false}  width={16} src={calen} alt='calendar'/></Link>,
+                                label: <Link to='/main/calendar' className={!collapsed ? styles.opent : styles.hidet}>Календарь</Link>,
                             },
                             {
                                 key: '2',

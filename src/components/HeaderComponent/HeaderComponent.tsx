@@ -22,9 +22,9 @@ export const HeaderComponent: React.FC<HeaderProps> = ({ subtitle }) => {
     const { width } = useWindowSize();
 
     const routeTitle = () => {
-        if (location.pathname === '/') {
+        if (location.pathname === '/main') {
             return subtitle.main;
-        } else if (location.pathname === '/calendar') {
+        } else if (location.pathname === '/main/calendar') {
             return subtitle.calendar;
         }
     };
