@@ -1,0 +1,27 @@
+.wrapperAuth {
+    max-height: 100vh;
+    background: url('../../../assets/bg/auth-bg.jpeg');
+    background-repeat: no-repeat;
+    background-position: top center;
+    background-size: cover;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 140px 0;
+}
+
+.wrapperAuthBlock {
+    background-color: #fff;
+    padding: 72px 116px 172px 116px;
+}
+
+.wrapperAuthBlockImg {
+    margin-bottom: 48px;
+}
+
+.authLinkBlock {
+    margin-bottom: 24px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}

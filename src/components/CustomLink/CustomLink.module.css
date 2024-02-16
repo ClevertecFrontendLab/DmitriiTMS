@@ -1,3 +1,13 @@
+.authLink {
+    width: 179px;
+    padding: 12px 38px;
+    text-align: center;
+    color: #262626;
+    font-weight: 400;
+    font-size: 16px;
+}
+
 .activeAuth {
-    color: red;
+    color: #2F54EB;
+    border-bottom: 1px solid #2F54EB;
 }

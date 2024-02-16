@@ -16,7 +16,7 @@ export const CustomLink: React.FC<ChildrenProp> = ({ children, to}) => {
 
     return (
         <Link to={to}
-            className={match ? styles.activeAuth : ''}
+            className={match ? `${styles.authLink} ${styles.activeAuth}` : styles.authLink}
         >
             {children}
         </Link>
