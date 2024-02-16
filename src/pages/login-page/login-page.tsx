@@ -1,26 +1,47 @@
 import React from 'react';
 import { Button, Checkbox, Form, Input } from 'antd';
 
-import axios from 'axios';
+import axios, { AxiosError } from 'axios';
 
 import styles from './login-page.module.css';
+import { useNavigate } from 'react-router-dom';
 
 interface AuthLogin {
     email: string,
     password: string,
+    remember: boolean
 }
 
+interface LoginResponse {
+    accessToken: string
+}
 
 export const LoginPage: React.FC = () => {
 
+    const navigate = useNavigate();
+
     const onFinish = async (values: AuthLogin) => {
         // console.log('Success:', values);
-        const { data } = await axios.post('https://marathon-api.clevertec.ru/auth/login', {
-            email: values.email,
-            password: values.password
-        },
-        );
-        console.log(data);
+        try {
+            const { data } = await axios.post<LoginResponse>('https://marathon-api.clevertec.ru/auth/login', {
+                email: values.email,
+                password: values.password
+            },
+            );
+            console.log(data);
+    
+            sessionStorage.setItem('login', 'true');
+            if (values.remember) {
+                localStorage.setItem('jwt', data.accessToken);
+            }
+            navigate('/main');
+        } catch (e) {
+            if(e instanceof AxiosError) {
+                console.log(e.response?.data.message);
+                
+            } 
+        }
+       
 
     };
 

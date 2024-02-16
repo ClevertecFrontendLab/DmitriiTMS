@@ -10,6 +10,12 @@ body {
     font-family: 'Inter', sans-serif;
 }
 
+button {
+    border: none;
+    background: transparent;
+    cursor: pointer;
+}
+
 .ant-list-split .ant-list-header,
 .ant-list-items .ant-list-item {
     border: none;

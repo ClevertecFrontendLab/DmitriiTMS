@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import { useWindowSize } from "@uidotdev/usehooks";
 
 import {
@@ -22,8 +22,15 @@ import styles from './MenuComponent.module.css';
 
 export const MenuComponent: React.FC = () => {
     const [collapsed, setCollapsed] = useState(false);
+    const navigate = useNavigate();
 
     const { width } = useWindowSize();
+
+    const logout = () => {
+        localStorage.removeItem('jwt');
+        sessionStorage.removeItem('login');
+        navigate('/auth');
+    }
 
     return (
         <Sider trigger={null} collapsible collapsed={collapsed}
@@ -74,10 +81,10 @@ export const MenuComponent: React.FC = () => {
                     </div>
                 </div>
                 <div className={styles.menuWrapperItemExitBlock}>
-                    <Link className={styles.menuWrapperItemExit} to="/">
+                    <button className={styles.menuWrapperItemExit} onClick={logout}>
                         <img className={collapsed ? styles.exitImg : styles.exitImgHide} src={exit} alt="exit" />
                         <span className={!collapsed ? styles.open : styles.hide}>Выход</span>
-                    </Link>
+                    </button>
                 </div>
             </div>
 
