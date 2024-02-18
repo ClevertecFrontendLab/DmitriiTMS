@@ -1,0 +1,11 @@
+.wrapperResult {
+    height: 100vh;
+    background: url('../../../assets/bg/auth-bg.jpeg');
+    background-repeat: no-repeat;
+    background-position: top center;
+    background-size: cover;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 140px 0;
+}

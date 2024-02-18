@@ -7,16 +7,19 @@ import { MainPage } from "@pages/main-page";
 import { CalendarPage } from "@pages/calendar-page";
 import { NotFoundPage } from "@pages/notFound-page";
 
-import { LayoutMainPage } from "@pages/layouts/layout-main-page/layout-main-page";
+import { LayoutMainPage } from "@pages/layouts/layout-main-page";
 import { App } from "@components/App/App";
+import { LayoutResultPage } from "@pages/layouts/layout-result-page";
+import { ResultErrorLogin } from "@components/ResultErrorLogin/ResultErrorLogin";
+
 
 
 
 export const routes = (
     <Routes>
-        
+
         <Route path="/" element={<App/>}/>
-        
+
         <Route path='/auth' element={<LayoutAuthPage />} >
             <Route index={true} element={<LoginPage />} />
             <Route path="registration" element={<RegisterPage />} />
@@ -25,6 +28,10 @@ export const routes = (
         <Route path='/main' element={<LayoutMainPage />} >
             <Route index={true} element={<MainPage />} />
             <Route path="calendar" element={<CalendarPage />} />
+        </Route>
+
+        <Route path="/result" element={<LayoutResultPage/>} >
+            <Route path="error-login" element={<ResultErrorLogin />} />
         </Route>
 
         <Route path="*" element={<NotFoundPage />} />

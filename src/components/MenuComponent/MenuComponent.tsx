@@ -1,6 +1,9 @@
 import React, { useState } from 'react';
-import { Link, useNavigate } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 import { useWindowSize } from "@uidotdev/usehooks";
+import { useDispatch } from 'react-redux';
+import { AppDispatch } from '@redux/configure-store';
+import { push } from 'redux-first-history';
 
 import {
     MenuFoldOutlined,
@@ -19,17 +22,16 @@ import calen from '../../assets/icons/calendar.svg'
 import styles from './MenuComponent.module.css';
 
 
-
 export const MenuComponent: React.FC = () => {
     const [collapsed, setCollapsed] = useState(false);
-    const navigate = useNavigate();
+    const dispatch = useDispatch<AppDispatch>();
 
     const { width } = useWindowSize();
 
     const logout = () => {
-        localStorage.removeItem('jwt');
-        sessionStorage.removeItem('login');
-        navigate('/auth');
+        localStorage.removeItem('token');
+        sessionStorage.removeItem('token');
+        dispatch(push('/auth'));
     }
 
     return (

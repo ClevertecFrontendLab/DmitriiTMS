@@ -6,6 +6,7 @@ import { AndroidFilled, AppleFilled } from '@ant-design/icons';
 
 import styles from './main-page.module.css';
 
+
 export const MainPage: React.FC = () => {
     const data = [
         '— планировать свои тренировки на календаре, выбирая тип и уровень нагрузки;',
@@ -14,7 +15,7 @@ export const MainPage: React.FC = () => {
         '— выполнять расписанные тренировки для разных частей тела, следуя подробным инструкциям и советам профессиональных тренеров',
     ];
 
- 
+
 
     return (
         <div className={styles.mainWrapper}>

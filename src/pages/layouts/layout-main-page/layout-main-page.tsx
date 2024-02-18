@@ -9,8 +9,6 @@ const { Content } = Layout;
 
 import styles from './layout-main-page.module.css';
 
-
-
 export const LayoutMainPage: React.FC = () => {
 
     const headerTitle = {
@@ -18,25 +16,24 @@ export const LayoutMainPage: React.FC = () => {
         calendar: 'Календарь'
     }
 
-    const jwt = localStorage.getItem('jwt');
-    const login = sessionStorage.getItem('login');
+    const jwtLocalToken = localStorage.getItem('token');
+    const jwtsessionToken = sessionStorage.getItem('token');
 
-    if (login || jwt) {
+    const isAuth = jwtLocalToken || jwtsessionToken;
+
         return (
-            <Layout className={styles.wrapper}>
-                <MenuComponent />
-                <Layout>
-                    <HeaderComponent subtitle={headerTitle} />
+            isAuth ?
+                <Layout className={styles.wrapper}>
+                    <MenuComponent />
+                    <Layout>
+                        <HeaderComponent subtitle={headerTitle} />
 
-                    <Content>
-                        <Outlet />
-                    </Content>
+                        <Content>
+                            <Outlet />
+                        </Content>
+                    </Layout>
                 </Layout>
-            </Layout>
+                : <Navigate to="/auth" replace />
         );
-    } else {
-        return <Navigate to='/auth' replace/>
-    }
-
 
 };

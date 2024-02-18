@@ -8,22 +8,22 @@ import styles from './register-page.module.css';
 
 export const RegisterPage: React.FC = () => {
 
-    const onFinish = (values: any) => {
-        console.log('Success:', values);
+    // const onFinish = (values: any) => {
+    //     console.log('Success:', values);
 
-    };
+    // };
 
-    const onFinishFailed = (errorInfo: any) => {
-        console.log('Failed:', errorInfo);
-    };
+    // const onFinishFailed = (errorInfo: any) => {
+    //     console.log('Failed:', errorInfo);
+    // };
     return (
 
         <div className={styles.formLogin}>
             <Form
                 name="basic"
                 initialValues={{ remember: true }}
-                onFinish={onFinish}
-                onFinishFailed={onFinishFailed}
+                // onFinish={onFinish}
+                // onFinishFailed={onFinishFailed}
                 autoComplete="off"
             >
                 <div className={styles.formInputBlock}>
@@ -31,14 +31,27 @@ export const RegisterPage: React.FC = () => {
                         name="email"
                         rules={[{ required: true, message: '' }]}
                     >
-                        <Input addonBefore='e-mail' />
+                        <Input addonBefore='e-mail'/>
                     </Form.Item>
 
                     <Form.Item
                         name="password"
-                        rules={[{ required: true, message: '' }]}
+                        help={<span style={{ fontSize: '12px' }}>Пароль не менее 8 символов, с заглавной буквой и цифрой</span>}
+                        rules={
+                            [
+                                {
+                                    required: true,
+                                    message: ''
+                                },
+                                {
+                                    pattern: /(?=.*[0-9]{1,})(?=.*[A-Z]{1,})^[a-zA-Z0-9]{8,}$/,
+                                    message: <span style={{ fontSize: '12px' }}>Пароль не менее 8 символов, с заглавной буквой и цифрой</span>
+                                }
+                            ]
+                        }
+
                     >
-                        <Input.Password placeholder='Пароль' />
+                        <Input.Password placeholder='Пароль'  />
                     </Form.Item>
 
                     <Form.Item
@@ -55,7 +68,7 @@ export const RegisterPage: React.FC = () => {
                     </Button>
                 </Form.Item>
 
-                <Button icon={<GooglePlusOutlined />} style={{width: '100%'}}>
+                <Button icon={<GooglePlusOutlined />} style={{ width: '100%' }}>
                     Войти через Google
                 </Button>
             </Form>

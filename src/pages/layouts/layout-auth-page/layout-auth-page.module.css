@@ -12,10 +12,11 @@
 
 .wrapperAuthBlock {
     background-color: #fff;
-    padding: 72px 116px 172px 116px;
+    padding: 72px 90px 80px 90px;
 }
 
 .wrapperAuthBlockImg {
+    text-align: center;
     margin-bottom: 48px;
 }
 

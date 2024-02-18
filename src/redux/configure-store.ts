@@ -13,15 +13,18 @@ import { configureStore } from "@reduxjs/toolkit";
 import { createReduxHistoryContext } from "redux-first-history";
 import { createBrowserHistory } from "history";
 
+import userReducer from './slices/loginSlice';
+
 const {
   createReduxHistory,
   routerMiddleware,
   routerReducer
-} = createReduxHistoryContext({ history: createBrowserHistory() });
+} = createReduxHistoryContext({ history: createBrowserHistory(), savePreviousLocations: 1 });
 
 export const store = configureStore({
   reducer: combineReducers({
-    router: routerReducer
+    router: routerReducer,
+    user: userReducer
   }),
   middleware: (getDefaultMiddleware) => getDefaultMiddleware().concat(routerMiddleware),
 });
