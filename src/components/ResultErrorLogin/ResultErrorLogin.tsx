@@ -2,13 +2,13 @@ import { Image } from 'antd';
 import { Typography } from 'antd';
 
 const { Title, Text } = Typography;
-import errorLogin from '../../assets/result-error/error-login.svg';
+import errorLogin from '../../assets/result/error-login.svg';
 
 import styles from './ResultErrorLogin.module.css';
 import { Link } from 'react-router-dom';
 import { useDispatch } from 'react-redux';
 import { AppDispatch } from '@redux/configure-store';
-import { deleteErrorUser } from '@redux/slices/loginSlice';
+import { deleteErrorUser } from '@redux/slices/userSlice';
 
 
 export const ResultErrorLogin: React.FC = () => {
@@ -26,6 +26,5 @@ export const ResultErrorLogin: React.FC = () => {
             <Text type="secondary" style={{display: 'block', marginBottom: '16px'}}>Что-то пошло не так. Попробуйте ещё раз</Text>
             <Link to='/auth' className={styles.linkError} onClick={handlerClickAuth}>Повторить</Link>
         </div>
-
     )
 }

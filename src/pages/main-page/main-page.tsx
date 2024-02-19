@@ -5,6 +5,7 @@ const { Paragraph, Link, Text } = Typography;
 import { AndroidFilled, AppleFilled } from '@ant-design/icons';
 
 import styles from './main-page.module.css';
+import { useEffect } from 'react';
 
 
 export const MainPage: React.FC = () => {
@@ -15,24 +16,29 @@ export const MainPage: React.FC = () => {
         '— выполнять расписанные тренировки для разных частей тела, следуя подробным инструкциям и советам профессиональных тренеров',
     ];
 
+    useEffect(() => {
+        return () => {
+            sessionStorage.removeItem('token');
+        }
+    }, [])
 
 
     return (
         <div className={styles.mainWrapper}>
 
-                <List
-                    className={styles.mainList}
-                    header={<div>С CleverFit ты сможешь:</div>}
-                    dataSource={data}
-                    renderItem={(item) => <List.Item>{item}</List.Item>}
-                />
-                <Paragraph className={styles.mainText}>CleverFit — это
-                    не просто приложение, а твой личный помощник в мире фитнеса.
-                    Не откладывай на завтра — начни
-                    тренироваться уже сегодня!
-                </Paragraph>
+            <List
+                className={styles.mainList}
+                header={<div>С CleverFit ты сможешь:</div>}
+                dataSource={data}
+                renderItem={(item) => <List.Item>{item}</List.Item>}
+            />
+            <Paragraph className={styles.mainText}>CleverFit — это
+                не просто приложение, а твой личный помощник в мире фитнеса.
+                Не откладывай на завтра — начни
+                тренироваться уже сегодня!
+            </Paragraph>
 
-                <MainCartList />
+            <MainCartList />
 
 
 

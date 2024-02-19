@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
 import { useWindowSize } from "@uidotdev/usehooks";
 import { useDispatch } from 'react-redux';
@@ -33,6 +33,7 @@ export const MenuComponent: React.FC = () => {
         sessionStorage.removeItem('token');
         dispatch(push('/auth'));
     }
+
 
     return (
         <Sider trigger={null} collapsible collapsed={collapsed}

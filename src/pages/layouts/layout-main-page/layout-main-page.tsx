@@ -9,6 +9,7 @@ const { Content } = Layout;
 
 import styles from './layout-main-page.module.css';
 
+
 export const LayoutMainPage: React.FC = () => {
 
     const headerTitle = {
@@ -21,19 +22,19 @@ export const LayoutMainPage: React.FC = () => {
 
     const isAuth = jwtLocalToken || jwtsessionToken;
 
-        return (
-            isAuth ?
-                <Layout className={styles.wrapper}>
-                    <MenuComponent />
-                    <Layout>
-                        <HeaderComponent subtitle={headerTitle} />
+    return (
+        isAuth ?
+            <Layout className={styles.wrapper}>
+                <MenuComponent />
+                <Layout>
+                    <HeaderComponent subtitle={headerTitle} />
 
-                        <Content>
-                            <Outlet />
-                        </Content>
-                    </Layout>
+                    <Content>
+                        <Outlet />
+                    </Content>
                 </Layout>
-                : <Navigate to="/auth" replace />
-        );
+            </Layout>
+            : <Navigate to="/auth" replace />
+    );
 
 };

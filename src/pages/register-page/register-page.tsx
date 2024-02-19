@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { Button, Form, Input } from 'antd';
 import { GooglePlusOutlined } from '@ant-design/icons';
 
@@ -12,6 +12,7 @@ import { Loader } from '@components/Loader/Loader';
 
 export const RegisterPage: React.FC = () => {
 
+    const location = useSelector((state: RootState) => state.router.previousLocations);
     const loadingReg = useSelector((state: RootState) => state.user.loading);
 
     const dispatch = useDispatch<AppDispatch>();
@@ -29,12 +30,25 @@ export const RegisterPage: React.FC = () => {
     }
 
     const onFinish = (values: any) => {
-        console.log('Success:', values);
         const { email, password } = values;
         sessionStorage.setItem('email', email);
         sessionStorage.setItem('password', password);
         fetchData(email, password); 
     };
+
+    useEffect(() => {
+        const isError = localStorage.getItem('regError');
+        const email = sessionStorage.getItem('email');
+        const password = sessionStorage.getItem('password');
+      
+        if(location && isError) {
+         if( location[1].location?.pathname === '/result/error' || isError) {
+            if(email && password) {
+             fetchData(email, password);
+            }
+        } 
+      }
+      }, [location]);
 
     return (
         <>

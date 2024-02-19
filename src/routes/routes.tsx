@@ -11,6 +11,9 @@ import { LayoutMainPage } from "@pages/layouts/layout-main-page";
 import { App } from "@components/App/App";
 import { LayoutResultPage } from "@pages/layouts/layout-result-page";
 import { ResultErrorLogin } from "@components/ResultErrorLogin/ResultErrorLogin";
+import { ResultSuccess } from "@components/ResultSuccess/ResultSuccess";
+import { ResultUserErrorExist } from "@components/ResultUserErrorExist/ResultUserErrorExist";
+import { ResultError } from "@components/ResultError/ResultError";
 
 
 
@@ -32,8 +35,11 @@ export const routes = (
 
         <Route path="/result" element={<LayoutResultPage/>} >
             <Route path="error-login" element={<ResultErrorLogin />} />
+            <Route path="success" element={<ResultSuccess />} />
+            <Route path="error-user-exist" element={<ResultUserErrorExist/>} />
+            <Route path="error" element={<ResultError/>} />
         </Route>
-
+        
         <Route path="*" element={<NotFoundPage />} />
 
     </Routes>

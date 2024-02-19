@@ -13,7 +13,7 @@ import { configureStore } from "@reduxjs/toolkit";
 import { createReduxHistoryContext } from "redux-first-history";
 import { createBrowserHistory } from "history";
 
-import userReducer from './slices/loginSlice';
+import userReducer from './slices/userSlice';
 
 const {
   createReduxHistory,

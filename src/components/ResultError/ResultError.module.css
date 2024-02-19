@@ -1,0 +1,14 @@
+.loginErrorBlock {
+    max-width: 538px;
+    padding: 64px 85px;
+    background: #fff;
+    text-align: center;
+}
+
+.linkError {
+    display: block;
+    background-color: #2F54EB;
+    color: #fff;
+    width: 368px;
+    padding: 10px;
+}
