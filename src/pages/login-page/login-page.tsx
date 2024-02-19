@@ -57,11 +57,11 @@ export const LoginPage: React.FC = () => {
                                 [
                                     {
                                         required: true,
-                                        message: <span style={{ fontSize: '12px' }}>Поле не может быть пустым</span>
+                                        message: ''
                                     },
                                     {
                                         type: 'email',
-                                        message: <span style={{ fontSize: '12px' }}>Введён не корректный email</span>
+                                        message: ''
                                     }
                                 ]
                             }
@@ -75,7 +75,7 @@ export const LoginPage: React.FC = () => {
                                 [
                                     {
                                         required: true,
-                                        message: <span style={{ fontSize: '12px' }}>Поле не может быть пустым</span>
+                                        message: ''
                                     },
                                 ]
                             }

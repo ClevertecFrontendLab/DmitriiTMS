@@ -31,3 +31,9 @@
     background: '#2F54EB';
     border: '1px solid #2F54EB'
 }
+
+.regBtn {
+    background: #2F54EB;
+    border: 1px solid #2F54EB;
+    width: 100%;
+}
