@@ -23,6 +23,7 @@ export const LoginPage: React.FC = () => {
 
     const [email, setEmail] = useState('');
 
+    const loading = useSelector((state: RootState) => state.recover.loading);
     const loadingAuth = useSelector((state: RootState) => state.user.loading);
 
     const dispatch = useDispatch<AppDispatch>();
@@ -54,7 +55,7 @@ export const LoginPage: React.FC = () => {
 
     return (
         <>
-            {loadingAuth && <Loader />}
+            {loadingAuth || loading && <Loader />}
             <div className={styles.formLogin}>
 
                 <Form

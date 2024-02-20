@@ -25,11 +25,11 @@ export const routes = (
         <Route path="/" element={<App/>}/>
 
         
-        <Route path="/auth/confirm-email" element={<ConfirmEmail/>} />
 
         <Route path='/auth' element={<LayoutAuthPage />} >
             <Route index={true} element={<LoginPage />} />
             <Route path="registration" element={<RegisterPage />} />
+            <Route path="confirm-email" element={<ConfirmEmail/>} />
         </Route>
 
 
