@@ -6,10 +6,12 @@ import styles from './login-page.module.css';
 
 import { AppDispatch, RootState } from '@redux/configure-store';
 import { useDispatch, useSelector } from 'react-redux';
+
 import { loginUser } from '@redux/actions/login';
+import { checkEmail } from '@redux/actions/checkEmail';
 import { push } from 'redux-first-history';
 import { Loader } from '@components/Loader/Loader';
-import { checkEMail } from '@redux/actions/checkemail';
+
 
 interface FormLogin {
     email: string,
@@ -39,7 +41,7 @@ export const LoginPage: React.FC = () => {
     const clickForgotPassword = async () => {
         if(email) {
             console.log(email);
-            await dispatch(checkEMail({email}));
+            await dispatch(checkEmail({email}));
         }
     }
 
@@ -69,10 +71,6 @@ export const LoginPage: React.FC = () => {
                                         required: true,
                                         message: ''
                                     },
-                                    // {
-                                    //     type: 'email',
-                                    //     message: ''
-                                    // },
                                     {
                                         validator(_, value) {
                                             if (String(value).toLowerCase().match(/^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|.(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/)) {

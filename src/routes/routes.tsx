@@ -14,6 +14,7 @@ import { ResultErrorLogin } from "@components/ResultErrorLogin/ResultErrorLogin"
 import { ResultSuccess } from "@components/ResultSuccess/ResultSuccess";
 import { ResultUserErrorExist } from "@components/ResultUserErrorExist/ResultUserErrorExist";
 import { ResultError } from "@components/ResultError/ResultError";
+import { ConfirmEmail } from "@components/ConfirmEmail/ConfirmEmail";
 
 
 
@@ -23,10 +24,14 @@ export const routes = (
 
         <Route path="/" element={<App/>}/>
 
+        
+        <Route path="/auth/confirm-email" element={<ConfirmEmail/>} />
+
         <Route path='/auth' element={<LayoutAuthPage />} >
             <Route index={true} element={<LoginPage />} />
             <Route path="registration" element={<RegisterPage />} />
         </Route>
+
 
         <Route path='/main' element={<LayoutMainPage />} >
             <Route index={true} element={<MainPage />} />

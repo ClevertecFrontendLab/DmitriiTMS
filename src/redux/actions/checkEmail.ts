@@ -9,7 +9,7 @@ interface UserRecoverPass {
     loading: boolean,
 }
 
-export const checkEMail = createAsyncThunk<UserRecoverPass, { email: string; }>(
+export const checkEmail = createAsyncThunk<UserRecoverPass, { email: string; }>(
     'recover/checkEMail',
     async ({ email }, { dispatch }) => {
         try {

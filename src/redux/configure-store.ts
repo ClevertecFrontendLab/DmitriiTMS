@@ -14,6 +14,7 @@ import { createReduxHistoryContext } from "redux-first-history";
 import { createBrowserHistory } from "history";
 
 import userReducer from './slices/userSlice';
+import recoveryReducer from "./slices/recoverySlice";
 
 const {
   createReduxHistory,
@@ -24,7 +25,8 @@ const {
 export const store = configureStore({
   reducer: combineReducers({
     router: routerReducer,
-    user: userReducer
+    user: userReducer,
+    recover: recoveryReducer,
   }),
   middleware: (getDefaultMiddleware) => getDefaultMiddleware().concat(routerMiddleware),
 });

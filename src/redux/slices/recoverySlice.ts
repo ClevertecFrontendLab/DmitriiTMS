@@ -1,6 +1,6 @@
 import { createSlice} from "@reduxjs/toolkit";
 
-import { checkEMail } from "@redux/actions/checkemail";
+import { checkEmail } from "@redux/actions/checkEmail";
 import { codeVerification } from "@redux/actions/codeVerification";
 import { changePassword } from "../actions/changePassword";
 
@@ -43,7 +43,7 @@ const recoverSlice = createSlice({
     },
     extraReducers: (builder) => {
         builder
-        .addCase(checkEMail.pending, (state) => {
+        .addCase(checkEmail.pending, (state) => {
             state.loading = true
         })
         .addCase(codeVerification.pending, (state) => {
@@ -52,7 +52,7 @@ const recoverSlice = createSlice({
         .addCase(changePassword.pending, (state) => {
             state.loading = true
         })
-        .addCase(checkEMail.fulfilled, (state, action) => {
+        .addCase(checkEmail.fulfilled, (state, action) => {
 
             state.errors = {
                 statusCode: 200,
@@ -84,7 +84,7 @@ const recoverSlice = createSlice({
             state.loading = false
             sessionStorage.setItem('stage', '2');
         })
-        .addCase(checkEMail.rejected, (state, action) => {
+        .addCase(checkEmail.rejected, (state, action) => {
             state.errors = action.payload as errorType;
 
             state.loading = false
