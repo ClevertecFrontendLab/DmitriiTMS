@@ -1,15 +1,15 @@
-import React, { useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
 import { Button, Checkbox, Form, Input } from 'antd';
 import { GooglePlusOutlined } from '@ant-design/icons';
 
 import styles from './login-page.module.css';
-import { Link } from 'react-router-dom';
 
 import { AppDispatch, RootState } from '@redux/configure-store';
 import { useDispatch, useSelector } from 'react-redux';
 import { loginUser } from '@redux/actions/login';
 import { push } from 'redux-first-history';
 import { Loader } from '@components/Loader/Loader';
+import { checkEMail } from '@redux/actions/checkemail';
 
 interface FormLogin {
     email: string,
@@ -18,6 +18,8 @@ interface FormLogin {
 }
 
 export const LoginPage: React.FC = () => {
+
+    const [email, setEmail] = useState('');
 
     const loadingAuth = useSelector((state: RootState) => state.user.loading);
 
@@ -28,17 +30,25 @@ export const LoginPage: React.FC = () => {
         await dispatch(loginUser({ email, password, checked }));
     }
 
+
+    const onFinish = (values: FormLogin) => {
+        console.log('Success:', values);
+        fetchUser(values.email, values.password, values.remember);
+    };
+
+    const clickForgotPassword = async () => {
+        if(email) {
+            console.log(email);
+            await dispatch(checkEMail({email}));
+        }
+    }
+
     useEffect(() => {
         if (ErrorStatusCode && ErrorStatusCode !== 200) {
             dispatch(push('/result/error-login'))
         }
 
     }, [dispatch, ErrorStatusCode])
-
-    const onFinish = (values: FormLogin) => {
-        console.log('Success:', values);
-        fetchUser(values.email, values.password, values.remember);
-    };
 
     return (
         <>
@@ -59,9 +69,20 @@ export const LoginPage: React.FC = () => {
                                         required: true,
                                         message: ''
                                     },
+                                    // {
+                                    //     type: 'email',
+                                    //     message: ''
+                                    // },
                                     {
-                                        type: 'email',
-                                        message: ''
+                                        validator(_, value) {
+                                            if (String(value).toLowerCase().match(/^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|.(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/)) {
+                                                setEmail(value);
+                                                return Promise.resolve();
+                                            } else {
+                                                setEmail('')
+                                                return Promise.reject();
+                                            }
+                                        },
                                     }
                                 ]
                             }
@@ -88,7 +109,7 @@ export const LoginPage: React.FC = () => {
                         <Form.Item className={styles.checkboxItem} name="remember" valuePropName="checked">
                             <Checkbox>Запомнить меня</Checkbox>
                         </Form.Item>
-                        <Link className={styles.linkPassword} to='/auth'>Забыли пароль?</Link>
+                        <Button className={styles.linkPassword} onClick={clickForgotPassword}>Забыли пароль?</Button>
                     </div>
 
                     <Form.Item >

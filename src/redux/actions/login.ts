@@ -34,8 +34,8 @@ export const loginUser = createAsyncThunk<UserState, { email: string; password: 
             return response.data;
 
         } catch (error: any) {
-            dispatch(push('/result/error-login'))
-            return error.response.data
+            dispatch(push('/result/error-login'));
+            return error.response.data;
         }
     }
 );

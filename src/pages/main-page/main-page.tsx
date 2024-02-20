@@ -5,22 +5,15 @@ const { Paragraph, Link, Text } = Typography;
 import { AndroidFilled, AppleFilled } from '@ant-design/icons';
 
 import styles from './main-page.module.css';
-import { useEffect } from 'react';
-
 
 export const MainPage: React.FC = () => {
+
     const data = [
         '— планировать свои тренировки на календаре, выбирая тип и уровень нагрузки;',
         '— отслеживать свои достижения в разделе статистики, сравнивая свои результаты с нормами и рекордами;',
         ' — создавать свой профиль, где ты можешь загружать свои фото, видео и отзывы о тренировках;',
         '— выполнять расписанные тренировки для разных частей тела, следуя подробным инструкциям и советам профессиональных тренеров',
     ];
-
-    useEffect(() => {
-        return () => {
-            sessionStorage.removeItem('token');
-        }
-    }, [])
 
 
     return (
@@ -39,8 +32,6 @@ export const MainPage: React.FC = () => {
             </Paragraph>
 
             <MainCartList />
-
-
 
             <div className={styles.cardBlockDowload}>
 

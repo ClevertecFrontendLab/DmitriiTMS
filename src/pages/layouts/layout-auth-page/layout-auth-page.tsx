@@ -1,5 +1,5 @@
 import React from 'react';
-import { Outlet, Navigate} from 'react-router-dom';
+import { Outlet, Navigate } from 'react-router-dom';
 
 import { CustomLink } from '@components/CustomLink/CustomLink';
 
@@ -16,23 +16,24 @@ export const LayoutAuthPage: React.FC = () => {
 
     const isAuth = jwtLocalToken || jwtsessionToken;
 
-        return (
-            !isAuth ?
-                <div className={styles.wrapperAuth}>
-                    <div className={styles.wrapperAuthBlock}>
-                        <div className={styles.wrapperAuthBlockImg}>
-                            <img src={authLogo} alt="authLogo" />
-                        </div>
-                        <div className={styles.authLinkBlock}>
-                            <CustomLink to='/auth'>Вход</CustomLink>
-                            <CustomLink to='/auth/registration'>Регистрация</CustomLink>
-                        </div>
-                        <div>
-                            <Outlet />
-                        </div>
+
+    return (
+        !isAuth ?
+            <div className={styles.wrapperAuth}>
+                <div className={styles.wrapperAuthBlock}>
+                    <div className={styles.wrapperAuthBlockImg}>
+                        <img src={authLogo} alt="authLogo" />
+                    </div>
+                    <div className={styles.authLinkBlock}>
+                        <CustomLink to='/auth'>Вход</CustomLink>
+                        <CustomLink to='/auth/registration'>Регистрация</CustomLink>
+                    </div>
+                    <div>
+                        <Outlet />
                     </div>
                 </div>
-                : <Navigate to="/main" replace />
-        )
+            </div>
+            : <Navigate to="/main" replace />
+    )
 
 };

@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import { Outlet, Navigate } from 'react-router-dom';
 
 import { HeaderComponent } from '@components/HeaderComponent/HeaderComponent';
@@ -21,6 +21,12 @@ export const LayoutMainPage: React.FC = () => {
     const jwtsessionToken = sessionStorage.getItem('token');
 
     const isAuth = jwtLocalToken || jwtsessionToken;
+
+    useEffect(() => {
+        return () => {
+            sessionStorage.removeItem('token')
+        }
+    },[])
 
     return (
         isAuth ?
