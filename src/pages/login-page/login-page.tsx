@@ -66,6 +66,7 @@ export const LoginPage: React.FC = () => {
                 >
                     <div className={styles.formInputBlock}>
                         <Form.Item
+                        data-test-id='login-email'
                             name="email"
                             rules={
                                 [
@@ -87,10 +88,11 @@ export const LoginPage: React.FC = () => {
                                 ]
                             }
                         >
-                            <Input addonBefore='e-mail' data-test-id='login-email'/>
+                            <Input addonBefore='e-mail' />
                         </Form.Item>
 
                         <Form.Item
+                        data-test-id='login-password'
                             name="password"
                             rules={
                                 [
@@ -101,20 +103,19 @@ export const LoginPage: React.FC = () => {
                                 ]
                             }
                         >
-                            <Input.Password placeholder='Пароль' data-test-id='login-password' />
+                            <Input.Password placeholder='Пароль'  />
                         </Form.Item>
                     </div>
 
                     <div className={styles.formTextBlock}>
-                        <Form.Item className={styles.checkboxItem} name="remember" valuePropName="checked"  data-test-id='login-remember'>
-                            <Checkbox>Запомнить меня</Checkbox>
+                        <Form.Item className={styles.checkboxItem} name="remember" valuePropName="checked"  >
+                            <Checkbox data-test-id='login-remember'>Запомнить меня</Checkbox>
                         </Form.Item>
                         <Text className={styles.linkPassword} onClick={clickForgotPassword} data-test-id='login-forgot-button'>Забыли пароль?</Text>
                     </div>
 
-                    <Form.Item >
-                        <Button type="primary" htmlType="submit" style={{ background: '#2F54EB', border: '1px solid #2F54EB', width: '100%' }}
-                        data-test-id='login-submit-button'>
+                    <Form.Item  data-test-id='login-submit-button'>
+                        <Button type="primary" htmlType="submit" style={{ background: '#2F54EB', border: '1px solid #2F54EB', width: '100%' }}>
                             Войти
                         </Button>
                     </Form.Item>
