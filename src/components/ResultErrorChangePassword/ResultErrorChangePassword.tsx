@@ -38,7 +38,7 @@ export const ResultErrorChangePassword: React.FC = () => {
             <Image src={error} preview={false} style={{ marginBottom: '24px' }} />
             <Title level={3} style={{ fontWeight: '500', marginBottom: '0' }}>Данные не сохранились</Title>
             <Text type="secondary" style={{display: 'block', marginBottom: '16px', maxWidth: '368px'}}>Что-то пошло не так. Попробуйте ещё раз</Text>
-            <button onClick={handleClick} className={styles.linkErrorNoexist} data-test-id='change-retry-button'>Повторить</button>
+            <Link to='/auth/change-password' onClick={handleClick} className={styles.linkErrorNoexist} data-test-id='change-retry-button'>Повторить</Link>
         </div>
         </>
         
