@@ -1,0 +1,14 @@
+.bgCart {
+    text-align: center;
+    background: #fff;
+    padding: 64px 62px;
+}
+
+.linkErrorNoexistbg {
+    display: block;
+    max-width: 74px;
+    margin: 0 auto;
+    background-color: #2F54EB;
+    color: #fff;
+    padding: 8px;
+}

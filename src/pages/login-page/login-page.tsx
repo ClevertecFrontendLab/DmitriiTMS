@@ -12,6 +12,9 @@ import { checkEmail } from '@redux/actions/checkEmail';
 import { push } from 'redux-first-history';
 import { Loader } from '@components/Loader/Loader';
 
+import { Typography } from 'antd';
+const { Text} = Typography;
+
 
 interface FormLogin {
     email: string,
@@ -35,13 +38,11 @@ export const LoginPage: React.FC = () => {
 
 
     const onFinish = (values: FormLogin) => {
-        console.log('Success:', values);
         fetchUser(values.email, values.password, values.remember);
     };
 
     const clickForgotPassword = async () => {
         if(email) {
-            console.log(email);
             await dispatch(checkEmail({email}));
         }
     }
@@ -108,7 +109,7 @@ export const LoginPage: React.FC = () => {
                         <Form.Item className={styles.checkboxItem} name="remember" valuePropName="checked">
                             <Checkbox>Запомнить меня</Checkbox>
                         </Form.Item>
-                        <Button className={styles.linkPassword} onClick={clickForgotPassword}>Забыли пароль?</Button>
+                        <Text className={styles.linkPassword} onClick={clickForgotPassword}>Забыли пароль?</Text>
                     </div>
 
                     <Form.Item >

@@ -16,6 +16,7 @@ import { codeVerification } from '@redux/actions/codeVerification';
 import { useDispatch, useSelector } from 'react-redux';
 import { AppDispatch, RootState } from '@redux/configure-store';
 import { Loader } from '@components/Loader/Loader';
+import { useRedirect } from './helpers/useRedirect';
 
 
 export const ConfirmEmail: React.FC = () => {
@@ -23,10 +24,12 @@ export const ConfirmEmail: React.FC = () => {
     const dispatch = useDispatch<AppDispatch>();
     const email = localStorage.getItem('email');
     const error = useSelector((state: RootState) => state.recover.errors?.statusCode);
-    // const location = useSelector((state: RootState) => state.router.previousLocations);
-    // const currentLocation = useSelector((state: RootState) => state.router.location?.pathname);
+    const location = useSelector((state: RootState) => state.router.previousLocations);
+    const currentLocation = useSelector((state: RootState) => state.router.location?.pathname);
     const loading = useSelector((state: RootState) => state.recover.loading);
     const [verificationCode, setVerificationCode] = useState('');
+
+    useRedirect('/auth/confirm-email', '/auth', '1', '', location, currentLocation);
 
     const handleVerificationInput = (code: string) => {
         if (error) {

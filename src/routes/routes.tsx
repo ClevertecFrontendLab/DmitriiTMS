@@ -15,6 +15,11 @@ import { ResultSuccess } from "@components/ResultSuccess/ResultSuccess";
 import { ResultUserErrorExist } from "@components/ResultUserErrorExist/ResultUserErrorExist";
 import { ResultError } from "@components/ResultError/ResultError";
 import { ConfirmEmail } from "@components/ConfirmEmail/ConfirmEmail";
+import { ResultEmailNoExist } from "@components/ResultEmailNoExist/ResultEmailNoExist";
+import { ResultErrorCheckEmail } from "@components/ResultErrorCheckEmail/ResultErrorCheckEmail";
+import { ChangePassword } from "@components/ChangePassword/ChangePassword";
+import { ResultChangePassword } from "@components/ResultChangePassword/ResultChangePassword";
+import { ResultErrorChangePassword } from "@components/ResultErrorChangePassword/ResultErrorChangePassword";
 
 
 
@@ -30,6 +35,7 @@ export const routes = (
         </Route>
 
         <Route path="/auth/confirm-email" element={<ConfirmEmail/>} />
+        <Route path="/auth/change-password" element={<ChangePassword/>} />
 
 
         <Route path='/main' element={<LayoutMainPage />} >
@@ -42,6 +48,10 @@ export const routes = (
             <Route path="success" element={<ResultSuccess />} />
             <Route path="error-user-exist" element={<ResultUserErrorExist/>} />
             <Route path="error" element={<ResultError/>} />
+            <Route path="error-check-email-no-exist" element={<ResultEmailNoExist/>} />
+            <Route path="error-check-email" element={<ResultErrorCheckEmail/>} />
+            <Route path="success-change-password" element={<ResultChangePassword/>} />
+            <Route path="error-change-password" element={<ResultErrorChangePassword/>} />
         </Route>
 
         <Route path="*" element={<NotFoundPage />} />
