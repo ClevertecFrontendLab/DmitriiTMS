@@ -24,8 +24,6 @@ export const routes = (
 
         <Route path="/" element={<App/>}/>
 
-        
-
         <Route path='/auth' element={<LayoutAuthPage />} >
             <Route index={true} element={<LoginPage />} />
             <Route path="registration" element={<RegisterPage />} />
