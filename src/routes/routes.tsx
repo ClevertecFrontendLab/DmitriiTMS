@@ -27,8 +27,9 @@ export const routes = (
         <Route path='/auth' element={<LayoutAuthPage />} >
             <Route index={true} element={<LoginPage />} />
             <Route path="registration" element={<RegisterPage />} />
-            <Route path="confirm-email" element={<ConfirmEmail/>} />
         </Route>
+
+        <Route path="/auth/confirm-email" element={<ConfirmEmail/>} />
 
 
         <Route path='/main' element={<LayoutMainPage />} >
@@ -42,7 +43,7 @@ export const routes = (
             <Route path="error-user-exist" element={<ResultUserErrorExist/>} />
             <Route path="error" element={<ResultError/>} />
         </Route>
-        
+
         <Route path="*" element={<NotFoundPage />} />
 
     </Routes>

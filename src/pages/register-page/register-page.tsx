@@ -1,3 +1,4 @@
+/* eslint-disable react-hooks/exhaustive-deps */
 import React, { useEffect, useState } from 'react';
 import { Button, Form, Input } from 'antd';
 import { GooglePlusOutlined } from '@ant-design/icons';
@@ -23,32 +24,32 @@ export const RegisterPage: React.FC = () => {
         confirmPassword: false
     })
 
-    const validForm = isValid.email && isValid.password && isValid.confirmPassword;   
+    const validForm = isValid.email && isValid.password && isValid.confirmPassword;
 
     const fetchData = async (email: string, password: string) => {
         await dispatch(registerUser({ email, password }));
     }
 
-    const onFinish = (values: any) => {
+    const onFinish = (values: {email: string, password: string}) => {
         const { email, password } = values;
         sessionStorage.setItem('email', email);
         sessionStorage.setItem('password', password);
-        fetchData(email, password); 
+        fetchData(email, password);
     };
 
     useEffect(() => {
         const isError = localStorage.getItem('regError');
         const email = sessionStorage.getItem('email');
         const password = sessionStorage.getItem('password');
-      
+
         if(location && isError) {
          if( location[1].location?.pathname === '/result/error' || isError) {
             if(email && password) {
              fetchData(email, password);
             }
-        } 
+        }
       }
-      }, [location]);
+      }, [fetchData, location]);
 
     return (
         <>
@@ -150,7 +151,7 @@ export const RegisterPage: React.FC = () => {
                                             }))
                                             return Promise.reject('Пароли не совпадают');
                                         }
-                                        
+
                                     }
                                 })
                             ]
@@ -172,7 +173,7 @@ export const RegisterPage: React.FC = () => {
             </Form>
         </div>
         </>
-      
+
 
     );
 };
