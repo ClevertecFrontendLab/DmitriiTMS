@@ -10,10 +10,9 @@ import { useDispatch, useSelector } from 'react-redux';
 import { loginUser } from '@redux/actions/login';
 import { checkEmail } from '@redux/actions/checkEmail';
 import { push } from 'redux-first-history';
-import { Loader } from '@components/Loader/Loader';
 
 import { Typography } from 'antd';
-const { Text} = Typography;
+const { Text } = Typography;
 
 
 interface FormLogin {
@@ -25,12 +24,9 @@ interface FormLogin {
 export const LoginPage: React.FC = () => {
 
     const [email, setEmail] = useState('');
-
-    const loading = useSelector((state: RootState) => state.recover.loading);
-    const loadingAuth = useSelector((state: RootState) => state.user.loading);
-
     const dispatch = useDispatch<AppDispatch>();
     const ErrorStatusCode = useSelector((state: RootState) => state.user.errors.statusCode);
+
 
     const fetchUser = async (email: string, password: string, checked: boolean) => {
         await dispatch(loginUser({ email, password, checked }));
@@ -42,8 +38,8 @@ export const LoginPage: React.FC = () => {
     };
 
     const clickForgotPassword = async () => {
-        if(email) {
-            await dispatch(checkEmail({email}));
+        if (email) {
+            await dispatch(checkEmail({ email }));
         }
     }
 
@@ -56,7 +52,6 @@ export const LoginPage: React.FC = () => {
 
     return (
         <>
-            {(loadingAuth || loading) && <Loader />}
             <div className={styles.formLogin}>
 
                 <Form
@@ -66,7 +61,7 @@ export const LoginPage: React.FC = () => {
                 >
                     <div className={styles.formInputBlock}>
                         <Form.Item
-                        data-test-id='login-email'
+                            data-test-id='login-email'
                             name="email"
                             rules={
                                 [
@@ -92,7 +87,7 @@ export const LoginPage: React.FC = () => {
                         </Form.Item>
 
                         <Form.Item
-                        data-test-id='login-password'
+                            data-test-id='login-password'
                             name="password"
                             rules={
                                 [
@@ -100,6 +95,15 @@ export const LoginPage: React.FC = () => {
                                         required: true,
                                         message: ''
                                     },
+                                    {
+                                        validator(_, value) {
+                                            if (String(value).match(/(?=.*[0-9]{1,})(?=.*[A-Z]{1,})^[a-zA-Z0-9]{8,}$/)) {
+                                                return Promise.resolve();
+                                            } else {
+                                                return Promise.reject();
+                                            }
+                                        },
+                                    }
                                 ]
                             }
                         >
@@ -114,8 +118,8 @@ export const LoginPage: React.FC = () => {
                         <Text className={styles.linkPassword} onClick={clickForgotPassword} data-test-id='login-forgot-button'>Забыли пароль?</Text>
                     </div>
 
-                    <Form.Item  data-test-id='login-submit-button'>
-                        <Button type="primary" htmlType="submit" style={{ background: '#2F54EB', border: '1px solid #2F54EB', width: '100%' }}>
+                    <Form.Item data-test-id='login-submit-button'>
+                        <Button type="primary" htmlType="submit" style={{ background: '#2F54EB', border: '1px solid #2F54EB', width: '100%' }} >
                             Войти
                         </Button>
                     </Form.Item>

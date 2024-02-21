@@ -9,7 +9,9 @@ const { Content } = Layout;
 
 import styles from './layout-main-page.module.css';
 
+
 export const LayoutMainPage: React.FC = () => {
+
 
     const headerTitle = {
         main: 'Главная',
@@ -27,8 +29,6 @@ export const LayoutMainPage: React.FC = () => {
         }
     },[])
 
-  
-
     return (
         isAuth ?
             <Layout className={styles.wrapper}>
@@ -41,6 +41,7 @@ export const LayoutMainPage: React.FC = () => {
                     </Content>
                 </Layout>
             </Layout>
+
             : <Navigate to="/auth" replace />
     );
 
