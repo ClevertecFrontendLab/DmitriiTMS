@@ -21,7 +21,7 @@ export const loginUser = createAsyncThunk<UserState, { email: string; password: 
     'user/login',
     async ({ email, password, checked }, { dispatch }) => {
         try {
-            // await new Promise(resolve => setTimeout(resolve, 200));
+            await new Promise(resolve => setTimeout(resolve, 200));
             const response = await axios.post('https://marathon-api.clevertec.ru/auth/login', { email, password });
 
             if(checked) {

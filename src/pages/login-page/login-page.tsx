@@ -56,7 +56,7 @@ export const LoginPage: React.FC = () => {
 
     return (
         <>
-            {(loadingAuth || loading) && <Loader />}
+            {/* {(loadingAuth || loading) && <Loader />} */}
             <div className={styles.formLogin}>
 
                 <Form
