@@ -19,9 +19,6 @@ export const ResultErrorChangePassword: React.FC = () => {
 
     const location = useSelector((state: RootState) => state.router);
     const loading = useSelector((state: RootState) => state.recover.loading);
-
-    console.log(loading);
-    
     
     const dispatch = useDispatch<AppDispatch>();
 
@@ -41,7 +38,7 @@ export const ResultErrorChangePassword: React.FC = () => {
             <Image src={error} preview={false} style={{ marginBottom: '24px' }} />
             <Title level={3} style={{ fontWeight: '500', marginBottom: '0' }}>Данные не сохранились</Title>
             <Text type="secondary" style={{display: 'block', marginBottom: '16px', maxWidth: '368px'}}>Что-то пошло не так. Попробуйте ещё раз</Text>
-            <Link to='/auth/change-password' onClick={handleClick} className={styles.linkErrorNoexist} data-test-id='change-retry-button'>Повторить</Link>
+            <button onClick={handleClick} className={styles.linkErrorNoexist} data-test-id='change-retry-button'>Повторить</button>
         </div>
         </>
         
