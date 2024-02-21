@@ -9,7 +9,6 @@ const { Content } = Layout;
 
 import styles from './layout-main-page.module.css';
 
-
 export const LayoutMainPage: React.FC = () => {
 
     const headerTitle = {
@@ -27,6 +26,8 @@ export const LayoutMainPage: React.FC = () => {
             sessionStorage.removeItem('token')
         }
     },[])
+
+  
 
     return (
         isAuth ?
