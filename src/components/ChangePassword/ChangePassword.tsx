@@ -9,11 +9,14 @@ import styles from './ChangePassword.module.css';
 import { Loader } from '@components/Loader/Loader';
 import { LayoutForgot } from '@components/LayoutForgot/LayoutForgot';
 import { changePassword } from '@redux/actions/changePassword';
+import { useRedirect } from '@components/ConfirmEmail/helpers/useRedirect';
 
 
 export const ChangePassword: React.FC = () => {
 
     const loadingReg = useSelector((state: RootState) => state.user.loading);
+    const location = useSelector((state: RootState) => state.router.previousLocations);
+    const currentLocation = useSelector((state: RootState) => state.router.location?.pathname);
 
     const dispatch = useDispatch<AppDispatch>();
 
@@ -23,6 +26,8 @@ export const ChangePassword: React.FC = () => {
     })
 
     const validForm = isValid.password && isValid.confirmPassword;
+
+    useRedirect('/auth/change-password', '/auth/confirm-email', '2', '/result/error-change-password', location, currentLocation);
 
     const fetchData = async (password: string, confirmPassword: string) => {
         await dispatch(changePassword({ password, confirmPassword }));

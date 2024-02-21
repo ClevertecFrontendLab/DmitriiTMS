@@ -19,6 +19,9 @@ export const ResultErrorChangePassword: React.FC = () => {
 
     const location = useSelector((state: RootState) => state.router);
     const loading = useSelector((state: RootState) => state.recover.loading);
+
+    console.log(loading);
+    
     
     const dispatch = useDispatch<AppDispatch>();
 
