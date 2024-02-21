@@ -24,7 +24,7 @@ export const ResultSuccess: React.FC = () => {
             <Image src={success} preview={false} style={{ marginBottom: '24px' }} />
             <Title level={3} style={{ fontWeight: '500', marginBottom: '0' }}>Регистрация успешна</Title>
             <Text type="secondary" style={{display: 'block', marginBottom: '16px', maxWidth: '368px'}}>Регистрация прошла успешно. Зайдите в приложение, используя свои e-mail и пароль.</Text>
-            <Link to='/auth' className={styles.linkError} onClick={handlerClickAuth}>Войти</Link>
+            <Link to='/auth' className={styles.linkError} onClick={handlerClickAuth} data-test-id='registration-enter-button'>Войти</Link>
         </div>
     )
 }

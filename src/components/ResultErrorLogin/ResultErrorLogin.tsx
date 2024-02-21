@@ -24,7 +24,7 @@ export const ResultErrorLogin: React.FC = () => {
             <Image src={errorLogin} preview={false} style={{ marginBottom: '24px' }} />
             <Title level={3} style={{ fontWeight: '500', marginBottom: '0' }}>Вход не выполнен</Title>
             <Text type="secondary" style={{display: 'block', marginBottom: '16px'}}>Что-то пошло не так. Попробуйте ещё раз</Text>
-            <Link to='/auth' className={styles.linkError} onClick={handlerClickAuth}>Повторить</Link>
+            <Link to='/auth' className={styles.linkError} onClick={handlerClickAuth} data-test-id='login-retry-button'>Повторить</Link>
         </div>
     )
 }

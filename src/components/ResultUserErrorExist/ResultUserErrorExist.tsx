@@ -26,7 +26,7 @@ export const ResultUserErrorExist: React.FC = () => {
             <Image src={error} preview={false} style={{ marginBottom: '24px' }} />
             <Title level={3} style={{ fontWeight: '500', marginBottom: '0' }}>Данные не сохранились</Title>
             <Text type="secondary" style={{display: 'block', marginBottom: '16px'}}>Такой e-mail уже записан в системе. Попробуйте зарегистрироваться по другому e-mail.</Text>
-            <Link to='/auth/registration' className={styles.linkError} onClick={handlerClickAuth}>Назад к регистрации</Link>
+            <Link to='/auth/registration' className={styles.linkError} onClick={handlerClickAuth} data-test-id='registration-back-button'>Назад к регистрации</Link>
         </div>
     )
 }

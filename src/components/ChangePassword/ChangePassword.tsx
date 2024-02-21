@@ -84,7 +84,7 @@ export const ChangePassword: React.FC = () => {
                             style={{ marginBottom: '40px' }}
 
                         >
-                            <Input.Password placeholder='Пароль' />
+                            <Input.Password placeholder='Пароль'  data-test-id='change-password'/>
                         </Form.Item>
 
                         <Form.Item
@@ -117,12 +117,12 @@ export const ChangePassword: React.FC = () => {
                                 ]
                             }
                         >
-                            <Input.Password placeholder='Повторите пароль' />
+                            <Input.Password placeholder='Повторите пароль' data-test-id='change-confirm-password'/>
                         </Form.Item>
                     </div>
 
                     <Form.Item >
-                        <Button type="primary" htmlType="submit" disabled={!validForm ? true : false} className={styles.regBtn}>
+                        <Button type="primary" htmlType="submit" disabled={!validForm ? true : false} className={styles.regBtn} data-test-id='change-submit-button'>
                             Сохранить
                         </Button>
                     </Form.Item>

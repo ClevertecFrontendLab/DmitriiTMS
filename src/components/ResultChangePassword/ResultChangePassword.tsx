@@ -30,7 +30,7 @@ export const ResultChangePassword: React.FC = () => {
                 <Image src={success} preview={false} style={{ marginBottom: '24px' }} />
                 <Title level={3} style={{ fontWeight: '500', marginBottom: '0' }}>Пароль успешно изменен</Title>
                 <Text type="secondary" style={{ display: 'block', marginBottom: '16px', maxWidth: '368px' }}>Теперь можно войти в аккаунт, используя свой логин и новый пароль</Text>
-                <Link to='/auth' onClick={handleClick} className={styles.linkError}>Вход</Link>
+                <Link to='/auth' onClick={handleClick} className={styles.linkError} data-test-id='change-entry-button'>Вход</Link>
             </div>
         </>
 

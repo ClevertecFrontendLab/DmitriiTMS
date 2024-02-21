@@ -24,7 +24,7 @@ export const ResultEmailNoExist: React.FC = () => {
             <Image src={error} preview={false} style={{ marginBottom: '24px' }} />
             <Title level={3} style={{ fontWeight: '500', marginBottom: '0' }}>Такой e-mail не зарегистрирован</Title>
             <Text type="secondary" style={{display: 'block', margin: '0 auto 16px auto', maxWidth: '368px'}}>Мы не нашли в базе вашего e-mail. Попробуйте войти с другим e-mail</Text>
-            <Link to='/auth' className={styles.linkErrorNoexist} onClick={handlerClickAuth}>Попробовать снова</Link>
+            <Link to='/auth' className={styles.linkErrorNoexist} onClick={handlerClickAuth} data-test-id='check-retry-button'>Попробовать снова</Link>
         </div>
     )
 }

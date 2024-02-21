@@ -90,7 +90,7 @@ export const RegisterPage: React.FC = () => {
                             ]
                         }
                     >
-                        <Input addonBefore='e-mail' />
+                        <Input addonBefore='e-mail' data-test-id='registration-email'/>
                     </Form.Item>
 
                     <Form.Item
@@ -124,7 +124,7 @@ export const RegisterPage: React.FC = () => {
                         style={{marginBottom: '40px'}}
 
                     >
-                        <Input.Password placeholder='Пароль' />
+                        <Input.Password placeholder='Пароль' data-test-id='registration-password'/>
                     </Form.Item>
 
                     <Form.Item
@@ -157,12 +157,13 @@ export const RegisterPage: React.FC = () => {
                             ]
                         }
                     >
-                        <Input.Password placeholder='Повторите пароль' />
+                        <Input.Password placeholder='Повторите пароль' data-test-id='registration-confirm-password'/>
                     </Form.Item>
                 </div>
 
                 <Form.Item >
-                    <Button type="primary" htmlType="submit" disabled={!validForm ? true : false} className={styles.regBtn}>
+                    <Button type="primary" htmlType="submit" disabled={!validForm ? true : false} className={styles.regBtn}
+                    data-test-id='registration-submit-button'>
                         Войти
                     </Button>
                 </Form.Item>

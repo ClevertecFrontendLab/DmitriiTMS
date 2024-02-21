@@ -28,7 +28,7 @@ export const ResultErrorCheckEmail: React.FC = () => {
             <Image src={manError} preview={false} style={{ marginBottom: '24px' }} />
             <Title level={3} style={{ fontWeight: '500', marginBottom: '0' }}>Что-то пошло не так</Title>
             <Text type="secondary" style={{display: 'block', margin: '0 auto 16px auto'}}>Произошла ошибка, попробуйте отправить форму ещё раз.</Text>
-            <Link className={styles.linkErrorNoexistbg} onClick={handleClick} to='/auth'>Назад</Link>
+            <Link className={styles.linkErrorNoexistbg} onClick={handleClick} to='/auth' data-test-id='check-back-button'>Назад</Link>
         </div>
     )
 }

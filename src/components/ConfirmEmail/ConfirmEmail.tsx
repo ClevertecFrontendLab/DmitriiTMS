@@ -53,6 +53,7 @@ export const ConfirmEmail: React.FC = () => {
                     </Title>
                     <Text type="secondary" style={{ display: 'inline-block', marginBottom: '16px', maxWidth: '412px' }}>Мы отправили вам на e-mail &nbsp;<span style={{ fontWeight: '600' }}>{email}</span>&nbsp;шестизначный код. Введите его в поле ниже</Text>
                     <VerificationInput
+                        data-test-id='verification-input'
                         value={verificationCode}
                         onChange={setVerificationCode}
                         onComplete={handleVerificationInput}

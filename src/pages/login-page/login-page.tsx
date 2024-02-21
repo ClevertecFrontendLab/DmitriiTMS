@@ -87,7 +87,7 @@ export const LoginPage: React.FC = () => {
                                 ]
                             }
                         >
-                            <Input addonBefore='e-mail' />
+                            <Input addonBefore='e-mail' data-test-id='login-email'/>
                         </Form.Item>
 
                         <Form.Item
@@ -101,19 +101,20 @@ export const LoginPage: React.FC = () => {
                                 ]
                             }
                         >
-                            <Input.Password placeholder='Пароль' />
+                            <Input.Password placeholder='Пароль' data-test-id='login-password' />
                         </Form.Item>
                     </div>
 
                     <div className={styles.formTextBlock}>
-                        <Form.Item className={styles.checkboxItem} name="remember" valuePropName="checked">
+                        <Form.Item className={styles.checkboxItem} name="remember" valuePropName="checked"  data-test-id='login-remember'>
                             <Checkbox>Запомнить меня</Checkbox>
                         </Form.Item>
-                        <Text className={styles.linkPassword} onClick={clickForgotPassword}>Забыли пароль?</Text>
+                        <Text className={styles.linkPassword} onClick={clickForgotPassword} data-test-id='login-forgot-button'>Забыли пароль?</Text>
                     </div>
 
                     <Form.Item >
-                        <Button type="primary" htmlType="submit" style={{ background: '#2F54EB', border: '1px solid #2F54EB', width: '100%' }}>
+                        <Button type="primary" htmlType="submit" style={{ background: '#2F54EB', border: '1px solid #2F54EB', width: '100%' }}
+                        data-test-id='login-submit-button'>
                             Войти
                         </Button>
                     </Form.Item>
