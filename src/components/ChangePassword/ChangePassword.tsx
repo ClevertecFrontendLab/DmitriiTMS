@@ -64,7 +64,7 @@ export const ChangePassword: React.FC = () => {
                                     },
                                     {
                                         validator(_, value) {
-                                            if (String(value).match(/(?=.*[0-9]{1,})(?=.*[A-Z]{1,})^[a-zA-Z0-9]{8,}$/)) {
+                                            if (String(value).match(/(?=.*[0-9]{1,})(?=.*[a-z]{1,})(?=.*[A-Z]{1,})^[a-zA-Z0-9]{8,}$/)) {
                                                 setIsValid((prev) => ({
                                                     ...prev,
                                                     password: true

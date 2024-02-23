@@ -32,3 +32,10 @@
     background: '#2F54EB';
     border: '1px solid #2F54EB'
 }
+
+
+@media (max-width: 600px) {
+    .formLogin {
+        width: auto;
+    }
+}

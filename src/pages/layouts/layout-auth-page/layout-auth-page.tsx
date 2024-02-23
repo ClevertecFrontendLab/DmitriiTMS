@@ -1,18 +1,23 @@
 import React from 'react';
-import { Outlet, Navigate } from 'react-router-dom';
+import { Outlet, Navigate} from 'react-router-dom';
 
 import { CustomLink } from '@components/CustomLink/CustomLink';
 
 import authLogo from '../../../assets/auth/auth-logo.png'
+import miniauthLogo from '../../../assets/result/mini-logo.svg'
 
 import styles from './layout-auth-page.module.css';
 import { useSelector } from 'react-redux';
-import { RootState } from '@redux/configure-store';
+import { RootState} from '@redux/configure-store';
 import { Loader } from '@components/Loader/Loader';
+import { ResultErrorChangePassword } from '@components/ResultErrorChangePassword/ResultErrorChangePassword';
+import { useWindowSize } from '@uidotdev/usehooks';
 
 
 
 export const LayoutAuthPage: React.FC = () => {
+
+    const { width } = useWindowSize();
 
     const loading = useSelector((state: RootState) => state.recover.loading);
     const loadingAuth = useSelector((state: RootState) => state.user.loading);
@@ -22,6 +27,17 @@ export const LayoutAuthPage: React.FC = () => {
 
     const isAuth = jwtLocalToken || jwtsessionToken;
 
+    const recoverError = localStorage.getItem('recoverError');
+
+
+    if (recoverError) {
+        return (
+            <div className={styles.wrapperAuth}>
+                <ResultErrorChangePassword/>
+            </div>
+        )
+    }
+
 
     return (
         !isAuth ?
@@ -30,7 +46,7 @@ export const LayoutAuthPage: React.FC = () => {
                 <div className={styles.wrapperAuth}>
                     <div className={styles.wrapperAuthBlock}>
                         <div className={styles.wrapperAuthBlockImg}>
-                            <img src={authLogo} alt="authLogo" />
+                            <img src={width && width > 600 ? authLogo : miniauthLogo} alt="authLogo" />
                         </div>
                         <div className={styles.authLinkBlock}>
                             <CustomLink to='/auth'>Вход</CustomLink>

@@ -11,3 +11,9 @@
     color: #2F54EB;
     border-bottom: 1px solid #2F54EB;
 }
+
+@media (max-width: 600px) {
+    .authLink {
+        width: auto;
+    }
+}
