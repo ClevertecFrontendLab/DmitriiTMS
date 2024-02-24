@@ -1,0 +1,39 @@
+.formLogin {
+    width: 368px;
+    margin: 0 auto;
+}
+
+.formInputBlock {
+    margin-bottom: 54px;
+}
+
+.checkboxItem {
+    margin-bottom: 0;
+    font-weight: 400;
+    font-size: 14px;
+}
+
+.formTextBlock {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 27px;
+}
+
+.linkPassword {
+    display: block;
+    font-weight: 400;
+    font-size: 16px;
+    color: #2F54EB;
+}
+
+.formBtn {
+    background: '#2F54EB';
+    border: '1px solid #2F54EB'
+}
+
+.regBtn {
+    background: #2F54EB;
+    border: 1px solid #2F54EB;
+    width: 100%;
+}

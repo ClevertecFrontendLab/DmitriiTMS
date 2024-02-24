@@ -1,7 +1,9 @@
-/* eslint-disable @typescript-eslint/no-explicit-any */
 import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
 import { useWindowSize } from "@uidotdev/usehooks";
+import { useDispatch } from 'react-redux';
+import { AppDispatch } from '@redux/configure-store';
+import { push } from 'redux-first-history';
 
 import {
     MenuFoldOutlined,
@@ -15,23 +17,29 @@ import { Layout, Menu, Button, Image } from 'antd';
 const { Sider } = Layout;
 
 import exit from '../../assets/icons/exit.svg';
-import calen from '../../assets/icons/calendar-menu.png'
+import calen from '../../assets/icons/calendar.svg'
 
 import styles from './MenuComponent.module.css';
 
 
-
 export const MenuComponent: React.FC = () => {
     const [collapsed, setCollapsed] = useState(false);
+    const dispatch = useDispatch<AppDispatch>();
 
-    const { width }: any = useWindowSize();
+    const { width } = useWindowSize();
+
+    const logout = () => {
+        localStorage.removeItem('token');
+        sessionStorage.removeItem('token');
+        dispatch(push('/auth'));
+    }
 
     return (
         <Sider trigger={null} collapsible collapsed={collapsed}
             className={!collapsed ? styles.menu : `${styles.menu} ${styles.menuHide}`}>
             <div className={styles.menuWrapper}>
                 <div className={styles.menuWrapperItem}>
-                    <Link to="/" className={styles.menuLogo}>
+                    <Link to="/main" className={styles.menuLogo}>
                         <div className={!collapsed ? styles.logo : styles.logoSmall} />
                     </Link>
                     <Menu
@@ -41,8 +49,8 @@ export const MenuComponent: React.FC = () => {
                         items={[
                             {
                                 key: '1',
-                                icon: <Link to='/calendar'><Image preview={false}  width={16} src={calen} alt='calendar'/></Link>,
-                                label: <Link to='/calendar' className={!collapsed ? styles.opent : styles.hidet}>Календарь</Link>,
+                                icon: <Link to='/main/calendar'><Image preview={false}  width={16} src={calen} alt='calendar'/></Link>,
+                                label: <Link to='/main/calendar' className={!collapsed ? styles.opent : styles.hidet}>Календарь</Link>,
                             },
                             {
                                 key: '2',
@@ -64,7 +72,7 @@ export const MenuComponent: React.FC = () => {
 
                     <div className={styles.btnTrap}
                         onClick={() => setCollapsed(!collapsed)}
-                        data-test-id={width < 400 ? 'sider-switch-mobile' : 'sider-switch'}
+                        data-test-id={width && width < 400 ? 'sider-switch-mobile' : 'sider-switch'}
                     >
                         <Button
                             type='link'
@@ -75,10 +83,10 @@ export const MenuComponent: React.FC = () => {
                     </div>
                 </div>
                 <div className={styles.menuWrapperItemExitBlock}>
-                    <Link className={styles.menuWrapperItemExit} to="/">
+                    <button className={styles.menuWrapperItemExit} onClick={logout}>
                         <img className={collapsed ? styles.exitImg : styles.exitImgHide} src={exit} alt="exit" />
                         <span className={!collapsed ? styles.open : styles.hide}>Выход</span>
-                    </Link>
+                    </button>
                 </div>
             </div>
 

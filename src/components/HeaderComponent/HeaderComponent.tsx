@@ -1,4 +1,3 @@
-/* eslint-disable @typescript-eslint/no-explicit-any */
 import React from 'react';
 import { useLocation } from 'react-router-dom';
 import { useWindowSize } from "@uidotdev/usehooks";
@@ -20,12 +19,12 @@ interface HeaderProps {
 
 export const HeaderComponent: React.FC<HeaderProps> = ({ subtitle }) => {
     const location = useLocation();
-    const { width }: any = useWindowSize();
+    const { width } = useWindowSize();
 
     const routeTitle = () => {
-        if (location.pathname === '/') {
+        if (location.pathname === '/main') {
             return subtitle.main;
-        } else if (location.pathname === '/calendar') {
+        } else if (location.pathname === '/main/calendar') {
             return subtitle.calendar;
         }
     };
@@ -34,7 +33,7 @@ export const HeaderComponent: React.FC<HeaderProps> = ({ subtitle }) => {
             <Text className={styles.headerBreadcramp}>{routeTitle()}</Text>
             <div className={styles.headerContentTitleBlock}>
                 <Title className={styles.headerTitle}>Приветствуем тебя в CleverFit —
-                    приложении,  {width > 674 && width <= 834  ? <br /> : null}
+                    приложении,  {width && width > 674 && width <= 834  ? <br /> : null}
                     которое поможет тебе добиться своей мечты!</Title>
                 <div className={styles.settingBtnBlock}>
                     <Button className={styles.settingBtn} type="text" icon={<SettingOutlined className={styles.settingsImg} />}>Настройки</Button>

@@ -10,6 +10,12 @@ body {
     font-family: 'Inter', sans-serif;
 }
 
+button {
+    border: none;
+    background: transparent;
+    cursor: pointer;
+}
+
 .ant-list-split .ant-list-header,
 .ant-list-items .ant-list-item {
     border: none;
@@ -23,6 +29,45 @@ body {
 .ant-menu-item {
     margin-bottom: 18px !important;
 }
+
+.ant-checkbox-checked .ant-checkbox-inner {
+    background-color: #2F54EB;
+    border-color: #2F54EB;
+  }
+
+  .ant-input-wrapper input {
+    height: 40px;
+  }
+
+  .ant-input-affix-wrapper input {
+    height: 30px;
+  }
+
+
+  .container {
+    max-width: 300px;
+    margin: 0 auto;
+  }
+
+
+  .character {
+    width: 40px;
+    height: 40px;
+    font-size: 14px;
+    cursor: default;
+    user-select: none;
+    background: transparent;
+    box-sizing: border-box;
+    border: 1px solid #D9D9D9;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .character.bgc {
+    border: 1px solid red;
+  }
+
 
 @media(max-width: 600px) {
     .ant-menu-item-icon {
