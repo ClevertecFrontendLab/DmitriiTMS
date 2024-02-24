@@ -12,6 +12,7 @@ import { checkEmail } from '@redux/actions/checkEmail';
 import { push } from 'redux-first-history';
 
 import { Typography } from 'antd';
+import { useWindowSize } from '@uidotdev/usehooks';
 const { Text } = Typography;
 
 
@@ -24,6 +25,7 @@ interface FormLogin {
 export const LoginPage: React.FC = () => {
 
     const [email, setEmail] = useState('');
+    const { width } = useWindowSize();
     const dispatch = useDispatch<AppDispatch>();
     const ErrorStatusCode = useSelector((state: RootState) => state.user.errors.statusCode);
 
@@ -124,7 +126,7 @@ export const LoginPage: React.FC = () => {
                         </Button>
                     </Form.Item>
 
-                    <Button icon={<GooglePlusOutlined />} style={{ width: '100%' }}>
+                    <Button icon={width && width < 600 ? '' : <GooglePlusOutlined />} style={{ width: '100%' }}>
                         Войти через Google
                     </Button>
                 </Form>

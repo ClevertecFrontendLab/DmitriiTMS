@@ -26,6 +26,22 @@
     align-items: center;
 }
 
+.logomini {
+    display: none;
+}
+
+@media (max-width: 834px)  {
+    .logoBig {
+        display: none;
+    }
+
+    .logomini {
+        display: block;
+        margin: 0 auto;
+    }
+}
+
+
 @media (max-width: 600px) {
     .wrapperAuthBlock {
         padding: 32px 16px 80px 16px;
@@ -36,6 +52,7 @@
     .wrapperAuthBlock {
        max-width: 328px;
     }
+
 }
 
 

@@ -11,13 +11,10 @@ import { useSelector } from 'react-redux';
 import { RootState} from '@redux/configure-store';
 import { Loader } from '@components/Loader/Loader';
 import { ResultErrorChangePassword } from '@components/ResultErrorChangePassword/ResultErrorChangePassword';
-import { useWindowSize } from '@uidotdev/usehooks';
-
 
 
 export const LayoutAuthPage: React.FC = () => {
 
-    const { width } = useWindowSize();
 
     const loading = useSelector((state: RootState) => state.recover.loading);
     const loadingAuth = useSelector((state: RootState) => state.user.loading);
@@ -46,7 +43,8 @@ export const LayoutAuthPage: React.FC = () => {
                 <div className={styles.wrapperAuth}>
                     <div className={styles.wrapperAuthBlock}>
                         <div className={styles.wrapperAuthBlockImg}>
-                            <img src={width && width > 600 ? authLogo : miniauthLogo} alt="authLogo" />
+                            <img className={styles.logoBig} src={  authLogo } alt="authLogo" />
+                            <img className={styles.logomini} src={ miniauthLogo} alt="authLogo" />
                         </div>
                         <div className={styles.authLinkBlock}>
                             <CustomLink to='/auth'>Вход</CustomLink>
