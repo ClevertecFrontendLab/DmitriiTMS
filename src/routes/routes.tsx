@@ -20,6 +20,7 @@ import { ResultErrorCheckEmail } from "@components/ResultErrorCheckEmail/ResultE
 import { ChangePassword } from "@components/ChangePassword/ChangePassword";
 import { ResultChangePassword } from "@components/ResultChangePassword/ResultChangePassword";
 import { ResultErrorChangePassword } from "@components/ResultErrorChangePassword/ResultErrorChangePassword";
+import { FeedbacksPage } from "@pages/feedbacks-page";
 
 
 
@@ -38,9 +39,10 @@ export const routes = (
         <Route path="/auth/change-password" element={<ChangePassword/>} />
 
 
-        <Route path='/main' element={<LayoutMainPage />} >
-            <Route index={true} element={<MainPage />} />
+        <Route path='/' element={<LayoutMainPage />} >
+            <Route path="main" element={<MainPage />} />
             <Route path="calendar" element={<CalendarPage />} />
+            <Route path="feedbacks" element={<FeedbacksPage />} />
         </Route>
 
         <Route path="/result" element={<LayoutResultPage/>} >

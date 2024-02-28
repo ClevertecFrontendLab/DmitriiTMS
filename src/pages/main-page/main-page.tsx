@@ -1,5 +1,7 @@
 import { MainCartList } from '@components/MainCartList/MainCartList';
 
+import { Link as LinkDom } from 'react-router-dom';
+
 import { List, Typography, Button } from 'antd';
 const { Paragraph, Link, Text } = Typography;
 import { AndroidFilled, AppleFilled } from '@ant-design/icons';
@@ -35,7 +37,7 @@ export const MainPage: React.FC = () => {
 
             <div className={styles.cardBlockDowload}>
 
-                <Link href="#" className={styles.mainLinkReviews}>Смотреть отзывы</Link>
+                <LinkDom to='/feedbacks' className={styles.mainLinkReviews}>Смотреть отзывы</LinkDom>
 
                 <div className={styles.cartDownload}>
                     <div className={styles.cartDownloadTitleBlock}>
