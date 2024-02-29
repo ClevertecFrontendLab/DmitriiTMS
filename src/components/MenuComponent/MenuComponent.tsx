@@ -23,15 +23,18 @@ import styles from './MenuComponent.module.css';
 
 
 export const MenuComponent: React.FC = () => {
+
     const [collapsed, setCollapsed] = useState(false);
     const dispatch = useDispatch<AppDispatch>();
 
     const { width } = useWindowSize();
 
     const logout = () => {
+
         localStorage.removeItem('token');
         sessionStorage.removeItem('token');
-        dispatch(push('/auth'));
+        dispatch(push('/'));
+
     }
 
     return (

@@ -12,36 +12,35 @@ import styles from './layout-main-page.module.css';
 
 export const LayoutMainPage: React.FC = () => {
 
-
-    const headerTitle = {
-        main: 'Главная',
-        calendar: 'Календарь'
-    }
-
     const jwtLocalToken = localStorage.getItem('token');
     const jwtsessionToken = sessionStorage.getItem('token');
 
     const isAuth = jwtLocalToken || jwtsessionToken;
 
     useEffect(() => {
+        window.onbeforeunload = function() {
+            if(jwtsessionToken) {
+                sessionStorage.removeItem('token');
+            }
+        };
+    
         return () => {
-            sessionStorage.removeItem('token')
-        }
-    },[])
+            window.onbeforeunload = null;
+        };
+    }, []);
 
     return (
         isAuth ?
             <Layout className={styles.wrapper}>
                 <MenuComponent />
                 <Layout>
-                    <HeaderComponent subtitle={headerTitle} />
-
+                    <HeaderComponent />
                     <Content>
                         <Outlet />
                     </Content>
                 </Layout>
             </Layout>
-
+            
             : <Navigate to="/auth" replace />
     );
 

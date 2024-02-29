@@ -26,7 +26,7 @@ export const LayoutAuthPage: React.FC = () => {
 
     const recoverError = localStorage.getItem('recoverError');
 
-
+        
     if (recoverError) {
         return (
             <div className={styles.wrapperAuth}>

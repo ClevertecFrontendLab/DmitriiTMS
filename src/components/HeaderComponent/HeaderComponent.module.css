@@ -1,6 +1,6 @@
 .header {
     background: #F0F5FF;
-    padding: 8px 24px;
+    padding: 16px 24px;
     line-height: normal;
     height: auto;
 }
@@ -27,6 +27,7 @@
 .settingImgWrapper {
     display: none;
 }
+
 
 @media(max-width: 1001px){
     .headerTitle {
