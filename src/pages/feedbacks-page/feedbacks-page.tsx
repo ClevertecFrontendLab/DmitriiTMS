@@ -38,7 +38,7 @@ export const FeedbacksPage: React.FC = () => {
                         <ButtonModal />
                         {arr && <Button type="text" style={{color: '#061178'}}>Свернуть все отзывы</Button>}
                     </div>
-                    
+
 
                 </div>
 

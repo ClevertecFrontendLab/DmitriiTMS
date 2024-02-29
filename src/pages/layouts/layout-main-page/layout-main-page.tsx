@@ -23,11 +23,11 @@ export const LayoutMainPage: React.FC = () => {
                 sessionStorage.removeItem('token');
             }
         };
-    
+
         return () => {
             window.onbeforeunload = null;
         };
-    }, []);
+    }, [jwtsessionToken]);
 
     return (
         isAuth ?
@@ -40,7 +40,7 @@ export const LayoutMainPage: React.FC = () => {
                     </Content>
                 </Layout>
             </Layout>
-            
+
             : <Navigate to="/auth" replace />
     );
 

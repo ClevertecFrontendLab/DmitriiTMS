@@ -1,5 +1,5 @@
 .wrapperFeedbacks {
-    height: 100vh;
+    min-height: 100vh;
     background: url('../../assets/bg/main-bg.jpeg');
     background-repeat: no-repeat;
     background-size: cover;
