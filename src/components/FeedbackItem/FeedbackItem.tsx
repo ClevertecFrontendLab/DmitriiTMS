@@ -18,8 +18,10 @@ interface IReviews {
 }
 
 export const FeedbackItem: React.FC<IReviews> = ({fullName,message,rating,createdAt }) => {
-
+ 
     const countStarts = 5;
+    const resCreatedDate = createdAt.slice(0,10).split('-').reverse().join('.');
+
     return (
         <div className={styles.reviewsitem}>
             <div className={styles.reviewsItemPersona}>
@@ -29,7 +31,7 @@ export const FeedbackItem: React.FC<IReviews> = ({fullName,message,rating,create
                     height={42}
                     src={avatar}
                 />
-                <Paragraph style={{ fontSize: '16px', marginBottom: '0' }}>{fullName}</Paragraph>
+                <Paragraph style={{ fontSize: '16px', marginBottom: '0', minWidth: '74px', maxWidth: '154px' }}>{fullName}</Paragraph>
             </div>
             <div className="reviews-item__descr">
                 <div className={styles.reviewsItemDescrDate}>
@@ -37,7 +39,7 @@ export const FeedbackItem: React.FC<IReviews> = ({fullName,message,rating,create
                         <Rate count={rating} disabled defaultValue={rating} character={<StarFilled />} style={{ marginRight: '10px', fontSize: '16px' }} />
                         <Rate count={countStarts - rating} disabled defaultValue={countStarts - rating} character={<StarOutlined />} style={{ fontSize: '16px' }} />
                     </div>
-                    <Text style={{ fontSize: '12px', color: '#BFBFBF', position: 'relative', top: '2px' }}>{createdAt}</Text>
+                    <Text style={{ fontSize: '12px', color: '#BFBFBF', position: 'relative', top: '2px' }}>{resCreatedDate}</Text>
                 </div>
                 <Paragraph style={{ marginTop: '12px', fontSize: '14px', color: '#8C8C8C' }}>{message}</Paragraph>
             </div>

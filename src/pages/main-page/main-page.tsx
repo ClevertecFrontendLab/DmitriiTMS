@@ -1,12 +1,16 @@
 import { MainCartList } from '@components/MainCartList/MainCartList';
 
-import { Link as LinkDom } from 'react-router-dom';
-
 import { List, Typography, Button } from 'antd';
 const { Paragraph, Link, Text } = Typography;
 import { AndroidFilled, AppleFilled } from '@ant-design/icons';
 
 import styles from './main-page.module.css';
+import { useDispatch, useSelector } from 'react-redux';
+import { AppDispatch, RootState } from '@redux/configure-store';
+import { feedbacksAsync } from '@redux/actions/feedback';
+import { push } from 'redux-first-history';
+import { Loader } from '@components/Loader/Loader';
+
 
 export const MainPage: React.FC = () => {
 
@@ -17,46 +21,62 @@ export const MainPage: React.FC = () => {
         '— выполнять расписанные тренировки для разных частей тела, следуя подробным инструкциям и советам профессиональных тренеров',
     ];
 
+    const dispatch = useDispatch<AppDispatch>();
+
+    const isErrorFeedbacks = useSelector((state: RootState) => state.feedbacks.error);
+    const isLoadingFeedbacks = useSelector((state: RootState) => state.feedbacks.isLoading);
+
+
+    const getReviews = async () => {
+        await dispatch(feedbacksAsync());
+        if (!isErrorFeedbacks) {
+            dispatch(push('/feedbacks'))
+        }
+    }
+
 
     return (
-        <div className={styles.mainWrapper}>
+        <>
+            {isLoadingFeedbacks && <Loader/>}
+            <div className={styles.mainWrapper}>
+                <List
+                    className={styles.mainList}
+                    header={<div>С CleverFit ты сможешь:</div>}
+                    dataSource={data}
+                    renderItem={(item) => <List.Item>{item}</List.Item>}
+                />
+                <Paragraph className={styles.mainText}>CleverFit — это
+                    не просто приложение, а твой личный помощник в мире фитнеса.
+                    Не откладывай на завтра — начни
+                    тренироваться уже сегодня!
+                </Paragraph>
 
-            <List
-                className={styles.mainList}
-                header={<div>С CleverFit ты сможешь:</div>}
-                dataSource={data}
-                renderItem={(item) => <List.Item>{item}</List.Item>}
-            />
-            <Paragraph className={styles.mainText}>CleverFit — это
-                не просто приложение, а твой личный помощник в мире фитнеса.
-                Не откладывай на завтра — начни
-                тренироваться уже сегодня!
-            </Paragraph>
+                <MainCartList />
 
-            <MainCartList />
+                <div className={styles.cardBlockDowload}>
+                    
+                    <button className={styles.mainLinkReviews} onClick={getReviews}>Смотреть отзывы</button>
 
-            <div className={styles.cardBlockDowload}>
+                    <div className={styles.cartDownload}>
+                        <div className={styles.cartDownloadTitleBlock}>
+                            <Link href="#" className={styles.cartDownloadLink}>Скачать на телефон</Link>
+                            <Text type="secondary" className={styles.cartDownloadText}>Доступно в PRO-тарифе</Text>
+                        </div>
 
-                <LinkDom to='/feedbacks' className={styles.mainLinkReviews}>Смотреть отзывы</LinkDom>
+                        <div className={styles.cartDownloadContent}>
+                            <Button className={styles.cartDownloadLinkText} type="link" href='#' icon={<AndroidFilled style={{ color: '#262626' }} />}>
+                                Android OS
+                            </Button>
+                            <Button className={styles.cartDownloadLinkText} type="link" href='#' icon={<AppleFilled style={{ color: '#262626' }} />}>
+                                Apple iOS
+                            </Button>
+                        </div>
 
-                <div className={styles.cartDownload}>
-                    <div className={styles.cartDownloadTitleBlock}>
-                        <Link href="#" className={styles.cartDownloadLink}>Скачать на телефон</Link>
-                        <Text type="secondary" className={styles.cartDownloadText}>Доступно в PRO-тарифе</Text>
-                    </div>
-
-                    <div className={styles.cartDownloadContent}>
-                        <Button className={styles.cartDownloadLinkText} type="link" href='#' icon={<AndroidFilled style={{ color: '#262626' }} />}>
-                            Android OS
-                        </Button>
-                        <Button className={styles.cartDownloadLinkText} type="link" href='#' icon={<AppleFilled style={{ color: '#262626' }} />}>
-                            Apple iOS
-                        </Button>
                     </div>
 
                 </div>
-
             </div>
-        </div>
+        </>
+
     )
 };
