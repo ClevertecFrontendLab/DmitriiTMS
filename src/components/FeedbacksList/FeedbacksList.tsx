@@ -29,7 +29,7 @@ export const FeedbacksList: React.FC<IReviews> = ({ allReviews }) => {
         const localReviews = JSON.parse(JSON.stringify(feedbacks)).sort((a: any, b: any) => new Date(b.createdAt).getDate() - new Date(a.createdAt).getDate())
         setReviewsFeedbacks(localReviews)
     }
-    
+
     useEffect(() => {
         if (arrFeedbacks) {
             sortReviews(arrFeedbacks.slice(-4))

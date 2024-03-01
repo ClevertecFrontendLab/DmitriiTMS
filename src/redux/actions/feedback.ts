@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
 import { createAsyncThunk } from '@reduxjs/toolkit';
 import axios from 'axios';
 import { push } from 'redux-first-history';
@@ -21,11 +22,11 @@ type Error = {
 
 export const feedbacksAsync = createAsyncThunk<Feedback[], void, { rejectValue: Error }>(
     'feedbacks',
-    async (_, { dispatch}) => {
+    async (_, { dispatch, rejectWithValue}) => {
         try {
             const token = localStorage.getItem('token') || sessionStorage.getItem('token');
             await new Promise(resolve => setTimeout(resolve, 200));
-            const response = await axios.get('https://marathon-api.clevertec.ru/feedback1', {
+            const response = await axios.get('https://marathon-api.clevertec.ru/feedback', {
                 headers: {
                     Authorization: `Bearer ${token}`
                 }
@@ -33,18 +34,17 @@ export const feedbacksAsync = createAsyncThunk<Feedback[], void, { rejectValue: 
             return response.data;
 
         } catch (error: any) {
+
             if (error.response.data.statusCode === 403) {
-                localStorage.clear(); 
+                localStorage.clear();
                 sessionStorage.clear();
                 dispatch(push('/auth'));
-                return error.response.status
-            } 
-            
+                return error;
+            }
+
             if(error.response.data.statusCode !== 403) {
-                console.log(error.response.data.statusCode);
-                
                 dispatch(push('/feedbacks'));
-                return error.response.status
+                return rejectWithValue(error.response.data.statusCode);
             }
         }
     },

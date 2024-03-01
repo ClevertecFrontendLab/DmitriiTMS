@@ -12,7 +12,7 @@ type Error = {
 
 type State = {
     isLoading: boolean;
-    error: Error | null;
+    error: Error | unknown;
 };
 
 type Feedback = {
@@ -48,12 +48,11 @@ const feedbacksSlice = createSlice({
             state.isLoading = false;
             state.feedbacks = payload.payload;
             state.error = null;
-            
+
         });
         builder.addCase(feedbacksAsync.rejected, (state, action) => {
             state.isLoading = false;
             state.error = action.payload as Error;
-            
         });
     },
 });
