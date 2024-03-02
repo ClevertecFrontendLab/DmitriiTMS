@@ -31,15 +31,14 @@ export const feedbacksAsync = createAsyncThunk<Feedback[], void, { rejectValue: 
                     Authorization: `Bearer ${token}`
                 }
             });
-            return response.data;
 
+            return response.data;
         } catch (error: any) {
 
             if (error.response.data.statusCode === 403) {
                 localStorage.clear();
                 sessionStorage.clear();
-                dispatch(push('/auth'));
-                return error;
+                return rejectWithValue(error.response.data.statusCode);
             }
 
             if(error.response.data.statusCode !== 403) {

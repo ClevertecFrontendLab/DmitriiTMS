@@ -22,18 +22,14 @@ export const MainPage: React.FC = () => {
     ];
 
     const dispatch = useDispatch<AppDispatch>();
-
-    const isErrorFeedbacks = useSelector((state: RootState) => state.feedbacks.error);
     const isLoadingFeedbacks = useSelector((state: RootState) => state.feedbacks.isLoading);
-
 
     const getReviews = async () => {
         await dispatch(feedbacksAsync());
-        if (!isErrorFeedbacks) {
+        if(!isLoadingFeedbacks) {
             dispatch(push('/feedbacks'))
         }
     }
-
 
     return (
         <>
@@ -54,7 +50,7 @@ export const MainPage: React.FC = () => {
                 <MainCartList />
 
                 <div className={styles.cardBlockDowload}>
-                    
+
                     <button className={styles.mainLinkReviews} onClick={getReviews}>Смотреть отзывы</button>
 
                     <div className={styles.cartDownload}>

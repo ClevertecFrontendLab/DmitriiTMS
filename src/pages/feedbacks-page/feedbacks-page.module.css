@@ -30,15 +30,19 @@
     flex-direction: column; */
 }
 
-.btnModal {
-    margin-top: 20px;
+.btnModalCenter {
     display: flex;
     align-items: center;
     justify-content: center;
+    margin-top: 20px;
 
 }
 
-.btnModalLeft {
-    justify-content: flex-start;
+.btnModal {
     margin-top: 112px;
+    display: flex;
+    justify-content: flex-start;
+
 }
+
+

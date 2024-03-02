@@ -1,8 +1,8 @@
 import React from 'react';
 
-import avatar from '../../assets/feedbacks/avatar.png';
+import { UserOutlined } from '@ant-design/icons';
 
-import { Image, Typography, Rate } from 'antd';
+import { Image, Typography, Rate, Avatar } from 'antd';
 const { Paragraph, Text } = Typography;
 import { StarOutlined, StarFilled } from '@ant-design/icons';
 
@@ -17,20 +17,22 @@ interface IReviews {
     createdAt: string
 }
 
-export const FeedbackItem: React.FC<IReviews> = ({fullName,message,rating,createdAt }) => {
- 
+export const FeedbackItem: React.FC<IReviews> = ({ fullName, message, rating, createdAt, imageSrc }) => {
+
     const countStarts = 5;
-    const resCreatedDate = createdAt.slice(0,10).split('-').reverse().join('.');
+    const resCreatedDate = createdAt.slice(0, 10).split('-').reverse().join('.');
 
     return (
         <div className={styles.reviewsitem}>
             <div className={styles.reviewsItemPersona}>
-                <Image
-                    preview={false}
-                    width={42}
-                    height={42}
-                    src={avatar}
-                />
+                {
+                    imageSrc ? <Image
+                        preview={false}
+                        width={42}
+                        height={42}
+                        src={imageSrc}
+                    /> : <Avatar size={42} icon={<UserOutlined />} />
+                }
                 <Paragraph style={{ fontSize: '16px', marginBottom: '0', minWidth: '74px', maxWidth: '154px' }}>{fullName}</Paragraph>
             </div>
             <div className="reviews-item__descr">
@@ -46,4 +48,4 @@ export const FeedbackItem: React.FC<IReviews> = ({fullName,message,rating,create
         </div>
 
     )
-}  
+}
