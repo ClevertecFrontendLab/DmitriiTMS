@@ -69,14 +69,14 @@ export const FeedbacksPage: React.FC = () => {
         getOpenModalError2()
     }
 
-    // useEffect(() => {
-    //     if (isErrorFeedbacks !== 403) {
-    //         showModal();
-    //     }
-    //     if (isErrorFeedbacks === 403) {
-    //         dispatch(push('/auth'));
-    //     }
-    // }, [dispatch, isErrorFeedbacks]);
+    useEffect(() => {
+        if (isErrorFeedbacks !== 403) {
+            showModal();
+        }
+        if (isErrorFeedbacks === 403) {
+            dispatch(push('/auth'));
+        }
+    }, [dispatch, isErrorFeedbacks]);
 
     useEffect(() => {
         if (isPost && !isErrorFeedbacksPost) {
