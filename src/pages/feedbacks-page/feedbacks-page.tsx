@@ -101,6 +101,7 @@ export const FeedbacksPage: React.FC = () => {
                         : `${styles.wrapperFeedbacks} ${styles.modal}`
                 }
             >
+                <button onClick={() => dispatch(push('/main'))}>Назад</button>
                 {isErrorModal ? (
                     <div className={styles.modalPostSuccess}>
                         <div className={styles.modalPostSuccessInner}>
@@ -162,12 +163,12 @@ export const FeedbacksPage: React.FC = () => {
 
 
                 <div className={styles.reviews}>
-                    {arrFeedbacks.length > 0 && !isErrorFeedbacks && (
+                    {arrFeedbacks &&  (
                         <div style={{ height: '650px', overflowY: 'auto' }}>
                             <FeedbacksList allReviews={allReviews} />
                         </div>
                     )}
-                    {!isErrorFeedbacks &&
+                    {!arrFeedbacks &&
                         <div className={styles.noRewiews}>
                             <Paragraph
                                 style={{
