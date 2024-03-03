@@ -7,12 +7,12 @@ import { AndroidFilled, AppleFilled } from '@ant-design/icons';
 import styles from './main-page.module.css';
 import { useDispatch, useSelector } from 'react-redux';
 import { AppDispatch, RootState } from '@redux/configure-store';
-import { feedbacksAsync } from '@redux/actions/feedback';
 import { push } from 'redux-first-history';
 import { Loader } from '@components/Loader/Loader';
-
+import { feedbacksAsync } from '@redux/actions/feedback';
 
 export const MainPage: React.FC = () => {
+
 
     const data = [
         '— планировать свои тренировки на календаре, выбирая тип и уровень нагрузки;',
@@ -51,7 +51,9 @@ export const MainPage: React.FC = () => {
 
                 <div className={styles.cardBlockDowload}>
 
-                    <button className={styles.mainLinkReviews} onClick={getReviews}>Смотреть отзывы</button>
+                    <button className={styles.mainLinkReviews} onClick={getReviews} data-test-id='see-reviews'>
+                        Смотреть отзывы
+                    </button>
 
                     <div className={styles.cartDownload}>
                         <div className={styles.cartDownloadTitleBlock}>

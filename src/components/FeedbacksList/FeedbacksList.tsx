@@ -1,4 +1,3 @@
-/* eslint-disable @typescript-eslint/no-explicit-any */
 /* eslint-disable react-hooks/exhaustive-deps */
 import { FeedbackItem } from '@components/FeedbackItem/FeedbackItem';
 import { Loader } from '@components/Loader/Loader';
@@ -29,7 +28,7 @@ export const FeedbacksList: React.FC<IReviews> = ({ allReviews }) => {
     const isLoadingFeedbacks = useSelector((state: RootState) => state.feedbacks.isLoading);
 
     const sortReviews = (feedbacks: Feedback[]) => {
-        const localReviews = JSON.parse(JSON.stringify(feedbacks)).sort((a: any, b: any) => new Date(b.createdAt).getDate() - new Date(a.createdAt).getDate())
+        const localReviews = feedbacks.sort((a, b) => new Date(b.createdAt).getTime() - new Date(a.createdAt).getTime())
         setReviewsFeedbacks(localReviews)
     }
 
@@ -41,18 +40,20 @@ export const FeedbacksList: React.FC<IReviews> = ({ allReviews }) => {
 
     useEffect(() => {
         if (!allReviews) {
-            sortReviews(arrFeedbacks.slice(-4))
+            sortReviews(arrFeedbacks.slice(-4).reverse())
         }
     }, [arrFeedbacks])
 
     useEffect(() => {
         if (allReviews) {
-            dispatch(feedbacksAsync());
-            setReviewsFeedbacks(arrFeedbacks)
+            setReviewsFeedbacks(arrFeedbacks.slice(0,).reverse())
         } else {
-            setReviewsFeedbacks(arrFeedbacks.slice(-4))
+            setReviewsFeedbacks(arrFeedbacks.slice(-4).reverse())
         }
     }, [allReviews])
+
+
+
 
     return (
         <>

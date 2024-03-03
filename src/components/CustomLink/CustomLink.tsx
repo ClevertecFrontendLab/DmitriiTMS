@@ -7,7 +7,7 @@ import styles from './CustomLink.module.css';
 interface ChildrenProp {
     children: React.ReactNode;
     to: string
-  };
+  }
 
 
 export const CustomLink: React.FC<ChildrenProp> = ({ children, to}) => {

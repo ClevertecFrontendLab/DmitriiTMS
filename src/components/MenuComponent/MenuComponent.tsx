@@ -24,7 +24,7 @@ import styles from './MenuComponent.module.css';
 
 export const MenuComponent: React.FC = () => {
 
-    const [collapsed, setCollapsed] = useState(false);
+    const [collapsed, setCollapsed] = useState(true);
     const dispatch = useDispatch<AppDispatch>();
 
     const { width } = useWindowSize();

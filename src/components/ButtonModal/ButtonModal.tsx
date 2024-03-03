@@ -1,41 +1,69 @@
 import React, { useState } from 'react';
 
 import { Button, Modal, Form, Rate, Input } from 'antd';
+import { feedbackPost } from '@redux/actions/feedbackPost';
+import { useDispatch } from 'react-redux';
+import { AppDispatch } from '@redux/configure-store';
+import { feedbacksAsync } from '@redux/actions/feedback';
 
-export const ButtonModal: React.FC = () => {
 
+interface sdfsgsg {
+    openModal2: boolean,
+    getCloselError2: () => void
+}
+
+export const ButtonModal: React.FC<sdfsgsg> = ({ openModal2, getCloselError2 }) => {
+
+    const dispatch = useDispatch<AppDispatch>();
 
     const [open, setOpen] = useState(false);
-    const [confirmLoading, setConfirmLoading] = useState(false);
-    // const [modalText, setModalText] = useState('Content of the modal');
+    const [rateText, setRateText] = useState({
+        rating: 0,
+        message: ''
+    })
 
-    const showModal = () => {
+    const getRate = (val: number) => {
+        setRateText((prev) => ({
+            ...prev,
+            rating: val
+        }))
+
+        localStorage.setItem('rate', String(val))
+    }
+
+    const getText = (e: React.ChangeEvent<HTMLTextAreaElement>) => {
+        setRateText((prev) => ({
+            ...prev,
+            message: e.target.value
+        }))
+
+        localStorage.setItem('message', e.target.value)
+    };
+
+    const handleOk = async () => {
+        getCloselError2();
+        console.log('Данные собраны и отправлены');
+        await dispatch(feedbackPost({
+            rating: rateText.rating,
+            message: rateText.message
+        }))
+        await dispatch(feedbacksAsync());
+        setOpen(false);
+
+    };
+
+    const showModalReviews = () => {
         setOpen(true);
     };
 
-    const onFinish = (values: any) => {
-        console.log('Received values of form: ', values);
-    };
-
-    const handleOk = () => {
-        console.log('Данные собраны и отправлены');
-
-        // setModalText('The modal will be closed after two seconds');
-        setConfirmLoading(true);
-        setTimeout(() => {
-            setOpen(false);
-            setConfirmLoading(false);
-        }, 1000);
-    };
-
     const handleCancel = () => {
-        console.log('Clicked cancel button');
         setOpen(false);
+        getCloselError2();
     };
 
     return (
         <div>
-            <Button type="primary" onClick={showModal} style={{background: '#2F54EB'}}>
+            <Button type="primary" onClick={showModalReviews} style={{ background: '#2F54EB' }} data-test-id='write-review'>
                 Написать отзыв
             </Button>
             <Modal
@@ -43,40 +71,36 @@ export const ButtonModal: React.FC = () => {
                 centered={true}
                 cancelButtonProps={{ style: { display: 'none' } }}
                 maskStyle={{ backgroundColor: 'rgba(121,156,212, 0.5)', backdropFilter: 'blur(3px)' }}
-                okText='Опубликовать'
-                open={open}
-                onOk={handleOk}
-                confirmLoading={confirmLoading}
+                open={open || openModal2}
                 onCancel={handleCancel}
+                footer={
+                    [<Button type="primary" key="submit"
+                    onClick={handleOk}
+                    disabled={rateText.rating || localStorage.getItem('rate') ? false : true}
+                    data-test-id='new-review-submit-button'>
+                        Опубликовать
+                    </Button>,]
+                }
             >
 
                 <Form
                     name="validate_other"
-                    onFinish={onFinish}
                 >
                     <Form.Item name="rate">
-                        <Rate />
+                        <Rate onChange={(val) => getRate(val)} defaultValue={Number(localStorage.getItem('rate'))} />
                     </Form.Item>
 
                     <Form.Item
-                        name="intro"
-                        label="Intro"
-                        rules={[{ required: true, message: 'Please input Intro' }]}
+                        name="review"
                     >
-                        <Input.TextArea showCount maxLength={100} />
-                    </Form.Item>
-                    
-                    <Form.Item>
-                        <Button type="primary" htmlType="submit" onClick={handleOk}>
-                            Log in
-                        </Button>
+                        <Input.TextArea showCount maxLength={100} onChange={(e) => getText(e)} defaultValue={localStorage.getItem('message') ? String(localStorage.getItem('message')) : ''}/>
                     </Form.Item>
                 </Form>
-
-
-                {/* <p>{modalText}</p> */}
             </Modal>
         </div>
     )
 
 }
+
+// defaultValue={Number(localStorage.getItem('rate'))}
+// defaultValue={localStorage.getItem('message') ? String(localStorage.getItem('message')) : ''}

@@ -21,7 +21,7 @@ type Error = {
 
 
 export const feedbacksAsync = createAsyncThunk<Feedback[], void, { rejectValue: Error }>(
-    'feedbacks',
+    'feedbacks/feedbacksAsync',
     async (_, { dispatch, rejectWithValue}) => {
         try {
             const token = localStorage.getItem('token') || sessionStorage.getItem('token');
@@ -35,9 +35,10 @@ export const feedbacksAsync = createAsyncThunk<Feedback[], void, { rejectValue: 
             return response.data;
         } catch (error: any) {
 
-            if (error.response.data.statusCode === 403) {
+            if (error.response.data.statusCode === 403 ) {
                 localStorage.clear();
                 sessionStorage.clear();
+                dispatch(push('/auth'));
                 return rejectWithValue(error.response.data.statusCode);
             }
 
