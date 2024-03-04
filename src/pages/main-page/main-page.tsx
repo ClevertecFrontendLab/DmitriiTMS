@@ -23,9 +23,13 @@ export const MainPage: React.FC = () => {
 
     const dispatch = useDispatch<AppDispatch>();
     const isLoadingFeedbacks = useSelector((state: RootState) => state.feedbacks.isLoading);
+    const isErrorFeedbacks = useSelector((state: RootState) => state.feedbacks.error);
 
     const getReviews = async () => {
-        await dispatch(feedbacksAsync());
+        if(!isErrorFeedbacks && (localStorage.getItem('token') || sessionStorage.getItem('token'))) {
+            await dispatch(feedbacksAsync());
+        }
+        
         if(!isLoadingFeedbacks) {
             dispatch(push('/feedbacks'))
         }

@@ -19,7 +19,7 @@ export const LayoutMainPage: React.FC = () => {
 
     useEffect(() => {
         window.onbeforeunload = function() {
-            if(jwtsessionToken) {
+            if(jwtsessionToken) {            
                 sessionStorage.removeItem('token');
             }
         };

@@ -22,7 +22,7 @@ export const feedbackPost = createAsyncThunk<Feedback, { rating: number; message
             return response.data
 
         } catch (error: any) {
-            return rejectWithValue(error.response.data.statusCode);
+            return rejectWithValue(error.response.status);
         }
     }
 );

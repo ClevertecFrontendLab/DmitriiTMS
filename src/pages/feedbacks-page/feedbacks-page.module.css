@@ -64,4 +64,13 @@
     background-color: #fff;
 }
 
+.modalBackError {
+    margin: 0 auto;
+    max-width: 350px;
+}
+
+.ant-result-title {
+    font-size: 14px !important;
+}
+
 

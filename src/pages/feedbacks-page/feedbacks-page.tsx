@@ -9,7 +9,7 @@ const { Paragraph, Text } = Typography;
 import styles from './feedbacks-page.module.css';
 import { useDispatch, useSelector } from 'react-redux';
 import { AppDispatch, RootState } from '@redux/configure-store';
-import { feedbacksAsync } from '@redux/actions/feedback';
+
 import { push } from 'redux-first-history';
 
 export const FeedbacksPage: React.FC = () => {
@@ -26,7 +26,7 @@ export const FeedbacksPage: React.FC = () => {
 
     const dispatch = useDispatch<AppDispatch>();
     const arrFeedbacks = useSelector((state: RootState) => state.feedbacks.feedbacks);
-    // const arrs = true
+
     const isErrorFeedbacks = useSelector((state: RootState) => state.feedbacks.error);
     const isLoadingFeedbacks = useSelector((state: RootState) => state.feedbacks.isLoading);
 
@@ -53,7 +53,6 @@ export const FeedbacksPage: React.FC = () => {
     const handleCancel = () => {
         setIsModalOpen(false);
         dispatch(push('/main'))
-        // dispatch(feedbacksAsync());
     };
 
     const toggleisSuccess = () => {
@@ -70,12 +69,15 @@ export const FeedbacksPage: React.FC = () => {
     }
 
     useEffect(() => {
+
         if (isErrorFeedbacks !== 403) {
             showModal();
         }
+
         if (isErrorFeedbacks === 403) {
             dispatch(push('/auth'));
         }
+
     }, [dispatch, isErrorFeedbacks]);
 
     useEffect(() => {
@@ -90,8 +92,6 @@ export const FeedbacksPage: React.FC = () => {
         }
     }, [isErrorFeedbacksPost])
 
-    // console.log(isErrorFeedbacksPost);
-
     return (
         <>
             <div
@@ -101,7 +101,6 @@ export const FeedbacksPage: React.FC = () => {
                         : `${styles.wrapperFeedbacks} ${styles.modal}`
                 }
             >
-                <button onClick={() => dispatch(push('/main'))}>Назад</button>
                 {isErrorModal ? (
                     <div className={styles.modalPostSuccess}>
                         <div className={styles.modalPostSuccessInner}>
@@ -149,6 +148,7 @@ export const FeedbacksPage: React.FC = () => {
                             }
                         >
                             <Result
+                                className={styles.modalBackError}
                                 status='500'
                                 title='Что-то пошло не так'
                                 subTitle='Произошла ошибка, попробуйте ещё раз'
@@ -163,12 +163,12 @@ export const FeedbacksPage: React.FC = () => {
 
 
                 <div className={styles.reviews}>
-                    {arrFeedbacks &&  (
-                        <div style={{ height: '650px', overflowY: 'auto' }}>
+                    {arrFeedbacks && (
+                        <div  style= { { height: `${arrFeedbacks.length > 0 ? '650px' : null}` , overflowY: 'auto' }}>
                             <FeedbacksList allReviews={allReviews} />
                         </div>
                     )}
-                    {!arrFeedbacks &&
+                    {arrFeedbacks.length == 0 &&
                         <div className={styles.noRewiews}>
                             <Paragraph
                                 style={{
@@ -196,22 +196,25 @@ export const FeedbacksPage: React.FC = () => {
                         <div>
                             <div
                                 className={
-                                    arrFeedbacks
-                                        ? `${styles.btnModalCenter} ${styles.btnModal}`
-                                        : `${styles.btnModalCenter}`
+                                    arrFeedbacks.length === 0
+                                        ? `${styles.btnModalCenter}`
+                                        : `${styles.btnModalCenter} ${styles.btnModal}`
                                 }
                             >
                                 <ButtonModal openModal2={openModal2} getCloselError2={getCloselError2} />
-                                <Button
-                                    type='text'
-                                    style={{ color: '#061178' }}
-                                    onClick={toggleReviews}
-                                    data-test-id='all-reviews-button'
-                                >
-                                    {!allReviews
-                                        ? 'Развернуть все отзывы'
-                                        : 'Свернуть все отзывы'}
-                                </Button>
+                                {
+                                    arrFeedbacks.length > 0 && <Button
+                                        type='text'
+                                        style={{ color: '#061178' }}
+                                        onClick={toggleReviews}
+                                        data-test-id='all-reviews-button'
+                                    >
+                                        {!allReviews
+                                            ? 'Развернуть все отзывы'
+                                            : 'Свернуть все отзывы'}
+                                    </Button>
+                                }
+
                             </div>
                         </div>
                     )}

@@ -75,3 +75,22 @@ button {
     }
 }
 
+@media(max-width: 400px) {
+  .ant-modal-body {
+    padding: 0;
+  }
+  .ant-result-subtitle {
+    margin: 0 auto;
+  }
+
+  .ant-result-title {
+    font-weight: 500;
+  }
+
+  .ant-result.ant-result-error {
+    padding: 20px;
+  }
+}
+
+
+

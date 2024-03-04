@@ -32,8 +32,8 @@ export const FeedbacksList: React.FC<IReviews> = ({ allReviews }) => {
         setReviewsFeedbacks(localReviews)
     }
 
-    useEffect(() => {
-        if (arrFeedbacks.length === 0) {
+    useEffect(() => {       
+        if (arrFeedbacks.length === 0 ) {
             dispatch(feedbacksAsync());
         }
     }, [])

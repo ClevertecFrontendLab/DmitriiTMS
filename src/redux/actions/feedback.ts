@@ -24,28 +24,32 @@ export const feedbacksAsync = createAsyncThunk<Feedback[], void, { rejectValue: 
     'feedbacks/feedbacksAsync',
     async (_, { dispatch, rejectWithValue}) => {
         try {
-            const token = localStorage.getItem('token') || sessionStorage.getItem('token');
+            const accessToken = localStorage.getItem('token') || sessionStorage.getItem('token');
             await new Promise(resolve => setTimeout(resolve, 200));
             const response = await axios.get('https://marathon-api.clevertec.ru/feedback', {
                 headers: {
-                    Authorization: `Bearer ${token}`
+                    Authorization: `Bearer ${accessToken}`
                 }
             });
 
             return response.data;
-        } catch (error: any) {
+        } catch (error: any) {    
 
-            if (error.response.data.statusCode === 403 ) {
+            if (error.response.status == 403 ) {
                 localStorage.clear();
                 sessionStorage.clear();
+
                 dispatch(push('/auth'));
-                return rejectWithValue(error.response.data.statusCode);
+                return rejectWithValue(error.response.status);
             }
 
-            if(error.response.data.statusCode !== 403) {
+            if(error.response.status !== 403) {
                 dispatch(push('/feedbacks'));
-                return rejectWithValue(error.response.data.statusCode);
+                return rejectWithValue(error.response.status);
             }
+
+            return rejectWithValue(error.response.status);
+            
         }
     },
 );

@@ -43,10 +43,18 @@ export const ButtonModal: React.FC<sdfsgsg> = ({ openModal2, getCloselError2 }) 
     const handleOk = async () => {
         getCloselError2();
         console.log('Данные собраны и отправлены');
-        await dispatch(feedbackPost({
-            rating: rateText.rating,
-            message: rateText.message
-        }))
+        if(!localStorage.getItem('rate')) {
+            await dispatch(feedbackPost({
+                rating: rateText.rating,
+                message: rateText.message
+            }))
+        } else {
+            await dispatch(feedbackPost({
+                rating: Number(localStorage.getItem('rate')),
+                message: String(localStorage.getItem('message'))
+            }))
+        }
+        
         await dispatch(feedbacksAsync());
         setOpen(false);
 
@@ -93,7 +101,7 @@ export const ButtonModal: React.FC<sdfsgsg> = ({ openModal2, getCloselError2 }) 
                     <Form.Item
                         name="review"
                     >
-                        <Input.TextArea showCount maxLength={100} onChange={(e) => getText(e)} defaultValue={localStorage.getItem('message') ? String(localStorage.getItem('message')) : ''}/>
+                        <Input.TextArea showCount maxLength={100} onChange={(e) => getText(e)} placeholder='Autosize height based on content lines' defaultValue={localStorage.getItem('message') ? String(localStorage.getItem('message')) : ''}/>
                     </Form.Item>
                 </Form>
             </Modal>
@@ -101,6 +109,3 @@ export const ButtonModal: React.FC<sdfsgsg> = ({ openModal2, getCloselError2 }) 
     )
 
 }
-
-// defaultValue={Number(localStorage.getItem('rate'))}
-// defaultValue={localStorage.getItem('message') ? String(localStorage.getItem('message')) : ''}
