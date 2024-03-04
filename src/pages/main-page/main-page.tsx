@@ -5,8 +5,14 @@ const { Paragraph, Link, Text } = Typography;
 import { AndroidFilled, AppleFilled } from '@ant-design/icons';
 
 import styles from './main-page.module.css';
+import { useDispatch, useSelector } from 'react-redux';
+import { AppDispatch, RootState } from '@redux/configure-store';
+import { push } from 'redux-first-history';
+import { Loader } from '@components/Loader/Loader';
+import { feedbacksAsync } from '@redux/actions/feedback';
 
 export const MainPage: React.FC = () => {
+
 
     const data = [
         '— планировать свои тренировки на календаре, выбирая тип и уровень нагрузки;',
@@ -15,46 +21,64 @@ export const MainPage: React.FC = () => {
         '— выполнять расписанные тренировки для разных частей тела, следуя подробным инструкциям и советам профессиональных тренеров',
     ];
 
+    const dispatch = useDispatch<AppDispatch>();
+    const isLoadingFeedbacks = useSelector((state: RootState) => state.feedbacks.isLoading);
+    const isErrorFeedbacks = useSelector((state: RootState) => state.feedbacks.error);
+
+    const getReviews = async () => {
+        if(!isErrorFeedbacks && (localStorage.getItem('token') || sessionStorage.getItem('token'))) {
+            await dispatch(feedbacksAsync());
+        }
+        
+        if(!isLoadingFeedbacks) {
+            dispatch(push('/feedbacks'))
+        }
+    }
 
     return (
-        <div className={styles.mainWrapper}>
+        <>
+            {isLoadingFeedbacks && <Loader/>}
+            <div className={styles.mainWrapper}>
+                <List
+                    className={styles.mainList}
+                    header={<div>С CleverFit ты сможешь:</div>}
+                    dataSource={data}
+                    renderItem={(item) => <List.Item>{item}</List.Item>}
+                />
+                <Paragraph className={styles.mainText}>CleverFit — это
+                    не просто приложение, а твой личный помощник в мире фитнеса.
+                    Не откладывай на завтра — начни
+                    тренироваться уже сегодня!
+                </Paragraph>
 
-            <List
-                className={styles.mainList}
-                header={<div>С CleverFit ты сможешь:</div>}
-                dataSource={data}
-                renderItem={(item) => <List.Item>{item}</List.Item>}
-            />
-            <Paragraph className={styles.mainText}>CleverFit — это
-                не просто приложение, а твой личный помощник в мире фитнеса.
-                Не откладывай на завтра — начни
-                тренироваться уже сегодня!
-            </Paragraph>
+                <MainCartList />
 
-            <MainCartList />
+                <div className={styles.cardBlockDowload}>
 
-            <div className={styles.cardBlockDowload}>
+                    <button className={styles.mainLinkReviews} onClick={getReviews} data-test-id='see-reviews'>
+                        Смотреть отзывы
+                    </button>
 
-                <Link href="#" className={styles.mainLinkReviews}>Смотреть отзывы</Link>
+                    <div className={styles.cartDownload}>
+                        <div className={styles.cartDownloadTitleBlock}>
+                            <Link href="#" className={styles.cartDownloadLink}>Скачать на телефон</Link>
+                            <Text type="secondary" className={styles.cartDownloadText}>Доступно в PRO-тарифе</Text>
+                        </div>
 
-                <div className={styles.cartDownload}>
-                    <div className={styles.cartDownloadTitleBlock}>
-                        <Link href="#" className={styles.cartDownloadLink}>Скачать на телефон</Link>
-                        <Text type="secondary" className={styles.cartDownloadText}>Доступно в PRO-тарифе</Text>
-                    </div>
+                        <div className={styles.cartDownloadContent}>
+                            <Button className={styles.cartDownloadLinkText} type="link" href='#' icon={<AndroidFilled style={{ color: '#262626' }} />}>
+                                Android OS
+                            </Button>
+                            <Button className={styles.cartDownloadLinkText} type="link" href='#' icon={<AppleFilled style={{ color: '#262626' }} />}>
+                                Apple iOS
+                            </Button>
+                        </div>
 
-                    <div className={styles.cartDownloadContent}>
-                        <Button className={styles.cartDownloadLinkText} type="link" href='#' icon={<AndroidFilled style={{ color: '#262626' }} />}>
-                            Android OS
-                        </Button>
-                        <Button className={styles.cartDownloadLinkText} type="link" href='#' icon={<AppleFilled style={{ color: '#262626' }} />}>
-                            Apple iOS
-                        </Button>
                     </div>
 
                 </div>
-
             </div>
-        </div>
+        </>
+
     )
 };

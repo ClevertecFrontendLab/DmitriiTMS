@@ -45,6 +45,11 @@ export const LoginPage: React.FC = () => {
         }
     }
 
+    const handleGoogleLogin = () => {
+        window.location.href = 'https://marathon-api.clevertec.ru/auth/google';
+      };
+
+
     useEffect(() => {
         if (ErrorStatusCode && ErrorStatusCode !== 200) {
             dispatch(push('/result/error-login'))
@@ -52,13 +57,14 @@ export const LoginPage: React.FC = () => {
 
     }, [dispatch, ErrorStatusCode])
 
+
     return (
         <>
             <div className={styles.formLogin}>
 
                 <Form
                     name="basic"
-                    initialValues={{ remember: true }}
+                    initialValues={{ remember: false }}
                     onFinish={onFinish}
                 >
                     <div className={styles.formInputBlock}>
@@ -114,8 +120,8 @@ export const LoginPage: React.FC = () => {
                     </div>
 
                     <div className={styles.formTextBlock}>
-                        <Form.Item className={styles.checkboxItem} name="remember" valuePropName="checked"  >
-                            <Checkbox data-test-id='login-remember'>Запомнить меня</Checkbox>
+                        <Form.Item className={styles.checkboxItem} name="remember" valuePropName="checked">
+                            <Checkbox defaultChecked={false} data-test-id='login-remember'>Запомнить меня</Checkbox>
                         </Form.Item>
                         <Text className={styles.linkPassword} onClick={clickForgotPassword} data-test-id='login-forgot-button'>Забыли пароль?</Text>
                     </div>
@@ -126,7 +132,7 @@ export const LoginPage: React.FC = () => {
                         </Button>
                     </Form.Item>
 
-                    <Button icon={width && width < 600 ? '' : <GooglePlusOutlined />} style={{ width: '100%' }}>
+                    <Button onClick={handleGoogleLogin} icon={width && width < 600 ? '' : <GooglePlusOutlined />} style={{ width: '100%' }}>
                         Войти через Google
                     </Button>
                 </Form>

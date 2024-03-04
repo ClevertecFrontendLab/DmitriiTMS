@@ -21,7 +21,6 @@ export const registerUser = createAsyncThunk<UserState, { email: string; passwor
     async ({ email, password }, { dispatch  }) => {
         try {
             await new Promise(resolve => setTimeout(resolve, 200));
-
             const response = await axios.post('https://marathon-api.clevertec.ru/auth/registration', { email, password });
             localStorage.removeItem('regError');
             sessionStorage.removeItem('email');

@@ -1,5 +1,5 @@
 import React from 'react';
-import { Outlet, Navigate} from 'react-router-dom';
+import { Outlet, Navigate } from 'react-router-dom';
 
 import { CustomLink } from '@components/CustomLink/CustomLink';
 
@@ -25,6 +25,8 @@ export const LayoutAuthPage: React.FC = () => {
     const isAuth = jwtLocalToken || jwtsessionToken;
 
     const recoverError = localStorage.getItem('recoverError');
+
+
 
 
     if (recoverError) {

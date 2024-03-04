@@ -3,7 +3,7 @@
     background-repeat: no-repeat;
     background-size: cover;
     background-position:  top center;
-    padding: 24px 24px 42px 24px;
+    padding: 24px 24px 42px;
 }
 
 .mainList {
@@ -98,7 +98,7 @@
 
 @media(max-width: 400px) {
     .mainWrapper {
-        padding: 16px 16px 42px 16px;
+        padding: 16px 16px 42px;
     }
 }
 

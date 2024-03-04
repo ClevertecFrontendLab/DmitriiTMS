@@ -68,7 +68,6 @@ const userSlice = createSlice({
                 state.loading = false;
             })
             .addCase(registerUser.rejected, (state) => {
-
                 state.loading = false;
             })
             .addCase(loginUser.rejected, (state) => {

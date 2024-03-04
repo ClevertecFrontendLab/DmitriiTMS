@@ -1,0 +1,50 @@
+.reviewsitem {
+    background-color: #fff;
+    display: flex;
+    gap: 16px;
+    padding: 16px;
+    margin-bottom: 20px;
+}
+
+.reviewsItemPersona {
+    flex: 0 0 174px;
+    text-align: center;
+}
+
+.reviewsItemDescrDate {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+}
+
+.reviewsItemPersona {
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    gap: 12px;
+}
+
+
+@media(max-width: 835px){
+    .reviewsItemPersona {
+        flex: 0 0 144px;
+    }
+ }
+
+
+@media(max-width: 475px){
+    .reviewsitem {
+        flex-direction: column;
+        gap: 5px;
+    }
+
+    .reviewsItemPersona {
+        flex: 1 0 auto;
+        text-align: left;
+    }
+
+    .reviewsItemPersona {
+        flex-direction: row;
+        align-items: center;
+    }
+}

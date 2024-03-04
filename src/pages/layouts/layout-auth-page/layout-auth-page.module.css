@@ -11,7 +11,7 @@
 
 .wrapperAuthBlock {
     background-color: #fff;
-    padding: 72px 90px 80px 90px;
+    padding: 72px 90px 80px;
 }
 
 .wrapperAuthBlockImg {
@@ -44,7 +44,7 @@
 
 @media (max-width: 600px) {
     .wrapperAuthBlock {
-        padding: 32px 16px 80px 16px;
+        padding: 32px 16px 80px;
     }
 }
 

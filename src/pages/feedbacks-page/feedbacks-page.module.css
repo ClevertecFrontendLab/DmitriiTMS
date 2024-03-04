@@ -1,0 +1,99 @@
+.wrapperFeedbacks {
+    min-height: 100vh;
+    background: url('../../assets/bg/main-bg.jpeg');
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position:  top center;
+    padding: 24px 24px 42px;
+}
+
+.modal {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.noRewiews {
+    background-color: #fff;
+    text-align: center;
+    padding: 56px 0;
+}
+
+.noRewiewsText {
+    max-width: 522px;
+    margin: 0 auto;
+}
+
+.reviews {
+    width: 100%;
+}
+
+.btnModalCenter {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-top: 20px;
+
+}
+
+.btnModal {
+    margin-top: 112px;
+    display: flex;
+    justify-content: flex-start;
+
+}
+
+.modalPostSuccess {
+    position: fixed;
+    z-index: 11;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    backdrop-filter: blur(3px);
+    background: rgba(121,156,212, 0.5);
+}
+
+.modalPostSuccessInner {
+    background-color: #fff;
+    max-width: 540px;
+    width: 100%;
+}
+
+.modalBackError {
+    margin: 0 auto;
+    max-width: 350px;
+}
+
+.ant-result-title {
+    font-size: 14px !important;
+}
+
+.btnReviewsOk {
+    width: 180px;
+    height: 40px;
+    background-color: #2F54EB;
+    font-size: 14px;
+}
+
+.btnReviewsClose {
+    width: 180px;
+    height: 40px;
+    font-size: 14px;
+}
+
+@media(max-width: 560px) {
+    .modalPostSuccessInner {
+        max-width: 340px;
+        width: 100%;
+    }
+    .btnReviewsOk,
+    .btnReviewsClose {
+        width: 144px;
+    }
+}
+
+
