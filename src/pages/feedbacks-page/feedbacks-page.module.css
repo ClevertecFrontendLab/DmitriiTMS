@@ -26,9 +26,6 @@
 
 .reviews {
     width: 100%;
-
-    /* display: flex;
-    flex-direction: column; */
 }
 
 .btnModalCenter {
@@ -62,6 +59,8 @@
 
 .modalPostSuccessInner {
     background-color: #fff;
+    max-width: 540px;
+    width: 100%;
 }
 
 .modalBackError {
@@ -71,6 +70,30 @@
 
 .ant-result-title {
     font-size: 14px !important;
+}
+
+.btnReviewsOk {
+    width: 180px;
+    height: 40px;
+    background-color: #2F54EB;
+    font-size: 14px;
+}
+
+.btnReviewsClose {
+    width: 180px;
+    height: 40px;
+    font-size: 14px;
+}
+
+@media(max-width: 560px) {
+    .modalPostSuccessInner {
+        max-width: 340px;
+        width: 100%;
+    }
+    .btnReviewsOk,
+    .btnReviewsClose {
+        width: 144px;
+    }
 }
 
 

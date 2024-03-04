@@ -109,10 +109,10 @@ export const FeedbacksPage: React.FC = () => {
                                 title='Данные не сохранились'
                                 subTitle='Что-то пошло не так.Попробуйте ещё раз'
                                 extra={[
-                                    <Button type='primary' key='console' onClick={closeErrorModal2} data-test-id='write-review-not-saved-modal'>
+                                    <Button type='primary' className={styles.btnReviewsOk} key='console' onClick={closeErrorModal2} data-test-id='write-review-not-saved-modal'>
                                         Написать отзыв
                                     </Button>,
-                                    <Button key='buy' onClick={closeErrorModal}>Закрыть</Button>,
+                                    <Button key='buy' className={styles.btnReviewsClose} onClick={closeErrorModal}>Закрыть</Button>,
                                 ]}
                             />
                         </div>

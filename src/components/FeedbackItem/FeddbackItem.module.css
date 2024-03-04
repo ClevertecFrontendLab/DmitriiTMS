@@ -27,6 +27,7 @@
 @media(max-width: 835px){
     .reviewsitem {
         flex-direction: column;
+        gap: 5px;
     }
 
     .reviewsItemPersona {
