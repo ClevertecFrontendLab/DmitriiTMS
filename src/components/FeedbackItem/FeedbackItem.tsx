@@ -33,7 +33,7 @@ export const FeedbackItem: React.FC<IReviews> = ({ fullName, message, rating, cr
                         src={imageSrc}
                     /> : <Avatar size={42} icon={<UserOutlined />} />
                 }
-                <Paragraph style={{ fontSize: '16px', marginBottom: '0', minWidth: '74px', maxWidth: '154px' }}>{fullName}</Paragraph>
+                <Paragraph style={{ fontSize: '16px', marginBottom: '0', minWidth: '74px', maxWidth: '154px' }}>{fullName ? fullName : 'Пользователь'}</Paragraph>
             </div>
             <div className="reviews-item__descr">
                 <div className={styles.reviewsItemDescrDate}>
