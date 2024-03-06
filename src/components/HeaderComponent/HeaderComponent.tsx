@@ -8,7 +8,7 @@ import { SettingOutlined } from '@ant-design/icons';
 import { useLocation, Link } from 'react-router-dom';
 
 const { Header } = Layout;
-const { Text, Title } = Typography;
+const { Title } = Typography;
 
 export const HeaderComponent: React.FC = () => {
 
@@ -30,6 +30,14 @@ export const HeaderComponent: React.FC = () => {
                     </Breadcrumb.Item>
                 </>
             )
+        }else if (location.pathname === '/calendar') {
+            return (
+                <>
+                    <Breadcrumb.Item>
+                        <Link to='/calendar'>Календарь</Link>
+                    </Breadcrumb.Item>
+                </>
+            )
         }
     }
 
@@ -38,14 +46,14 @@ export const HeaderComponent: React.FC = () => {
             <Breadcrumb>
                 {titleLinkPage()}
             </Breadcrumb>
-
-            <Text className={styles.headerBreadcramp}></Text>
-            {
+                <div className={ location.pathname === '/main' ? `${styles.headerContentTitleBlock}` : `${styles.headerContentTitleBlock} ${styles.calendarSetting}`}>
+                {
                 location.pathname === '/main' &&
-                <div className={styles.headerContentTitleBlock}>
                     <Title className={styles.headerTitle}>Приветствуем тебя в CleverFit —
                         приложении,  {width && width > 674 && width <= 834 ? <br /> : null}
-                        которое поможет тебе добиться своей мечты!</Title>
+                        которое поможет тебе добиться своей мечты!
+                    </Title>
+                }
                     <div className={styles.settingBtnBlock}>
                         <Button className={styles.settingBtn} type="text" icon={<SettingOutlined className={styles.settingsImg} />}>Настройки</Button>
                         <div className={styles.settingImgWrapper}>
@@ -53,7 +61,6 @@ export const HeaderComponent: React.FC = () => {
                         </div>
                     </div>
                 </div>
-            }
         </Header>
     )
 };

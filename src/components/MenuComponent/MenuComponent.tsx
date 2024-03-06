@@ -24,7 +24,7 @@ import styles from './MenuComponent.module.css';
 
 export const MenuComponent: React.FC = () => {
 
-    const [collapsed, setCollapsed] = useState(true);
+    const [collapsed, setCollapsed] = useState(false);
     const dispatch = useDispatch<AppDispatch>();
 
     const { width } = useWindowSize();
@@ -37,6 +37,8 @@ export const MenuComponent: React.FC = () => {
 
     }
 
+
+
     return (
         <Sider trigger={null} collapsible collapsed={collapsed}
             className={!collapsed ? styles.menu : `${styles.menu} ${styles.menuHide}`}>
@@ -48,12 +50,12 @@ export const MenuComponent: React.FC = () => {
                     <Menu
                         mode="inline"
                         inlineIndent={10}
-                        selectable={false}
+                        selectable={true}
                         items={[
                             {
                                 key: '1',
-                                icon: <Link to='/main/calendar'><Image preview={false}  width={16} src={calen} alt='calendar'/></Link>,
-                                label: <Link to='/main/calendar' className={!collapsed ? styles.opent : styles.hidet}>Календарь</Link>,
+                                icon: <Link to='/calendar'><Image preview={false}  width={16} src={calen} alt='calendar'/></Link>,
+                                label: <Link to='/calendar' className={!collapsed ? styles.opent : styles.hidet}>Календарь</Link>,
                             },
                             {
                                 key: '2',
@@ -71,6 +73,8 @@ export const MenuComponent: React.FC = () => {
                                 label: <Link to='/trening'>Профиль</Link>,
                             },
                         ]}
+                        defaultSelectedKeys={['0']}
+                        defaultOpenKeys={['0']}
                     />
 
                     <div className={styles.btnTrap}

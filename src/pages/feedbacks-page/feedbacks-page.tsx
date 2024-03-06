@@ -16,8 +16,6 @@ export const FeedbacksPage: React.FC = () => {
 
     const [openModal2, setOpenModal2] = useState(false)
 
-
-
     const [allReviews, setAllReviews] = useState(false);
     const [isModalOpen, setIsModalOpen] = useState(false);
 

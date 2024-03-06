@@ -28,6 +28,10 @@
     display: none;
 }
 
+.calendarSetting {
+    justify-content: flex-end;
+}
+
 
 @media(max-width: 1001px){
     .headerTitle {
