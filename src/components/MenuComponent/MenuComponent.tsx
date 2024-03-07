@@ -1,8 +1,8 @@
 import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
 import { useWindowSize } from "@uidotdev/usehooks";
-import { useDispatch } from 'react-redux';
-import { AppDispatch } from '@redux/configure-store';
+import { useDispatch} from 'react-redux';
+import { AppDispatch} from '@redux/configure-store';
 import { push } from 'redux-first-history';
 
 import {
@@ -20,6 +20,7 @@ import exit from '../../assets/icons/exit.svg';
 import calen from '../../assets/icons/calendar.svg'
 
 import styles from './MenuComponent.module.css';
+import { trainingsAsync } from '@redux/actions/trainings';
 
 
 export const MenuComponent: React.FC = () => {
@@ -30,14 +31,14 @@ export const MenuComponent: React.FC = () => {
     const { width } = useWindowSize();
 
     const logout = () => {
-
         localStorage.removeItem('token');
         sessionStorage.removeItem('token');
         dispatch(push('/'));
-
     }
 
-
+    const getTrenings = () => {
+        dispatch(trainingsAsync())
+    }
 
     return (
         <Sider trigger={null} collapsible collapsed={collapsed}
@@ -54,8 +55,9 @@ export const MenuComponent: React.FC = () => {
                         items={[
                             {
                                 key: '1',
-                                icon: <Link to='/calendar'><Image preview={false}  width={16} src={calen} alt='calendar'/></Link>,
-                                label: <Link to='/calendar' className={!collapsed ? styles.opent : styles.hidet}>Календарь</Link>,
+                                icon: <button><Image preview={false}  width={16} src={calen} alt='calendar'/></button>,
+                                label: <button className={!collapsed ? styles.opent : styles.hidet}>Календарь</button>,
+                                onClick: getTrenings
                             },
                             {
                                 key: '2',

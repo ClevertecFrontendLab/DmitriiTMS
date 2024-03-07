@@ -2,6 +2,7 @@
     background: #fff;
     text-align: center;
     flex: 0 1 240px;
+    cursor: pointer;
 }
 
 .list__item_title {

@@ -33,9 +33,14 @@ export const HeaderComponent: React.FC = () => {
         }else if (location.pathname === '/calendar') {
             return (
                 <>
+                    <>
+                    <Breadcrumb.Item>
+                        <Link to='/main'>Главная</Link>
+                    </Breadcrumb.Item>
                     <Breadcrumb.Item>
                         <Link to='/calendar'>Календарь</Link>
                     </Breadcrumb.Item>
+                </>
                 </>
             )
         }

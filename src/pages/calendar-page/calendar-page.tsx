@@ -3,6 +3,9 @@ import type { BadgeProps } from 'antd';
 import { Badge, Calendar } from 'antd';
 import type { Moment } from 'moment';
 import styles from './calendar-page.module.css'
+import { useSelector } from 'react-redux';
+import { RootState } from '@redux/configure-store';
+import { Loader } from '@components/Loader/Loader';
 
 
 
@@ -46,6 +49,8 @@ const getMonthData = (value: Moment) => {
 
 export const CalendarPage: React.FC = () => {
 
+    const isLoadingTrainings = useSelector((state: RootState) => state.trainings.isLoading);
+
     const monthCellRender = (value: Moment) => {
         const num = getMonthData(value);
         return num ? (
@@ -69,7 +74,23 @@ export const CalendarPage: React.FC = () => {
         );
     };
 
-    return <div className={styles.wrapperCalendar}>
-        <Calendar dateCellRender={dateCellRender} monthCellRender={monthCellRender} />
-    </div>
+
+
+    return <>
+        {isLoadingTrainings && <Loader />}
+        <div className={styles.wrapperCalendar}>
+            <Calendar
+                dateCellRender={dateCellRender}
+                monthCellRender={monthCellRender}
+            // onSelect={(date) => {
+            //     console.log('Selected', date);
+            // }}
+            // onChange={(date) => {
+            //     console.log(date.day());
+            // }}
+            />
+        </div>
+    </>
+
+
 };

@@ -6,6 +6,7 @@ import { createBrowserHistory } from "history";
 import userReducer from './slices/userSlice';
 import recoveryReducer from "./slices/recoverySlice";
 import feedbackReducer from './slices/feedbackSlice';
+import trainingsReducer from "./slices/traningSlice";
 
 const {
   createReduxHistory,
@@ -18,8 +19,8 @@ export const store = configureStore({
     router: routerReducer,
     user: userReducer,
     recover: recoveryReducer,
-    feedbacks: feedbackReducer
-
+    feedbacks: feedbackReducer,
+    trainings: trainingsReducer
   }),
   middleware: (getDefaultMiddleware) => getDefaultMiddleware().concat(routerMiddleware),
 });

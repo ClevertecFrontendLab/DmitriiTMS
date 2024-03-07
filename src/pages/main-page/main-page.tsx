@@ -1,6 +1,7 @@
 import { MainCartList } from '@components/MainCartList/MainCartList';
 
 import { List, Typography, Button } from 'antd';
+
 const { Paragraph, Link, Text } = Typography;
 import { AndroidFilled, AppleFilled } from '@ant-design/icons';
 
@@ -10,10 +11,10 @@ import { AppDispatch, RootState } from '@redux/configure-store';
 import { push } from 'redux-first-history';
 import { Loader } from '@components/Loader/Loader';
 import { feedbacksAsync } from '@redux/actions/feedback';
+import { ModalTrainingsError } from '@components/ModalTrainingsError/ModalTrainingsError';
 
 export const MainPage: React.FC = () => {
-
-
+    
     const data = [
         '— планировать свои тренировки на календаре, выбирая тип и уровень нагрузки;',
         '— отслеживать свои достижения в разделе статистики, сравнивая свои результаты с нормами и рекордами;',
@@ -25,20 +26,27 @@ export const MainPage: React.FC = () => {
     const isLoadingFeedbacks = useSelector((state: RootState) => state.feedbacks.isLoading);
     const isErrorFeedbacks = useSelector((state: RootState) => state.feedbacks.error);
 
+    const isLoadTrainings = useSelector((state: RootState) => state.trainings.isLoading);
+    const isErrorTrainings = useSelector((state: RootState) => state.trainings.error);
+
     const getReviews = async () => {
-        if(!isErrorFeedbacks && (localStorage.getItem('token') || sessionStorage.getItem('token'))) {
+        if (!isErrorFeedbacks && (localStorage.getItem('token') || sessionStorage.getItem('token'))) {
             await dispatch(feedbacksAsync());
         }
-        
-        if(!isLoadingFeedbacks) {
+        if (!isLoadingFeedbacks) {
             dispatch(push('/feedbacks'))
         }
     }
 
     return (
         <>
-            {isLoadingFeedbacks && <Loader/>}
+            {isLoadTrainings && <Loader />}
+            {isLoadingFeedbacks && <Loader />}
+
             <div className={styles.mainWrapper}>
+
+                {isErrorTrainings && <ModalTrainingsError/>}
+
                 <List
                     className={styles.mainList}
                     header={<div>С CleverFit ты сможешь:</div>}

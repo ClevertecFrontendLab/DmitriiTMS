@@ -68,6 +68,30 @@ button {
     border: 1px solid red;
   }
 
+  .ant-picker-calendar-header {
+    background-color: #F0F5FF;
+  }
+
+  .ant-picker-date-panel {
+    background-color: #F0F5FF;
+  }
+
+  .ant-picker-content thead {
+    background-color: #F0F5FF;
+  }
+
+  .ant-picker-content tbody {
+    background-color: #F0F5FF;
+  }
+
+  .ant-picker-calendar-full .ant-picker-panel .ant-picker-calendar-date {
+    background-color: #fff;
+  }
+
+  /* .ant-picker-content tbody tr td {
+    background-color: #fff;
+  } */
+
 
 @media(max-width: 600px) {
     .ant-menu-item-icon {

@@ -13,6 +13,7 @@ export const MainCartList: React.FC = () => {
             title: 'Расписать тренировки',
             span: 'Тренировки',
             icon: heart,
+            path: '/main'
 
         },
         {
@@ -20,6 +21,7 @@ export const MainCartList: React.FC = () => {
             title: 'Назначить календарь',
             span: 'Календарь',
             icon: calendar,
+            path: '/calendar'
 
         },
         {
@@ -27,6 +29,7 @@ export const MainCartList: React.FC = () => {
             title: 'Заполнить профиль',
             span: 'Профиль',
             icon: profile,
+            path: '/main'
 
         },
     ]
