@@ -1,12 +1,14 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import type { BadgeProps } from 'antd';
 import { Badge, Calendar } from 'antd';
 import type { Moment } from 'moment';
 import styles from './calendar-page.module.css'
-import { useSelector } from 'react-redux';
-import { RootState } from '@redux/configure-store';
+import { useDispatch, useSelector } from 'react-redux';
+import { AppDispatch, RootState } from '@redux/configure-store';
 import { Loader } from '@components/Loader/Loader';
-
+import { trainingListAsync } from '@redux/actions/trainingListAsync';
+import { ModalTrainingsError } from '@components/ModalTrainingsError/ModalTrainingsError';
+import { trainingsAsync } from '@redux/actions/trainings';
 
 
 const getListData = (value: Moment) => {
@@ -46,10 +48,12 @@ const getMonthData = (value: Moment) => {
     }
 };
 
-
 export const CalendarPage: React.FC = () => {
 
+    const dispatch = useDispatch<AppDispatch>();
+
     const isLoadingTrainings = useSelector((state: RootState) => state.trainings.isLoading);
+    const isErrorTrainings = useSelector((state: RootState) => state.trainings.error);
 
     const monthCellRender = (value: Moment) => {
         const num = getMonthData(value);
@@ -74,10 +78,18 @@ export const CalendarPage: React.FC = () => {
         );
     };
 
+    useEffect(() => {
+        if(!isErrorTrainings) {
+            dispatch(trainingListAsync())
+            dispatch(trainingsAsync())
+        } 
+    }, [isErrorTrainings])
 
 
+  
     return <>
         {isLoadingTrainings && <Loader />}
+        {isErrorTrainings && <ModalTrainingsError/>}
         <div className={styles.wrapperCalendar}>
             <Calendar
                 dateCellRender={dateCellRender}

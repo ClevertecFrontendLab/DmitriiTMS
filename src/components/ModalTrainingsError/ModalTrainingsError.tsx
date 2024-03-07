@@ -35,7 +35,7 @@ export const ModalTrainingsError: React.FC = () => {
     }, [isErrorTrainings])
 
     return (
-        <Modal open={isModalOpen} onOk={handleOk} onCancel={handleCancel} footer={false} closable={false}>
+        <Modal open={isModalOpen} onOk={handleOk} onCancel={handleCancel} footer={false} closable={false} maskClosable={false}>
             <Result
                 status="500"
                 title="Что-то пошло не так"

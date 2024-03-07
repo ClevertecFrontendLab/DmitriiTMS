@@ -7,6 +7,7 @@ import userReducer from './slices/userSlice';
 import recoveryReducer from "./slices/recoverySlice";
 import feedbackReducer from './slices/feedbackSlice';
 import trainingsReducer from "./slices/traningSlice";
+import trainingListSlice from "./slices/trainingListSlice";
 
 const {
   createReduxHistory,
@@ -20,7 +21,8 @@ export const store = configureStore({
     user: userReducer,
     recover: recoveryReducer,
     feedbacks: feedbackReducer,
-    trainings: trainingsReducer
+    trainings: trainingsReducer,
+    trainingsList: trainingListSlice
   }),
   middleware: (getDefaultMiddleware) => getDefaultMiddleware().concat(routerMiddleware),
 });

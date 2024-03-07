@@ -50,15 +50,12 @@ export const trainingsAsync = createAsyncThunk<Training[], void, { rejectValue: 
                     Authorization: `Bearer ${accessToken}`
                 }
             });
-
             dispatch(push('/calendar'))
-
             console.log(trainings);
-            
-
+    
             return trainings.data;
         } catch (error: unknown) {
-            dispatch(push('/main'))
+            dispatch(push('/calendar'))
             const trainingsError = error as Error;
             console.log(trainingsError);
             return rejectWithValue(trainingsError);

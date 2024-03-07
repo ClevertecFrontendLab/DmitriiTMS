@@ -11,10 +11,9 @@ import { AppDispatch, RootState } from '@redux/configure-store';
 import { push } from 'redux-first-history';
 import { Loader } from '@components/Loader/Loader';
 import { feedbacksAsync } from '@redux/actions/feedback';
-import { ModalTrainingsError } from '@components/ModalTrainingsError/ModalTrainingsError';
 
 export const MainPage: React.FC = () => {
-    
+
     const data = [
         '— планировать свои тренировки на календаре, выбирая тип и уровень нагрузки;',
         '— отслеживать свои достижения в разделе статистики, сравнивая свои результаты с нормами и рекордами;',
@@ -27,7 +26,6 @@ export const MainPage: React.FC = () => {
     const isErrorFeedbacks = useSelector((state: RootState) => state.feedbacks.error);
 
     const isLoadTrainings = useSelector((state: RootState) => state.trainings.isLoading);
-    const isErrorTrainings = useSelector((state: RootState) => state.trainings.error);
 
     const getReviews = async () => {
         if (!isErrorFeedbacks && (localStorage.getItem('token') || sessionStorage.getItem('token'))) {
@@ -44,8 +42,6 @@ export const MainPage: React.FC = () => {
             {isLoadingFeedbacks && <Loader />}
 
             <div className={styles.mainWrapper}>
-
-                {isErrorTrainings && <ModalTrainingsError/>}
 
                 <List
                     className={styles.mainList}

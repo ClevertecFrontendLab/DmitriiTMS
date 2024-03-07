@@ -37,7 +37,7 @@ export const MenuComponent: React.FC = () => {
     }
 
     const getTrenings = () => {
-        dispatch(trainingsAsync())
+        dispatch(trainingsAsync());
     }
 
     return (
