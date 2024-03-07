@@ -11,6 +11,8 @@ import { AppDispatch, RootState } from '@redux/configure-store';
 import { push } from 'redux-first-history';
 import { Loader } from '@components/Loader/Loader';
 import { feedbacksAsync } from '@redux/actions/feedback';
+import { ModalTrainingsError } from '@components/ModalTrainingsError/ModalTrainingsError';
+import { useEffect } from 'react';
 
 export const MainPage: React.FC = () => {
 
@@ -26,6 +28,7 @@ export const MainPage: React.FC = () => {
     const isErrorFeedbacks = useSelector((state: RootState) => state.feedbacks.error);
 
     const isLoadTrainings = useSelector((state: RootState) => state.trainings.isLoading);
+    const isErrorTrainings = useSelector((state: RootState) => state.trainings.error);
 
     const getReviews = async () => {
         if (!isErrorFeedbacks && (localStorage.getItem('token') || sessionStorage.getItem('token'))) {
@@ -36,8 +39,16 @@ export const MainPage: React.FC = () => {
         }
     }
 
+    useEffect(() => {
+        if(isLoadTrainings && isErrorTrainings) {
+            dispatch(push('/main'))
+        }
+    }, [dispatch, isErrorTrainings, isLoadTrainings])
+
+
     return (
         <>
+        {isErrorTrainings && <ModalTrainingsError/>}
             {isLoadTrainings && <Loader />}
             {isLoadingFeedbacks && <Loader />}
 

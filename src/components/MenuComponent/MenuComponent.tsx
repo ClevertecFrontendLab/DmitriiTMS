@@ -1,8 +1,8 @@
 import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
 import { useWindowSize } from "@uidotdev/usehooks";
-import { useDispatch} from 'react-redux';
-import { AppDispatch} from '@redux/configure-store';
+import { useDispatch, useSelector } from 'react-redux';
+import { AppDispatch, RootState } from '@redux/configure-store';
 import { push } from 'redux-first-history';
 
 import {
@@ -21,12 +21,17 @@ import calen from '../../assets/icons/calendar.svg'
 
 import styles from './MenuComponent.module.css';
 import { trainingsAsync } from '@redux/actions/trainings';
+import { trainingListAsync } from '@redux/actions/trainingListAsync';
 
 
 export const MenuComponent: React.FC = () => {
 
-    const [collapsed, setCollapsed] = useState(false);
     const dispatch = useDispatch<AppDispatch>();
+
+    const isErrorTrainings = useSelector((state: RootState) => state.trainings.error);
+    const isLoadingTrainings = useSelector((state: RootState) => state.trainings.isLoading);
+
+    const [collapsed, setCollapsed] = useState(false);
 
     const { width } = useWindowSize();
 
@@ -36,8 +41,12 @@ export const MenuComponent: React.FC = () => {
         dispatch(push('/'));
     }
 
-    const getTrenings = () => {
-        dispatch(trainingsAsync());
+    const getTrenings = async () => {
+        await dispatch(trainingsAsync());
+        if (!isErrorTrainings && !isLoadingTrainings) {
+            dispatch(push('/calendar'));
+            await dispatch(trainingListAsync());
+        }
     }
 
     return (
@@ -55,7 +64,7 @@ export const MenuComponent: React.FC = () => {
                         items={[
                             {
                                 key: '1',
-                                icon: <button><Image preview={false}  width={16} src={calen} alt='calendar'/></button>,
+                                icon: <button><Image preview={false} width={16} src={calen} alt='calendar' /></button>,
                                 label: <button className={!collapsed ? styles.opent : styles.hidet}>Календарь</button>,
                                 onClick: getTrenings
                             },

@@ -33,7 +33,7 @@ export const feedbacksAsync = createAsyncThunk<Feedback[], void, { rejectValue: 
             });
 
             return response.data;
-        } catch (error: any) {    
+        } catch (error: any) {
 
             if (error.response.status == 403 ) {
                 localStorage.clear();
@@ -49,7 +49,7 @@ export const feedbacksAsync = createAsyncThunk<Feedback[], void, { rejectValue: 
             }
 
             return rejectWithValue(error.response.status);
-            
+
         }
     },
 );

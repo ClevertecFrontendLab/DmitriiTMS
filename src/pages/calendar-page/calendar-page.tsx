@@ -7,9 +7,8 @@ import { useDispatch, useSelector } from 'react-redux';
 import { AppDispatch, RootState } from '@redux/configure-store';
 import { Loader } from '@components/Loader/Loader';
 import { trainingListAsync } from '@redux/actions/trainingListAsync';
-import { ModalTrainingsError } from '@components/ModalTrainingsError/ModalTrainingsError';
-import { trainingsAsync } from '@redux/actions/trainings';
 import { CloseCircleOutlined } from '@ant-design/icons';
+import { Navigate } from 'react-router-dom';
 
 
 const getListData = (value: Moment) => {
@@ -57,6 +56,7 @@ export const CalendarPage: React.FC = () => {
 
     const isLoadingTrainings = useSelector((state: RootState) => state.trainings.isLoading);
     const isErrorTrainings = useSelector((state: RootState) => state.trainings.error);
+
     const isErrorTrainingsList = useSelector((state: RootState) => state.trainingsList.error);
     const isLoadingTrainingsList = useSelector((state: RootState) => state.trainingsList.isLoading);
 
@@ -83,7 +83,7 @@ export const CalendarPage: React.FC = () => {
         );
     };
 
-  
+
 
     const showModal = () => {
         setOpen(true);
@@ -98,7 +98,7 @@ export const CalendarPage: React.FC = () => {
         setOpen(false);
     };
 
-    
+
     // useEffect(() => {
     //     if (!isLoadingTrainings) {
     //         dispatch(trainingListAsync())
@@ -114,9 +114,8 @@ export const CalendarPage: React.FC = () => {
 
 
     return <>
+        {isErrorTrainings ? <Navigate to='/auth' replace /> : null}
         {(isLoadingTrainings || isLoadingTrainingsList)  && <Loader />}
-        {isErrorTrainings && <ModalTrainingsError />}
-
         <Modal
             style={{ maxWidth: '384PX' }}
             open={open}

@@ -13,11 +13,10 @@ type TrainingList = {
 };
 
 
-export const trainingListAsync = createAsyncThunk<TrainingList[] | any, void, { rejectValue: Error }>(
+export const trainingListAsync = createAsyncThunk<TrainingList[] | unknown, void, { rejectValue: Error }>(
     'trainingList/trainingListAsync',
     async (_, {rejectWithValue}) => {
         try {
-          
             const accessToken = localStorage.getItem('token') || sessionStorage.getItem('token');
             await new Promise(resolve => setTimeout(resolve, 200));
             const trainingsList = await axios.get('https://marathon-api.clevertec.ru/catalogs/training-list', {
@@ -32,6 +31,6 @@ export const trainingListAsync = createAsyncThunk<TrainingList[] | any, void, { 
             const trainingListError = error as Error;
             console.log(trainingListError);
             return rejectWithValue(trainingListError);
-        } 
+        }
     },
 );

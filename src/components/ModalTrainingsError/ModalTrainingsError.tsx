@@ -8,7 +8,7 @@ export const ModalTrainingsError: React.FC = () => {
 
     const dispatch = useDispatch<AppDispatch>();
     const isErrorTrainings = useSelector((state: RootState) => state.trainings.error);
-    
+
     const [isModalOpen, setIsModalOpen] = useState(false);
 
     const showModal = () => {
@@ -32,7 +32,7 @@ export const ModalTrainingsError: React.FC = () => {
         if(isErrorTrainings) {
             showModal();
         }
-    }, [isErrorTrainings])
+    }, [dispatch, isErrorTrainings])
 
     return (
         <Modal open={isModalOpen} onOk={handleOk} onCancel={handleCancel} footer={false} closable={false} maskClosable={false}>
