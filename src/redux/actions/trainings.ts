@@ -45,11 +45,13 @@ export const trainingsAsync = createAsyncThunk<Training[], void, { rejectValue: 
         try {
             const accessToken = localStorage.getItem('token') || sessionStorage.getItem('token');
             await new Promise(resolve => setTimeout(resolve, 200));
-            const trainings = await axios.get('https://marathon-api.clevertec.ru/training1', {
+            const trainings = await axios.get('https://marathon-api.clevertec.ru/training', {
                 headers: {
                     Authorization: `Bearer ${accessToken}`
                 }
             });
+
+            dispatch(push('/calendar'))
             console.log(trainings);
 
             return trainings.data;

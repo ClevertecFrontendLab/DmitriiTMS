@@ -7,7 +7,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import { AppDispatch, RootState } from '@redux/configure-store';
 import { Loader } from '@components/Loader/Loader';
 import { trainingListAsync } from '@redux/actions/trainingListAsync';
-import { CloseCircleOutlined } from '@ant-design/icons';
+import { CloseCircleOutlined, CloseOutlined } from '@ant-design/icons';
 import { Navigate } from 'react-router-dom';
 
 
@@ -117,23 +117,24 @@ export const CalendarPage: React.FC = () => {
         {isErrorTrainings ? <Navigate to='/auth' replace /> : null}
         {(isLoadingTrainings || isLoadingTrainingsList)  && <Loader />}
         <Modal
-            style={{ maxWidth: '384PX' }}
+            style={{ maxWidth: '384px' }}
             open={open}
             title={
                 <div style={{ display: 'flex', gap: '10px', alignItems: "flex-start" }}>
                     <CloseCircleOutlined className={styles.closeImg} />
-                    <span>При открытии данных<br></br> произошла ошибка</span>
+                    <span data-test-id='modal-error-user-training-title'>При открытии данных<br></br> произошла ошибка</span>
                 </div>
             }
+            closeIcon={<CloseOutlined data-test-id='modal-error-user-training-button-close'/>}
             onCancel={handleCancel}
             footer={[
-                <Button type="primary" onClick={handleOk}>
+                <Button data-test-id='modal-error-user-training-button' type="primary" onClick={handleOk}>
                     Обновить
                 </Button>
             ]}
             centered
         >
-            <p>Попробуйте ещё раз</p>
+            <p data-test-id='modal-error-user-training-subtitle'>Попробуйте ещё раз</p>
         </Modal>
 
 

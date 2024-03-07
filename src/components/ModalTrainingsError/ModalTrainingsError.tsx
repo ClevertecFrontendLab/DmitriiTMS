@@ -29,18 +29,25 @@ export const ModalTrainingsError: React.FC = () => {
     }
 
     useEffect(() => {
-        if(isErrorTrainings) {
+        if (isErrorTrainings) {
             showModal();
         }
     }, [dispatch, isErrorTrainings])
 
     return (
-        <Modal open={isModalOpen} onOk={handleOk} onCancel={handleCancel} footer={false} closable={false} maskClosable={false}>
+        <Modal
+            open={isModalOpen}
+            onOk={handleOk} onCancel={handleCancel}
+            footer={false} closable={false}
+            maskClosable={false}
+            data-test-id='modal-no-review'
+        >
+
             <Result
                 status="500"
                 title="Что-то пошло не так"
-                subTitle="Произошла ошибка, попробуйте ещё раз"
-                extra={<Button onClick={backMain} type="primary" data-test-id='modal-no-review'>Назад</Button>}
+                subTitle="Произошла ошибка, попробуйте ещё раз."
+                extra={<Button onClick={backMain} type="primary">Назад</Button>}
             />
         </Modal>
     )

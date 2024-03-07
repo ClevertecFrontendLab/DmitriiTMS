@@ -2,23 +2,23 @@ import { Typography } from 'antd';
 const { Paragraph } = Typography;
 
 import styles from './MainCartItem.module.css';
-import { Link } from 'react-router-dom';
 
 interface CartItemProps {
     title: string,
     icon: string,
     span: string,
-    path: string
+    onclick: () => void,
+    dataTestId: string
 }
 
-export const MainCartItem: React.FC<CartItemProps> = ({title, icon, span, path}) => {
+export const MainCartItem: React.FC<CartItemProps> = ({title, icon, span, onclick, dataTestId}) => {
     return (
-        <Link to={path} className={styles.list__item}>
+        <div className={styles.list__item} onClick={onclick}>
             <Paragraph className={styles.list__item_title}>{title}</Paragraph>
             <Paragraph className={styles.content}>
                 <img className={styles.content__img} src={icon} alt={icon} />
-                <span className={styles.content__span}>{span}</span>
+                <span  data-test-id={dataTestId} className={styles.content__span}>{span}</span>
             </Paragraph>
-        </Link>
+        </div>
     )
 }

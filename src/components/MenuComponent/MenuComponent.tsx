@@ -29,7 +29,6 @@ export const MenuComponent: React.FC = () => {
     const dispatch = useDispatch<AppDispatch>();
 
     const isErrorTrainings = useSelector((state: RootState) => state.trainings.error);
-    const isLoadingTrainings = useSelector((state: RootState) => state.trainings.isLoading);
 
     const [collapsed, setCollapsed] = useState(false);
 
@@ -43,7 +42,7 @@ export const MenuComponent: React.FC = () => {
 
     const getTrenings = async () => {
         await dispatch(trainingsAsync());
-        if (!isErrorTrainings && !isLoadingTrainings) {
+        if (!isErrorTrainings) {
             dispatch(push('/calendar'));
             await dispatch(trainingListAsync());
         }
