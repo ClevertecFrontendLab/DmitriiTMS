@@ -1,6 +1,6 @@
-import React, { useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
 import type { BadgeProps } from 'antd';
-import { Badge, Calendar } from 'antd';
+import { Badge, Calendar, Button, Modal } from 'antd';
 import type { Moment } from 'moment';
 import styles from './calendar-page.module.css'
 import { useDispatch, useSelector } from 'react-redux';
@@ -9,6 +9,7 @@ import { Loader } from '@components/Loader/Loader';
 import { trainingListAsync } from '@redux/actions/trainingListAsync';
 import { ModalTrainingsError } from '@components/ModalTrainingsError/ModalTrainingsError';
 import { trainingsAsync } from '@redux/actions/trainings';
+import { CloseCircleOutlined } from '@ant-design/icons';
 
 
 const getListData = (value: Moment) => {
@@ -52,8 +53,12 @@ export const CalendarPage: React.FC = () => {
 
     const dispatch = useDispatch<AppDispatch>();
 
+    const [open, setOpen] = useState(false);
+
     const isLoadingTrainings = useSelector((state: RootState) => state.trainings.isLoading);
     const isErrorTrainings = useSelector((state: RootState) => state.trainings.error);
+    const isErrorTrainingsList = useSelector((state: RootState) => state.trainingsList.error);
+    const isLoadingTrainingsList = useSelector((state: RootState) => state.trainingsList.isLoading);
 
     const monthCellRender = (value: Moment) => {
         const num = getMonthData(value);
@@ -78,18 +83,61 @@ export const CalendarPage: React.FC = () => {
         );
     };
 
-    useEffect(() => {
-        if(!isErrorTrainings) {
-            dispatch(trainingListAsync())
-            dispatch(trainingsAsync())
-        } 
-    }, [isErrorTrainings])
-
-
   
+
+    const showModal = () => {
+        setOpen(true);
+    };
+
+    const handleOk = () => {
+        dispatch(trainingListAsync())
+        setOpen(false);
+    };
+
+    const handleCancel = () => {
+        setOpen(false);
+    };
+
+    
+    // useEffect(() => {
+    //     if (!isLoadingTrainings) {
+    //         dispatch(trainingListAsync())
+    //         dispatch(trainingsAsync())
+    //     }
+    // }, [isErrorTrainings])
+
+    useEffect(() => {
+        if (isErrorTrainingsList) {
+            showModal()
+        }
+    }, [isErrorTrainingsList])
+
+
     return <>
-        {isLoadingTrainings && <Loader />}
-        {isErrorTrainings && <ModalTrainingsError/>}
+        {(isLoadingTrainings || isLoadingTrainingsList)  && <Loader />}
+        {isErrorTrainings && <ModalTrainingsError />}
+
+        <Modal
+            style={{ maxWidth: '384PX' }}
+            open={open}
+            title={
+                <div style={{ display: 'flex', gap: '10px', alignItems: "flex-start" }}>
+                    <CloseCircleOutlined className={styles.closeImg} />
+                    <span>При открытии данных<br></br> произошла ошибка</span>
+                </div>
+            }
+            onCancel={handleCancel}
+            footer={[
+                <Button type="primary" onClick={handleOk}>
+                    Обновить
+                </Button>
+            ]}
+            centered
+        >
+            <p>Попробуйте ещё раз</p>
+        </Modal>
+
+
         <div className={styles.wrapperCalendar}>
             <Calendar
                 dateCellRender={dateCellRender}

@@ -25,3 +25,15 @@
   .notesMonth section {
     font-size: 28px;
   }
+
+  .closeImg svg {
+    display: inline-block !important;
+    width: 24px !important;
+    height: 24px !important;
+  }
+
+  .closeImg svg {
+    fill: #2F54EB;
+  }
+
+

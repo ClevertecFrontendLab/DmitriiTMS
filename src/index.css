@@ -88,10 +88,21 @@ button {
     background-color: #fff;
   }
 
-  /* .ant-picker-content tbody tr td {
-    background-color: #fff;
-  } */
+ .ant-modal-header {
+  border-bottom: none;
+ }
 
+ .ant-modal-footer {
+  border-top: none;
+ }
+
+ .ant-modal-body {
+  padding-top: 0;
+  padding-bottom: 0;
+ }
+ .ant-modal-body p {
+  margin-left: 36px;
+ }
 
 @media(max-width: 600px) {
     .ant-menu-item-icon {
@@ -103,6 +114,10 @@ button {
   .ant-modal-body {
     padding: 0;
   }
+
+  .ant-modal-body p {
+    margin-left: 56px;
+   }
   .ant-result-subtitle {
     margin: 0 auto;
   }

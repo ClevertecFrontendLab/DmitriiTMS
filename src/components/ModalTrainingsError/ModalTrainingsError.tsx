@@ -40,7 +40,7 @@ export const ModalTrainingsError: React.FC = () => {
                 status="500"
                 title="Что-то пошло не так"
                 subTitle="Произошла ошибка, попробуйте ещё раз"
-                extra={<Button onClick={backMain} type="primary">Назад</Button>}
+                extra={<Button onClick={backMain} type="primary" data-test-id='modal-no-review'>Назад</Button>}
             />
         </Modal>
     )

@@ -36,13 +36,16 @@ const trainingListSlice = createSlice({
     extraReducers: (builder) => {
         builder.addCase(trainingListAsync.pending, (state) => {
             state.error = null;
+            state.isLoading = true
         });
         builder.addCase(trainingListAsync.fulfilled, (state, action) => {
             state.trainingList = action.payload;
             state.error = null;
+            state.isLoading = false
         });
         builder.addCase(trainingListAsync.rejected, (state, action) => {
             state.error = action.payload as Error;
+            state.isLoading = false
         });
     },
 });

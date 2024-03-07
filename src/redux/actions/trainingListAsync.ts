@@ -1,7 +1,6 @@
 import { createAsyncThunk } from '@reduxjs/toolkit';
-
 import axios from 'axios';
-import { push } from 'redux-first-history';
+
 
 type Error = {
     statusCode: number;
@@ -15,8 +14,8 @@ type TrainingList = {
 
 
 export const trainingListAsync = createAsyncThunk<TrainingList[] | any, void, { rejectValue: Error }>(
-    'trainingListError',
-    async (_, {dispatch, rejectWithValue}) => {
+    'trainingList/trainingListAsync',
+    async (_, {rejectWithValue}) => {
         try {
           
             const accessToken = localStorage.getItem('token') || sessionStorage.getItem('token');
@@ -27,6 +26,7 @@ export const trainingListAsync = createAsyncThunk<TrainingList[] | any, void, { 
                 }
             });
             console.log(trainingsList.data);
+            return trainingsList.data;
 
         } catch (error: unknown) {
             const trainingListError = error as Error;
