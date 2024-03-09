@@ -104,6 +104,19 @@ button {
   margin-left: 36px;
  }
 
+ .ant-popover-arrow{
+    display: none;
+ }
+
+ .ant-popover-title {
+    border-bottom: 0;
+ }
+ .ant-popover-inner {
+    /* box-shadow: none; */
+    background: transparent;
+    height: 0;
+ }
+
 @media(max-width: 600px) {
     .ant-menu-item-icon {
         display: none !important;

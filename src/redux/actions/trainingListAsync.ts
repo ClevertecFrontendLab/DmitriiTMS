@@ -24,7 +24,7 @@ export const trainingListAsync = createAsyncThunk<TrainingList[] | unknown, void
                     Authorization: `Bearer ${accessToken}`
                 }
             });
-            console.log(trainingsList.data);
+            // console.log(trainingsList.data);
             return trainingsList.data;
 
         } catch (error: unknown) {
