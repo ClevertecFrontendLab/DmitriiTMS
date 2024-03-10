@@ -1,14 +1,15 @@
 import React, { useEffect, useState } from 'react';
 import type { BadgeProps } from 'antd';
-import { Badge, Calendar, Button, Modal, Popover, Select } from 'antd';
+import { Badge, Calendar, Button, Modal, Select, Image, Popover, message, Popconfirm } from 'antd';
 import type { Moment } from 'moment';
 import { useDispatch, useSelector } from 'react-redux';
 import { AppDispatch, RootState } from '@redux/configure-store';
 import { Loader } from '@components/Loader/Loader';
 import { trainingListAsync } from '@redux/actions/trainingListAsync';
-import { CloseCircleOutlined, CloseOutlined } from '@ant-design/icons';
+import Icon, { CloseCircleOutlined, CloseOutlined } from '@ant-design/icons';
 import { Navigate } from 'react-router-dom';
 import { trainingsAsync } from '@redux/actions/trainings';
+import calendarModal from '../../assets/icons/calendar-modal.svg';
 
 import ruRU from 'antd/lib/calendar/locale/ru_RU';
 
@@ -87,9 +88,7 @@ export const CalendarPage: React.FC = () => {
     const dispatch = useDispatch<AppDispatch>();
 
     const [open, setOpen] = useState(false);
-
     const [objTrening, setObjTrening] = useState<IUser[]>([]);
-
 
 
     const isLoadingTrainings = useSelector((state: RootState) => state.trainings.isLoading);
@@ -99,7 +98,6 @@ export const CalendarPage: React.FC = () => {
     const isLoadingTrainingsList = useSelector((state: RootState) => state.trainingsList.isLoading);
 
     const typeTrening = useSelector((state: RootState) => state.trainingsList.trainingList);
-    // const defaultTrening = String(objTrening[0].label);
 
     // console.log(typeTrening);
 
@@ -118,41 +116,86 @@ export const CalendarPage: React.FC = () => {
         console.log(`selected ${value}`);
     };
 
-    const text = (
-        <Select
-            defaultValue='Ноги'
-            style={{ width: '100%', position: 'absolute', top: '20px', left: '-170px', zIndex: '2'}}
-            onChange={handleChange}
-            options={objTrening}
-        />
-    );
-
-    const content = (
-        <div style={{ width: '100%', position: 'absolute', top: '60px', left: '-160px', background: '#fff', padding: '10px'}}>
-            <p>Conten11111111t</p>
-            <p>Content</p>
-        </div>
-    );
+    const [stepBlock, setStepBlock] = useState(0);
 
     const clickOnDate = () => {
         console.log('121212');
-
+        if(stepBlock > 0) {
+            setStepBlock(0)
+        }
     };
 
-    const clickOnButton = (e: { stopPropagation: () => void }) => {
-        e.stopPropagation();
-        alert("Clicked on button!");
+    // ...................
+
+    const sdsfsfsf = () => {
+        setStepBlock(stepBlock+1)
+    }
+
+    const confirm = () => {
+        message.success('Click on Yes');
+        sdsfsfsf();
     };
+
+    const cancel1 = () => {
+        message.error('Click on No');
+    };
+
+
+    // .........................
+
+
+
+    const contentOne = (
+        <div className={styles.modalStepOne} onClick={(e) => e.stopPropagation()}>
+            <div className={styles.modalStepOneBlock}>
+                <button>close1111</button>
+                <p className={styles.modalStepOneBlockTitle}>Тренировки на 09.10.2024</p>
+                <p className={styles.modalStepOneBlockSubTitle}>Нет активных тренировок</p>
+                <div className={styles.modalStepOneBlockImg}>
+                    <img src={calendarModal} alt="calendarModal" />
+                </div>
+                <button onClick={sdsfsfsf} className={styles.modalStepOneBtn}>Создать тренировку</button>
+            </div>
+        </div>
+    );
+
+    const contentTwo = (
+        <div onClick={(e) => e.stopPropagation()}>
+            <div className={styles.modalStepTwo}>
+                <Select
+                    defaultValue='Ноги'
+                    onChange={handleChange}
+                    options={objTrening}
+                />
+            </div>
+            <div>
+                <p>Conten222222222</p>
+                <p>Content</p>
+            </div>
+        </div>
+    );
+
+    const steps = [contentOne, contentTwo];
 
 
     const dateCellRender = (value: Moment) => {
-
         const listData = getListData(value);
-
         return (
             <>
                 <div>
-                    <Popover placement="top" title={text} content={content} trigger="click" style={{background: 'transparent', boxShadow: 'none'}}>
+                    <Popconfirm
+                        icon={false}
+                        title={steps[stepBlock]}
+
+                        onConfirm={confirm}
+                        okText="Yes"
+
+                        onCancel={cancel1}
+                        cancelText=''
+                        cancelButtonProps={{icon: <CloseOutlined/>}}
+
+
+                    >
                         <Button style={{
                             background: 'transparent',
                             position: "absolute",
@@ -164,7 +207,8 @@ export const CalendarPage: React.FC = () => {
                             border: 'none',
                             color: 'transparent'
                         }}>button</Button>
-                    </Popover>
+                    </Popconfirm>
+
                 </div>
 
                 <ul className={styles.events}>

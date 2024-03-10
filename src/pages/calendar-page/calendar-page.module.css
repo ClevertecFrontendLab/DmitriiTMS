@@ -10,30 +10,83 @@
     margin: 0;
     padding: 0;
     list-style: none;
-  }
-  .events .ant-badge-status {
+}
+
+.events .ant-badge-status {
     width: 100%;
     overflow: hidden;
     font-size: 12px;
     white-space: nowrap;
     text-overflow: ellipsis;
-  }
-  .notesMonth {
+}
+
+.notesMonth {
     font-size: 28px;
     text-align: center;
-  }
-  .notesMonth section {
-    font-size: 28px;
-  }
+}
 
-  .closeImg svg {
+.notesMonth section {
+    font-size: 28px;
+}
+
+.closeImg svg {
     display: inline-block !important;
     width: 24px !important;
     height: 24px !important;
-  }
+}
 
-  .closeImg svg {
+.closeImg svg {
     fill: #2F54EB;
-  }
+}
 
+.modalStepOne {
+    min-width: 250px;
+    position: absolute;
+    top: 20px;
+    left: -62px;
+    background: #fff;
+    padding: 10px;
+    -webkit-box-shadow: -1px -1px 9px 0px rgba(0, 0, 0, 0.75);
+    -moz-box-shadow: -1px -1px 9px 0px rgba(0, 0, 0, 0.75);
+    box-shadow: -1px -1px 9px 0px rgba(0, 0, 0, 0.75);
+}
 
+.modalStepOneBlockTitle {
+    font-size: 12px;
+    font-weight: 500;
+    color: #000;
+    margin-bottom: 0;
+}
+
+.modalStepOneBlockSubTitle {
+    font-size: 12px;
+    font-weight: 500;
+    color: #c5bdbd;
+    margin-bottom: 10px;
+}
+
+.modalStepOneBlockImg {
+    width: 32px;
+    margin: 0 auto;
+    margin-bottom: 10px;
+}
+
+.modalStepOneBtn {
+    text-align: center;
+    color: #fff;
+    background: #2F54EB;
+    padding: 6px;
+    width: 100%;
+}
+
+.modalStepTwo {
+    min-width: 250px;
+    position: absolute;
+    top: 20px;
+    left: -62px;
+    background: #fff;
+    padding: 10px;
+    -webkit-box-shadow: -1px -1px 9px 0px rgba(0, 0, 0, 0.75);
+    -moz-box-shadow: -1px -1px 9px 0px rgba(0, 0, 0, 0.75);
+    box-shadow: -1px -1px 9px 0px rgba(0, 0, 0, 0.75);
+}
