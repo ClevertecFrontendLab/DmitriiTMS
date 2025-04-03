@@ -1,15 +1,12 @@
 export const containerSx = {
-    maxW: {
-        base: '360px',
-        md: '768px',
-        lg: '1440px',
-        xl: '1920px',
-    },
+    // maxW: {
+    //     base: '360px',
+    //     md: '768px',
+    //     lg: '1440px',
+    //     xl: '1920px',
+    // },
     w: '100%',
     mx: 'auto',
-    px: {
-        base: 4,
-        md: 6,
-        lg: 8,
-    },
+    pl: '16px',
+    pr: '80px',
 };
