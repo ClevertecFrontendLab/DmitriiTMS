@@ -11,6 +11,7 @@ export const headerName = {
     fontFamily: 'Inter',
     fontWeight: '500',
     fontSize: '18px',
+    // fontSize: { base: "14px", sm: "16px", md: "28px", lg: "20px" },
     lineHeight: '156%',
     color: '#000',
 };

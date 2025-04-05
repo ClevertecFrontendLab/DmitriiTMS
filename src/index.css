@@ -3,3 +3,11 @@
     padding: 0;
     box-sizing: border-box;
 }
+
+body {
+    overflow-y: hidden;
+}
+
+.css-xz7vcu:last-of-type {
+    border-bottom-width: 0 !important;
+}
