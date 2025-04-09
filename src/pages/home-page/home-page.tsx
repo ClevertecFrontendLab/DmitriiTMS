@@ -20,6 +20,7 @@ import {
 } from '@chakra-ui/react';
 
 import { BtnFilterIcon } from '~/components/Icons/BtnFilterIcon';
+import Title from '~/components/Title/Title';
 
 import arrowLeft from '../../assets/main/slider/arrowLeft.svg';
 import arrowRight from '../../assets/main/slider/arrowRight.svg';
@@ -33,6 +34,7 @@ import tagIcon1 from '../../assets/main/slider/tagIcon-1.svg';
 import tagIcon2 from '../../assets/main/slider/tagIcon-2.svg';
 import tagIcon3 from '../../assets/main/slider/tagIcon-3.svg';
 import tagIcon4 from '../../assets/main/slider/tagIcon-4.svg';
+import styles from './home-page.module.css';
 
 const slider = [
     {
@@ -76,24 +78,9 @@ const slider = [
 function HomePage() {
     return (
         <Box maxWidth='1360px' marginLeft='24px'>
-            <Heading
-                textAlign='center'
-                as='h1'
-                m='24px 0'
-                fontFamily='Inter'
-                fontSize='48px'
-                fontWeight='700'
-            >
-                Приятного аппетита!
-            </Heading>
+            <Title title='Приятного аппетита!' />
 
-            <Box
-                display='flex'
-                alignItems='center'
-                justifyContent='center'
-                gap='12px'
-                marginBottom='16px'
-            >
+            <Box className={styles.container}>
                 <Button
                     w='48px'
                     h='48px'
@@ -114,8 +101,13 @@ function HomePage() {
                         border='1px solid rgba(0, 0, 0, 0.48)'
                         borderRadius='6px'
                         type='text'
-                        placeholder='Название ингридиента'
-                        _placeholder={{ color: '#134b00', fontSize: '18px', fontWeight: '400' }}
+                        placeholder='Название или ингридиент...'
+                        _placeholder={{
+                            color: '#134b00',
+                            fontFamily: 'Inter',
+                            fontSize: '18px',
+                            fontWeight: '400',
+                        }}
                     />
                 </InputGroup>
             </Box>
@@ -123,7 +115,7 @@ function HomePage() {
                 display='flex'
                 alignItems='center'
                 justifyContent='center'
-                gap='22px'
+                gap='18px'
                 marginBottom='56px'
             >
                 <Box>
@@ -146,7 +138,7 @@ function HomePage() {
                 <Box>
                     <Select
                         placeholder='Выберите из списка...'
-                        size='lg'
+                        height='40px'
                         width='234px'
                         color='rgba(0, 0, 0, 0.64)'
                     >
@@ -158,7 +150,7 @@ function HomePage() {
             </Box>
 
             <Box>
-                <Heading as='h2' fontFamily='Inter' fontSize='48px' fontWeight='500' mb='24px'>
+                <Heading as='h2' fontFamily='Inter' fontSize='48px' fontWeight='500' mb='18px'>
                     Новые рецепты
                 </Heading>
                 <Box position='relative'>
@@ -202,7 +194,7 @@ function HomePage() {
                                             overflow='hidden'
                                             textOverflow='ellipsis'
                                             maxWidth='274px'
-                                            mb='8px'
+                                            mb='4px'
                                         >
                                             {item.title}
                                         </Heading>
@@ -211,7 +203,7 @@ function HomePage() {
                                             fontFamily='Inter'
                                             fontWeight='400'
                                             fontSize='14px'
-                                            marginBottom='24px'
+                                            marginBottom='16px'
                                         >
                                             {item.text}
                                         </Text>
