@@ -1,0 +1,15 @@
+.controlContainer {
+    display: flex;
+    gap: 12px;
+    align-items: center;
+}
+
+.formLabel {
+    font-family: Inter;
+    font-weight: 500;
+    font-size: 16px;
+    color: #000;
+    margin-right: 0;
+    margin-bottom: 2px;
+    cursor: pointer;
+}

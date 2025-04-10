@@ -1,0 +1,20 @@
+.search-input-group {
+    max-width: 458px;
+}
+
+.search-input-right-element {
+    pointer-events: none;
+}
+
+.search-input {
+    height: 48px;
+    border: 1px solid rgba(0, 0, 0, 0.48);
+    border-radius: 6px;
+}
+
+.search-input::placeholder {
+    color: #134b00;
+    font-family: Inter;
+    font-size: 18px;
+    font-weight: 400;
+}

@@ -1,0 +1,86 @@
+.card {
+    max-width: 322px;
+    border-radius: 6px 6px 0 0;
+    overflow: hidden;
+    flex: 0 1 322px;
+}
+
+.cardImage {
+    height: 230px;
+    border-radius: 6px 6px 0 0;
+    width: 100%;
+    object-fit: cover;
+}
+
+.cardContent {
+    padding: 16px 24px 20px;
+}
+
+.cardTitle {
+    font-family: Inter;
+    font-size: 20px !important;
+    font-weight: 500 !important;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    max-width: 274px;
+    margin-bottom: 4px;
+}
+
+.cardText {
+    font-family: Inter;
+    font-weight: 400;
+    font-size: 14px;
+    margin-bottom: 16px;
+    display: -webkit-box;
+
+    /* -webkit-line-clamp: 3; */
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+}
+
+.cardFooter {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.tag {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    border-radius: 4px;
+    background-color: #d7ff94 !important;
+    padding: 4px 8px;
+}
+
+.tagLabel {
+    font-family: Inter;
+    font-weight: 400;
+    font-size: 14px;
+    color: #000;
+}
+
+.reactions {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.reactionItem {
+    display: flex;
+    align-items: center;
+    gap: 4px;
+}
+
+.reactionCount {
+    font-family: Inter;
+    font-weight: 600;
+    font-size: 12px;
+    color: #2db100;
+}
+
+.reactionIcon {
+    width: 12px;
+    height: 12px;
+}

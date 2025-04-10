@@ -1,4 +1,9 @@
 .container {
+    max-width: 1360px;
+    margin-left: 24px;
+}
+
+.containerSearch {
     display: flex;
     align-items: center;
     justify-content: center;
