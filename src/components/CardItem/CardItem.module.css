@@ -1,0 +1,85 @@
+.tag {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    border-radius: 4px;
+    background-color: #d7ff94 !important;
+    padding: 4px 8px;
+}
+
+.tagLabel {
+    font-family: Inter;
+    font-weight: 400;
+    font-size: 14px;
+    color: #000;
+}
+
+.tagWrraper {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.reactions {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+}
+
+.reactionItem {
+    display: flex;
+    align-items: center;
+    gap: 4px;
+}
+
+.reactionCount {
+    font-family: Inter;
+    font-weight: 600;
+    font-size: 12px;
+    color: #2db100;
+}
+
+.reactionIcon {
+    width: 12px;
+    height: 12px;
+}
+
+.title {
+    font-family: 'Inter';
+    font-weight: 500 !important;
+    font-size: 20px !important;
+    color: #000;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    max-width: 274px;
+    margin-bottom: 8px;
+}
+
+.text {
+    font-family: 'Inter';
+    font-weight: 400;
+    font-size: 14px;
+    line-height: 143%;
+    color: #000;
+}
+
+.btn {
+    height: 32px !important;
+    font-family: 'Inter';
+    font-weight: 600;
+    font-size: 14px;
+}
+
+.name {
+    position: absolute;
+    bottom: 20px;
+    left: 24px;
+    border-radius: 4px;
+    background: #d7ff94;
+    padding: 4px 8px;
+    font-family: 'Inter';
+    font-weight: 400;
+    font-size: 14px;
+    color: #000;
+}

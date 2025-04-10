@@ -9,7 +9,7 @@ function Title({ title }: TitleProps) {
         <Heading
             textAlign='center'
             as='h1'
-            m='27px 0'
+            m='27px 0 !important'
             fontFamily='Inter'
             fontSize='48px'
             fontWeight='700'
