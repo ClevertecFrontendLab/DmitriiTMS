@@ -7,41 +7,54 @@ import {
     Image,
     List,
     ListItem,
-    Text,
 } from '@chakra-ui/react';
 import { NavLink } from 'react-router';
 
 import downArrow from '../../assets/navbar/arrow/downArrow.svg';
 import upArrow from '../../assets/navbar/arrow/upArrow.svg';
-import { accordionButton } from './NavigationStyles';
+import icon1 from '../../assets/navigation/icon-1.svg';
+import icon2 from '../../assets/navigation/icon-2.svg';
+import icon3 from '../../assets/navigation/icon-3.svg';
+import icon4 from '../../assets/navigation/icon-4.svg';
+import icon5 from '../../assets/navigation/icon-5.svg';
+import icon6 from '../../assets/navigation/icon-6.svg';
+import icon7 from '../../assets/navigation/icon-7.svg';
+import icon8 from '../../assets/navigation/icon-8.svg';
+import icon9 from '../../assets/navigation/icon-9.svg';
+import icon10 from '../../assets/navigation/icon-10.svg';
+import icon11 from '../../assets/navigation/icon-11.svg';
+import icon12 from '../../assets/navigation/icon-12.svg';
+import icon13 from '../../assets/navigation/icon-13.svg';
 
 const mockMenu = [
-    { id: 1, title: 'Салаты' },
-    { id: 2, title: 'Закуски' },
-    { id: 3, title: 'Первые блюда' },
-    { id: 4, title: 'Вторые блюда' },
-    { id: 5, title: 'Десерты, выпечка' },
-    { id: 6, title: 'Блюда на гриле' },
+    { id: 1, title: 'Салаты', icon: icon1 },
+    { id: 2, title: 'Закуски', icon: icon2 },
+    { id: 3, title: 'Первые блюда', icon: icon3 },
+    { id: 4, title: 'Вторые блюда', icon: icon4 },
+    { id: 5, title: 'Десерты, выпечка', icon: icon5 },
+    { id: 6, title: 'Блюда на гриле', icon: icon6 },
     {
         id: 7,
         title: 'Веганская кухня',
+        icon: icon7,
+
         subTitle: [
-            'Закуски',
-            'Первые блюда',
-            'Вторые блюда',
-            'Гарниры',
-            'Десерты',
-            'Выпечка',
-            'Сыроедческие блюда',
-            'Напитки',
+            { id: 1, path: '/1', title: 'Закуски' },
+            { id: 2, path: '/2', title: 'Первые блюда' },
+            { id: 3, path: '/secondcourses', title: 'Вторые блюда' },
+            { id: 4, path: '/4', title: 'Гарниры' },
+            { id: 5, path: '/5', title: 'Десерты' },
+            { id: 6, path: '/6', title: 'Выпечка' },
+            { id: 7, path: '/7', title: 'Сыроедческие блюда' },
+            { id: 8, path: '/8', title: 'Напитки' },
         ],
     },
-    { id: 8, title: 'Детские блюда' },
-    { id: 9, title: 'Лечебное питание' },
-    { id: 10, title: 'Национальные' },
-    { id: 11, title: 'Соусы' },
-    { id: 12, title: 'Напитки' },
-    { id: 13, title: 'Заготовки' },
+    { id: 8, title: 'Детские блюда', icon: icon8 },
+    { id: 9, title: 'Лечебное питание', icon: icon9 },
+    { id: 10, title: 'Национальные', icon: icon10 },
+    { id: 11, title: 'Соусы', icon: icon11 },
+    { id: 12, title: 'Напитки', icon: icon12 },
+    { id: 13, title: 'Заготовки', icon: icon13 },
 ];
 
 function Navigation() {
@@ -60,29 +73,78 @@ function Navigation() {
             }}
         >
             <Box maxH='872px'>
-                <Accordion allowToggle>
+                <Accordion
+                    allowToggle
+                    display='flex'
+                    flexDirection='column'
+                    alignItems='flex-start'
+                    pl='20px'
+                    pt='34px'
+                >
                     {mockMenu.map((item) => (
                         <AccordionItem key={item.id} borderWidth='0'>
                             {({ isExpanded }) => (
                                 <>
-                                    <h2>
-                                        <AccordionButton _expanded={accordionButton}>
-                                            <Box as='span' flex='1' textAlign='left'>
-                                                <Text>{item.title}</Text>
+                                    <AccordionButton
+                                        p={0}
+                                        bg={isExpanded ? '#eaffc7' : ''}
+                                        pl='4px'
+                                        _hover={{ backgroundColor: 'none' }}
+                                    >
+                                        <Box
+                                            display='flex'
+                                            alignItems='center'
+                                            justifyContent='space-between'
+                                            width='230px'
+                                        >
+                                            <Box display='flex' alignItems='center' gap='8px'>
+                                                <Image
+                                                    src={item.icon}
+                                                    alt='icon'
+                                                    w='24px'
+                                                    h='24px'
+                                                />
+                                                <Box
+                                                    as='span'
+                                                    fontFamily='Inter'
+                                                    fontSize='16px'
+                                                    line-height='150%'
+                                                    fontWeight={isExpanded ? '700' : '500'}
+                                                    pt='12px'
+                                                    pb='12px'
+                                                >
+                                                    {item.title}
+                                                </Box>
                                             </Box>
-                                            {isExpanded ? (
-                                                <Image src={upArrow} alt='upArrow' />
-                                            ) : (
-                                                <Image src={downArrow} alt='downArrow' />
-                                            )}
-                                        </AccordionButton>
-                                    </h2>
-                                    <AccordionPanel borderWidth='0'>
+                                            <Box pr='14px'>
+                                                {isExpanded ? (
+                                                    <Image src={upArrow} alt='upArrow' />
+                                                ) : (
+                                                    <Image src={downArrow} alt='downArrow' />
+                                                )}
+                                            </Box>
+                                        </Box>
+                                    </AccordionButton>
+
+                                    <AccordionPanel borderWidth='0' p={0} pl='46px'>
                                         {item.subTitle && (
                                             <List spacing={3}>
-                                                {item.subTitle.map((elem, index) => (
-                                                    <ListItem key={index}>
-                                                        <NavLink to='#'>{elem}</NavLink>
+                                                {item.subTitle.map((elem) => (
+                                                    <ListItem key={elem.id}>
+                                                        <NavLink
+                                                            to={elem.path}
+                                                            style={({ isActive }) => ({
+                                                                fontWeight: isActive
+                                                                    ? '700'
+                                                                    : '500',
+                                                                borderLeft: isActive
+                                                                    ? '8px solid #c4ff61'
+                                                                    : '1px solid #c4ff61',
+                                                                paddingLeft: '8px',
+                                                            })}
+                                                        >
+                                                            {elem.title}
+                                                        </NavLink>
                                                     </ListItem>
                                                 ))}
                                             </List>

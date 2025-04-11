@@ -8,6 +8,15 @@ body {
     overflow-y: hidden;
 }
 
+.mainContainer {
+    max-width: 1920px;
+    margin-left: 26px;
+}
+
+.container {
+    max-width: 1360px;
+}
+
 .css-xz7vcu:last-of-type {
     border-bottom-width: 0 !important;
 }

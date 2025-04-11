@@ -1,8 +1,11 @@
-import { Grid, GridItem } from '@chakra-ui/react';
+import { Box, Grid, GridItem } from '@chakra-ui/react';
 import { Outlet } from 'react-router';
 
+import Footer from '../Footer/Footer';
 import Header from '../Header/Header';
+import MainIcons from '../MainIcons/MainIcons';
 import Navigation from '../Navigation/Navigation';
+import WriteRecipe from '../WriteRecipe/WripeRecipe';
 
 function Layout() {
     return (
@@ -31,18 +34,40 @@ function Layout() {
             </GridItem>
 
             <GridItem area='nav' h='100%' overflow='hidden' position='relative'>
-                <Navigation />
+                <Box>
+                    <Box>
+                        <Navigation />
+                    </Box>
+                    <Footer />
+                </Box>
             </GridItem>
 
             <GridItem
                 area='main'
                 overflowY='auto' // Скролл только для main
             >
-                <Outlet />
+                <Box className='mainContainer' display='flex' justifyContent='space-between'>
+                    <Outlet />
+                    <Box
+                        h='calc(100vh - 114px)'
+                        position='sticky'
+                        top='0'
+                        alignSelf='flex-start'
+                        display='flex'
+                        flexDirection='column'
+                        alignItems='center'
+                        justifyContent='space-between'
+                        mr='40px'
+                    >
+                        <MainIcons />
+                        <WriteRecipe />
+                    </Box>
+                </Box>
             </GridItem>
-
-            {/* Подвал */}
-            <GridItem area='footer'>Fotter</GridItem>
+            {/* 
+            <GridItem area='footer'>
+                <Footer />
+            </GridItem> */}
         </Grid>
     );
 }

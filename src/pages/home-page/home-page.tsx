@@ -21,7 +21,7 @@ import styles from './home-page.module.css';
 
 function HomePage() {
     return (
-        <Box className={styles.container}>
+        <Box className='container'>
             <Title title='Приятного аппетита!' />
 
             <Box className={styles.containerSearch}>
