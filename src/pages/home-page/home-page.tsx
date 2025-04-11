@@ -4,11 +4,14 @@ import { Link } from 'react-router';
 
 import ButtonSort from '~/components/ButtonSort/ButtonSort';
 import CardsBlogs from '~/components/CardsBlogs/CardsBlogs';
+import CardsCooking from '~/components/CardsCooking/CardsCooking';
+import CardsFooter from '~/components/CardsFooter/CardsFooter';
 import CardsItems from '~/components/CardsItems/CardsItems';
 import CardsSlider from '~/components/CardsSlider/CardsSlider';
 import SearchGroupe from '~/components/SearchGroupe/SearchGroupe';
 import SelectCustom from '~/components/SelectCustom/SelectCustom';
 import SwitchCustom from '~/components/SwitchCustom/SwithCustom';
+import TextRecipe from '~/components/TextRecipe/TextRecipe';
 import Title from '~/components/Title/Title';
 import TitleSection from '~/components/TitleSection/TitleSection';
 
@@ -103,7 +106,7 @@ function HomePage() {
                 </Box>
             </Box>
 
-            <Box bg='#c4ff61' borderRadius='16px' padding='24px'>
+            <Box bg='#c4ff61' borderRadius='16px' padding='24px' mb='40px'>
                 <Box display='flex' alignItems='center' justifyContent='space-between' mb='10px'>
                     <TitleSection fs='36' fw='400' text='Кулинарные блоги' />
                     <Button bg='transparent' w='197px' h='48px' p={0}>
@@ -127,6 +130,17 @@ function HomePage() {
                 </Box>
 
                 <CardsBlogs />
+            </Box>
+
+            <Box borderTop='1px solid rgba(0, 0, 0, 0.08)' pt='20px'>
+                <Box display='flex'>
+                    <TitleSection flex='1 1 50%' fs='48px' fw='500' text='Веганская кухня' />
+                    <TextRecipe text='Интересны не только убеждённым вегетарианцам, но и тем, кто хочет  попробовать вегетарианскую диету и готовить вкусные  вегетарианские блюда.' />
+                </Box>
+                <Box display='flex' alignItems='center' gap='24px'>
+                    <CardsFooter />
+                    <CardsCooking />
+                </Box>
             </Box>
         </Box>
     );

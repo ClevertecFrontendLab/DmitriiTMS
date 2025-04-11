@@ -5,18 +5,31 @@ import styles from './CardSlide.module.css';
 type CardSlideProps = {
     title: string;
     text: string;
-    src: string;
+    src?: string;
     tag: string;
     like?: string;
     smile?: string;
     tagIcon: string;
+    bgTag?: boolean;
+    paddingFooter?: boolean;
 };
 
-function CardSlide({ title, text, src, tag, like, smile, tagIcon }: CardSlideProps) {
+function CardSlide({
+    title,
+    text,
+    src,
+    tag,
+    like,
+    smile,
+    tagIcon,
+    bgTag,
+    paddingFooter,
+}: CardSlideProps) {
     return (
-        <Card className={styles.card}>
+        <Card className={styles.card} height={paddingFooter ? '192px' : ''}>
             <CardBody p={0}>
-                <Image src={src} alt='imgs' className={styles.cardImage} />
+                {src && <Image src={src} alt='imgs' className={styles.cardImage} />}
+
                 <Stack className={styles.cardContent}>
                     <Heading className={styles.cardTitle}>{title}</Heading>
                     <Text noOfLines={3} className={styles.cardText}>
@@ -24,7 +37,7 @@ function CardSlide({ title, text, src, tag, like, smile, tagIcon }: CardSlidePro
                     </Text>
                     <Box className={styles.cardFooter}>
                         <Box>
-                            <Tag className={styles.tag}>
+                            <Tag className={!bgTag ? `${styles.tag}` : `${styles.tagFooter}`}>
                                 <Image src={tagIcon} alt='imgs' />
                                 <TagLabel className={styles.tagLabel}>{tag}</TagLabel>
                             </Tag>

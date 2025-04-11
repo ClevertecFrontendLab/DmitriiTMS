@@ -3,6 +3,7 @@
     border-radius: 6px 6px 0 0;
     overflow: hidden;
     flex: 0 1 322px;
+    height: auto;
 }
 
 .cardImage {
@@ -52,6 +53,10 @@
     border-radius: 4px;
     background-color: #d7ff94 !important;
     padding: 4px 8px;
+}
+
+.tagFooter {
+    background-color: #ffffd3 !important;
 }
 
 .tagLabel {
