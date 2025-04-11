@@ -5,8 +5,7 @@ export const containerSx = {
     //     lg: '1440px',
     //     xl: '1920px',
     // },
-    w: '100%',
-    mx: 'auto',
+    // maxW: '1920px',
     pl: '16px',
     pr: '80px',
 };

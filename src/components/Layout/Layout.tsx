@@ -7,6 +7,8 @@ import Navigation from '../Navigation/Navigation';
 function Layout() {
     return (
         <Grid
+            maxW='1920px'
+            mx='auto'
             templateAreas={{
                 base: `"header" "nav" "main" "footer"`,
                 md: `"header header" "nav main" "footer footer"`,

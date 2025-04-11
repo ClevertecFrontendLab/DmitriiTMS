@@ -2,11 +2,13 @@ import { Heading } from '@chakra-ui/react';
 
 type TitleSectionProps = {
     text: string;
+    fs: string;
+    fw: string;
 };
 
-function TitleSection({ text }: TitleSectionProps) {
+function TitleSection({ text, fs, fw }: TitleSectionProps) {
     return (
-        <Heading as='h2' fontFamily='Inter' fontSize='48px' fontWeight='500' mb='18px'>
+        <Heading as='h2' fontFamily='Inter' fontSize={fs} fontWeight={fw} mb='18px'>
             {text}
         </Heading>
     );

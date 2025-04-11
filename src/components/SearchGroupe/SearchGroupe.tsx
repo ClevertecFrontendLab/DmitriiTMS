@@ -7,7 +7,7 @@ function SearchGroupe() {
     return (
         <InputGroup className={styles['search-input-group']}>
             <InputRightElement className={styles['search-input-right-element']}>
-                <SearchIcon />
+                <SearchIcon position='absolute' top='16px' right='14px' />
             </InputRightElement>
             <Input
                 className={styles['search-input']}

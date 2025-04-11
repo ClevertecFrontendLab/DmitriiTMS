@@ -3,6 +3,7 @@ import { Box, Button, Image } from '@chakra-ui/react';
 import { Link } from 'react-router';
 
 import ButtonSort from '~/components/ButtonSort/ButtonSort';
+import CardsBlogs from '~/components/CardsBlogs/CardsBlogs';
 import CardsItems from '~/components/CardsItems/CardsItems';
 import CardsSlider from '~/components/CardsSlider/CardsSlider';
 import SearchGroupe from '~/components/SearchGroupe/SearchGroupe';
@@ -40,7 +41,7 @@ function HomePage() {
             </Box>
 
             <Box className={styles.sectionSlider}>
-                <TitleSection text='Новые рецепты' />
+                <TitleSection fs='48px' fw='500' text='Новые рецепты' />
 
                 <Box position='relative'>
                     <Button
@@ -75,9 +76,9 @@ function HomePage() {
                 </Box>
             </Box>
 
-            <Box>
+            <Box mb='40px'>
                 <Box display='flex' alignItems='center' justifyContent='space-between'>
-                    <TitleSection text='Самое сочное' />
+                    <TitleSection fs='48px' fw='500' text='Самое сочное' />
                     <Button bg='#b1ff2e' w='197px' h='48px' p={0}>
                         <Link
                             to='#'
@@ -100,6 +101,32 @@ function HomePage() {
                 <Box>
                     <CardsItems />
                 </Box>
+            </Box>
+
+            <Box bg='#c4ff61' borderRadius='16px' padding='24px'>
+                <Box display='flex' alignItems='center' justifyContent='space-between' mb='10px'>
+                    <TitleSection fs='36' fw='400' text='Кулинарные блоги' />
+                    <Button bg='transparent' w='197px' h='48px' p={0}>
+                        <Link
+                            to='#'
+                            style={{
+                                width: '100%',
+                                height: '100%',
+                                display: 'flex',
+                                alignItems: 'center',
+                                justifyContent: 'center',
+                                fontWeight: '600',
+                                fontSize: '18px',
+                                color: '#000',
+                            }}
+                        >
+                            <span>Все авторы</span>
+                            <ArrowForwardIcon ml='8px' w={8} />
+                        </Link>
+                    </Button>
+                </Box>
+
+                <CardsBlogs />
             </Box>
         </Box>
     );
