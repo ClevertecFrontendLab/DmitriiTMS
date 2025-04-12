@@ -8,6 +8,7 @@ import {
     List,
     ListItem,
 } from '@chakra-ui/react';
+import { useEffect, useState } from 'react';
 import { NavLink } from 'react-router';
 
 import downArrow from '../../assets/navbar/arrow/downArrow.svg';
@@ -32,7 +33,11 @@ const mockMenu = [
     { id: 3, title: 'Первые блюда', icon: icon3 },
     { id: 4, title: 'Вторые блюда', icon: icon4 },
     { id: 5, title: 'Десерты, выпечка', icon: icon5 },
-    { id: 6, title: 'Блюда на гриле', icon: icon6 },
+    {
+        id: 6,
+        title: 'Блюда на гриле',
+        icon: icon6,
+    },
     {
         id: 7,
         title: 'Веганская кухня',
@@ -57,10 +62,25 @@ const mockMenu = [
     { id: 13, title: 'Заготовки', icon: icon13 },
 ];
 
-function Navigation() {
+type NavigationProps = {
+    setClickItem: (value: boolean) => void;
+};
+
+function Navigation({ setClickItem }: NavigationProps) {
+    const [expandedId, setExpandedId] = useState<number | null>(null);
+
+    useEffect(() => {
+        if (expandedId && expandedId > -1) {
+            setClickItem(expandedId !== null);
+        } else {
+            setClickItem(false);
+        }
+    }, [expandedId, setClickItem]);
+
     return (
         <Box
             h='full'
+            overflowX='hidden'
             overflowY='auto'
             css={{
                 '&::-webkit-scrollbar': {
@@ -75,6 +95,7 @@ function Navigation() {
             <Box maxH='872px'>
                 <Accordion
                     allowToggle
+                    onChange={(index) => setExpandedId(index as number)}
                     display='flex'
                     flexDirection='column'
                     alignItems='flex-start'
@@ -87,6 +108,7 @@ function Navigation() {
                                 <>
                                     <AccordionButton
                                         p={0}
+                                        mb={isExpanded ? '10px' : ''}
                                         bg={isExpanded ? '#eaffc7' : ''}
                                         pl='4px'
                                         _hover={{ backgroundColor: 'none' }}
@@ -126,7 +148,7 @@ function Navigation() {
                                         </Box>
                                     </AccordionButton>
 
-                                    <AccordionPanel borderWidth='0' p={0} pl='46px'>
+                                    <AccordionPanel borderWidth='0' p={0} pl='36px'>
                                         {item.subTitle && (
                                             <List spacing={3}>
                                                 {item.subTitle.map((elem) => (
@@ -137,13 +159,40 @@ function Navigation() {
                                                                 fontWeight: isActive
                                                                     ? '700'
                                                                     : '500',
-                                                                borderLeft: isActive
-                                                                    ? '8px solid #c4ff61'
-                                                                    : '1px solid #c4ff61',
-                                                                paddingLeft: '8px',
                                                             })}
                                                         >
-                                                            {elem.title}
+                                                            {({ isActive }) => (
+                                                                <Box
+                                                                    display='flex'
+                                                                    alignItems='center'
+                                                                    gap='8px'
+                                                                >
+                                                                    <Box
+                                                                        position='relative'
+                                                                        as='span'
+                                                                        display='inline-block'
+                                                                        w='8px'
+                                                                        h='28px'
+                                                                        bg='#c4ff61'
+                                                                    >
+                                                                        {!isActive && (
+                                                                            <Box
+                                                                                position='absolute'
+                                                                                top={0}
+                                                                                left={0}
+                                                                                as='span'
+                                                                                display='inline-block'
+                                                                                w='7px'
+                                                                                h='28px'
+                                                                                bg='#fff'
+                                                                            ></Box>
+                                                                        )}
+                                                                    </Box>
+                                                                    <Box as='span'>
+                                                                        {elem.title}
+                                                                    </Box>
+                                                                </Box>
+                                                            )}
                                                         </NavLink>
                                                     </ListItem>
                                                 ))}

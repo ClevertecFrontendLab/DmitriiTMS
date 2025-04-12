@@ -1,4 +1,5 @@
 import { Box, Grid, GridItem } from '@chakra-ui/react';
+import { useState } from 'react';
 import { Outlet } from 'react-router';
 
 import Footer from '../Footer/Footer';
@@ -8,6 +9,7 @@ import Navigation from '../Navigation/Navigation';
 import WriteRecipe from '../WriteRecipe/WripeRecipe';
 
 function Layout() {
+    const [clickItem, setClickItem] = useState(false);
     return (
         <Grid
             maxW='1920px'
@@ -33,10 +35,26 @@ function Layout() {
                 <Header />
             </GridItem>
 
-            <GridItem area='nav' h='100%' overflow='hidden' position='relative'>
+            <GridItem area='nav' h='100%' position='relative'>
                 <Box>
-                    <Box>
-                        <Navigation />
+                    <Box
+                        position='relative'
+                        borderRadius={clickItem ? '12px' : '0'}
+                        // zIndex={clickItem ? '2000' : '1'}
+                        boxShadow={
+                            clickItem
+                                ? '0 2px 4px -1px rgba(0, 0, 0, 0.06), 0 4px 6px -1px rgba(0, 0, 0, 0.1)'
+                                : 'none'
+                        }
+                        height={clickItem ? '680px' : 'auto'}
+                        maxHeight={clickItem ? '680px' : '100vh'}
+                        transition='max-height 0.3s ease'
+                        pb='10px'
+                        pr='4px'
+                        mr='2px'
+                        bg='#fff'
+                    >
+                        <Navigation setClickItem={setClickItem} />
                     </Box>
                     <Footer />
                 </Box>
